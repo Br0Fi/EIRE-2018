@@ -132,7 +132,7 @@ ngerman
 	Gemäß des Fouriertheorems kann jede periodische Funktion als Fourierreihe bzw. Fourierintegral ausgedrückt werden.
 	Dies ist nützlich bei der Zerlegung eines möglicherweise verrauschten Signals in seine Bestandteile.
 	Das grundsätzliche Problem hierbei ist, dass Messprozesse immer zeitlich begrenzt ist, weshalb das Signal nicht bis in die positive und negative Unendlichkeit periodisch sein kann.
-	%TODO und nun?
+	Dies verursacht den sogenannten \enquote{Leakage-Effekt}, auf den in \cref{leakage} näher eingegangen wird.
 	
 	\subsection{Abtasttheorem}
 	%TODO kurze Zusammenfassung seiner Theorie-Sachen, hab ich auf Papier
@@ -147,12 +147,45 @@ ngerman
 	
 	\section{Tag 3} \label{Tag 3}
 	%eig. zunächst Fertigstellung von Tag2 Teil 1
+	\subsection{Leakage-Effekt und Fensterfunktion}
+	\label{leakage}
+	Wenn die Signalfrequenz kein Vielfaches des Produkts aus Abtastfrequenz und Zahl an Messpunkten pro Messung ist, tritt aufgrund der Endlichkeit des Messprozesses der sogenannte \enquote{Leakage-Effekt} auf. %TODO Bild?
+	%https://de.wikipedia.org/wiki/Datei:Spectral_leakage_Sine.svg
+	Dieser verursacht eine Verbreiterung des Peaks der Signalfrequenz im Frequenzbild.
+	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden.
+	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos
 	
 	\subsection{Digitales Oszilloskop ohne ExpressVI} % hier ist halt die Tagreihenfolge bissl gebrochen. Ich glaube, wir haben das an Tag 2 angefangen und Tag 3 beendet
 	Das Oszilloskop-Programm von zuvor wird ersetzt durch eines, dass anstelle des ExpressVIs Konfiguration, Messung und Cleanup getrennt enthält.
-	%TODO hier ansetzen
+	Dieses ist in \cref{fig_tag23_oszi_manuell_block} dargestellt, während in \cref{fig_tag23_oszi_manuell_front} die Frontplatte bei einem Eingangssignal von \SI{600}{\hertz}.
 	
-	\subsection{Leakage-Effekt und Fensterfunktion}
+	\begin{figure}[H]  
+		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/ManuellVId}
+		\centering
+		\caption{
+			Oszilloskop-Programm, das eine Abtastung vornimmt und das Ergebnis im Zeitbild sowie im Frequenzbild mit und ohne Hann-Fenster darstellt.
+			Außerdem ist die Speicherung der Daten in einem Textdokument ermöglicht.
+		}
+		\label{fig_tag23_oszi_manuell_block}
+		\centering
+	\end{figure}
+
+	\begin{figure}[H]  
+		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/ManuellVIp}
+		\centering
+		\caption{
+			Oszilloskop-Frontplatte. Dargestellt wird das gemessene Signal im Zeitbild sowie im Frequenzbild mit und ohne Von-Hann-Fenster. Einstellbar ist die Abtastfrequenz, die Anzahl der Messpunkte, der Eingangskanal des Messgerätes und der maximale messbare Wert, wobei der minimale auf das Negative des maximalen gesetzt wird.
+			Mithilfe des Stopp-Knopfes kann das Programm gestoppt werden und mit dem Speichern-Knopf werden die aktuellen Messwerte aus allen drei Diagrammen in eine Textdatei exportiert.
+		}
+		\label{fig_tag23_oszi_manuell_front}
+		\centering
+	\end{figure}
+
+	Hierbei wurde ebenfalls die Möglichkeit die aktuellen Messwerte zu speichern eingeführt.
+	Dazu wurden die Strukturen, die in den Diagrammen dargestellt werden in ihre Bestandteile zerlegt und die Arrays der Y-Werte mit zwei Arrays für fortlaufende Zeit- und Frequenzwerte kombiniert und der Speicherfunktion zugeführt.
+	Der Speichervorgang befindet sich innerhalb eines case-Konstrukts, das ignoriert wird, solange der Speichern-Knopf nicht gedrückt wurde.
+	Außerdem werden Fehlermeldungen einer Fehlerdialogfunktion zugeführt, die dem Nutzer erlaubt bei Fehlern wahlweise das Programm anzuhalten oder weiterlaufen zu lassen.
+	Um ein Volllaufen des Mess-Buffers zu vermeiden, wird dieser doppelt so groß wie die Anzahl der Messpunkte pro Zyklus gewählt.
 	
 	\subsection{Aliasing}
 	Um den Effekt des Aliasings absichtlich herbeizuführen, werden bei einer Abtastfrequenz von \SI{1000}{\hertz} zwei verschiedene Signale abgetastet.
@@ -182,9 +215,9 @@ ngerman
 	Man stellt fest, dass man vor der Abtastung bereits wissen muss, welche Frequenzen im Signal vorkommen. 
 	
 	
-	\subsection{Amplitudenmodulierte Signale}
+	\subsection{Amplitudenmodulierte Signale} %SoundkarteOuszi
 	
-	\subsubsection{Erzeugung}
+	\subsubsection{Erzeugung} %TODO hier ansetzen mit EIRE2018Dateien/Tag3/Soundkarteoutoszi
 	% + Ausgabe über Soundkarte
 	
 	\subsubsection{Demodulation}

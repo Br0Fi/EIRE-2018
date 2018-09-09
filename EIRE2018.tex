@@ -91,25 +91,39 @@ ngerman
 	\tableofcontents
 	\newpage
 
-	\section{Tag 1} \label{Tag 1}
+	\section{Tag 1}
 	
 	\subsection{Aufbau einer Sinus- bzw. Bessel-Funktion}
 	
+	\begin{equation}
+	u(A,f,t,\varphi) = A \cdot \sin(2\pi f t + \varphi) \ ,
+	\end{equation}
+	
+	\noindent wobei jedes $t$ durch 
+	
+	\begin{equation*}
+	t = \frac{i}{N}
+	\end{equation*}
+	
+	\noindent gegeben ist.  
+	
+	LabView bietet dabei die Möglichkeit .
+	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1.0\textwidth]{}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesseld}
+		\caption{Die Abbildung zeigt den Aufbau des Programms zur Umsetzung einer Sinus- bzw. Bessel-Funktion. Die eigentliche Werte-Berechnung findet innerhalb der Schleife statt. Dazu werden feste, aber beliebige Fließkommazahlen für die Amplitude $A$, die Zahl der Punkte $N$, die Frequenz $f$, die Phase $\varphi$ und die Ordnung $\nu$ der Bessel-Funktion herangezogen. Die Ausgabe der Wertepaare erfolgt in Form zweier $X$-$Y$-Graphen sowie Arrays.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselp}
 		\caption{.}
 	\end{figure}
 
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1.0\textwidth]{}
-		\caption{.}
-	\end{figure}
-
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1.0\textwidth]{}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselc}
 		\caption{.}
 	\end{figure}
 	
@@ -117,17 +131,17 @@ ngerman
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1.0\textwidth]{}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/lissajous-bilder/Lissajousd}
 		\caption{.}
 	\end{figure}
 
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1.0\textwidth]{}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/lissajous-bilder/Lissajousp}
 		\caption{.}
 	\end{figure}
 	
-	\section{Tag 2} \label{Tag 2}
+	\section{Tag 2}
 	
 	\subsection{Digitales Oszilloskop mit ExpressVI}
 	Es wird ein Funktionsgenerator verwendet.
@@ -171,7 +185,7 @@ ngerman
 	Dies bezeichnet man als Aliasing.
 	
 	
-	\section{Tag 3} \label{Tag 3}
+	\section{Tag 3}
 	%eig. zunächst Fertigstellung von Tag2 Teil 1
 	\subsection{Leakage-Effekt und Fensterfunktion}
 	\label{leakage}
@@ -249,7 +263,7 @@ ngerman
 	\subsubsection{Demodulation}
 	%Betrag, Quadrat
 	
-	\section{Tag 4} \label{Tag 4}
+	\section{Tag 4}
 	
 	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation}
 	

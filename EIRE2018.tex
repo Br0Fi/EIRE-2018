@@ -93,33 +93,41 @@ ngerman
 
 	\section{Tag 1}
 	
-	\subsection{Aufbau einer Sinus- bzw. Bessel-Funktion}
+	\subsection{Aufbau einer Sinus- bzw. Bessel-Funktion} \label{sinusfkt}
+	
+	Zunächst sollen unter Verwendung des graphischen Programmiersystems \glqq LabView\grqq\ eine Sinus- und eine Bessel-Funktion realisiert werden. Mithilfe der von LabView zur Verfügung gestellten numerischen Operationen, Konstanten und Schleifen lässt sich ein Programm schreiben, welches eine Sinusschwingung $u$ der Form
 	
 	\begin{equation}
 	u(A,f,t,\varphi) = A \cdot \sin(2\pi f t + \varphi) \ ,
 	\end{equation}
 	
-	\noindent wobei jedes $t$ durch 
+	\noindent umsetzt. Wobei $A$ die Schwingungsamplitude, $f$ die Frequenz und $\varphi$ die Phasenverschiebung bilden. Außerdem ist jedes $t$ durch 
 	
-	\begin{equation*}
+	\begin{equation}
 	t = \frac{i}{N}
-	\end{equation*}
+	\end{equation}
 	
-	\noindent gegeben ist.  
-	
-	LabView bietet dabei die Möglichkeit .
+	\noindent gegeben. $N$ ist dabei die Zahl der Stützstellen und zugleich die Anzahl der zu berechnenden Wertepaare. Der Index $i$ kann Werte im Bereich zwischen $0$ und $N$ annehmen. Das besagte Programm ist in Abbildung \cref{sinusbesselprogramm} zu sehen. 
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesseld}
 		\caption{Die Abbildung zeigt den Aufbau des Programms zur Umsetzung einer Sinus- bzw. Bessel-Funktion. Die eigentliche Werte-Berechnung findet innerhalb der Schleife statt. Dazu werden feste, aber beliebige Fließkommazahlen für die Amplitude $A$, die Zahl der Punkte $N$, die Frequenz $f$, die Phase $\varphi$ und die Ordnung $\nu$ der Bessel-Funktion herangezogen. Die Ausgabe der Wertepaare erfolgt in Form zweier $X$-$Y$-Graphen sowie Arrays.}
+		\label{sinusbesselprogramm}
+		\centering
 	\end{figure}
+
+	\noindent 
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselp}
-		\caption{.}
+		\caption{In dieser Abbildung ist die Ausgabe dargestellt.}
+		\label{sinusbesselausgabe}
+		\centering
 	\end{figure}
+
+	\noindent LabView bietet die Möglichkeit .
 
 	\begin{figure}[h]
 		\centering
@@ -267,11 +275,113 @@ ngerman
 	
 	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation}
 	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/Oszilloskop__modifiziertd}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/Oszilloskop__modifiziertp}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/Oszilloskop__modifiziertc}
+		\caption{.}
+	\end{figure}
+	
 	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/FMPM-Erzeugungd}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/FM-FMPM-Erzeugungp}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/anderekbei10000Traegerfr/FM-FMPM-Erzeugungp}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungd1}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungp}
+		\caption{.}
+	\end{figure}
 	
 	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
 	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMd}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMp}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h] %FM-Diagramm
+		\centering
+		\includegraphics[width=1.0\textwidth]{}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/OsziPlusFMPMp}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h] %PM-Diagramm
+		\centering
+		\includegraphics[width=1.0\textwidth]{}
+		\caption{.}
+	\end{figure}
+	
 	\subsubsection{Erweiterte Demodulation mit Bandpass und zusätzlicher Integration des Signals}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMd}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMp}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h] %FM-Diagramm mit Bandpass und Integration
+		\centering
+		\includegraphics[width=1.0\textwidth]{}
+		\caption{.}
+	\end{figure}
+
+	\begin{figure}[h] %PM-Diagramm mit Bandpass und Integration 
+		\centering
+		\includegraphics[width=1.0\textwidth]{}
+		\caption{.}
+	\end{figure}
 	
 	
 	%\printbibliography

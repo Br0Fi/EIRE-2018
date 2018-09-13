@@ -95,7 +95,7 @@ ngerman
 	
 	\subsection{Aufbau einer Sinus- bzw. Bessel-Funktion} \label{sinusfkt}
 	
-	Zunächst sollen unter Verwendung des graphischen Programmiersystems \glqq LabVIEW\grqq\ eine Sinus- und eine Bessel-Funktion realisiert werden. Mithilfe der von LabVIEW zur Verfügung gestellten numerischen Operationen, Konstanten und Schleifen lässt sich ein Programm schreiben, welches eine Sinusschwingung $u$ der Form
+	Zunächst soll unter Verwendung des graphischen Programmiersystems \glqq LabVIEW\grqq\ eine Sinus-Funktion realisiert werden. Mithilfe der von LabVIEW zur Verfügung gestellten numerischen Operationen, Konstanten und Schleifen lässt sich ein Programm schreiben, welches eine Sinusschwingung $u$ der Form
 	
 	\begin{equation} \label{u}
 	u(A,f,t,\varphi) = A \cdot \sin(2\pi f t + \varphi) \ ,
@@ -114,26 +114,35 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesseld}
 		\caption{Die Abbildung zeigt den Aufbau des Programms zur Umsetzung einer Sinus- bzw. Bessel-Funktion. Die eigentliche Werte-Berechnung findet innerhalb der For-Schleife statt. Dazu werden feste, aber beliebige Fließkommazahlen für die Amplitude $A$, die Zahl der Punkte $N$, die Frequenz $f$, die Phase $\varphi$ und die Ordnung $\nu$ der Bessel-Funktion herangezogen. Die Ausgabe der Wertepaare erfolgt in Form zweier $X$-$Y$-Graphen sowie Arrays.}
 		\label{sinusbesselprogrammcode}
-		\centering
 	\end{figure}
 
-	\noindent Das dazugehörige ausgegebene Frontpanel ist in \cref{sinusbesselausgabe} erkennbar. Die Gleitkommazahlen-Werte für $A$, $f$, $N$ und $\varphi$ sollen frei wählbar sein, zumal $u$ insbesondere von diesen abhängt. Das Programm ist daher so eingerichtet, dass auf der linken Seite des Frontpanels die entsprechenden Bedien- bzw. Eingabeelemente erscheinen. Unter gleichem Namen sind die jeweiligen Blockdiagrammobjekte im Programmcode zu finden. Im Zentrum des Programmcodes in \cref{sinusbesselprogrammcode} lässt sich eine For-Schleife erkennen. Gemäß \cref{t} sowie \cref{u} findet in dieser unter Verwendung des Laufindexes $i$ die tatsächliche Berechnung der $t$- und $u$-Werte statt.              Anzeige- bzw. Ausgabeelemente
-
+	\noindent Das dazugehörige ausgegebene Frontpanel ist in \cref{sinusbesselausgabe} erkennbar. Die Gleitkommazahlen-Werte für $A$, $f$, $N$ und $\varphi$ sollen frei wählbar sein, zumal $u$ insbesondere von diesen abhängt. Das Programm ist daher so eingerichtet, dass auf der linken Seite des Frontpanels die entsprechenden Bedien- bzw. Eingabeelemente erscheinen. Unter gleichem Namen sind die jeweiligen Blockdiagrammobjekte im Programmcode zu finden. Im Zentrum des Programmcodes in \cref{sinusbesselprogrammcode} lässt sich eine For-Schleife erkennen. Gemäß \cref{u} sowie \cref{t} findet in dieser unter Verwendung des Laufindexes $i$ die tatsächliche Berechnung der $t$- und $u$-Werte statt. Die Blockdiagrammobjekte auf der rechten Seite des Programmcodes in \cref{sinusbesselprogrammcode} bilden die Anzeige- bzw. Ausgabeelemente des Frontpanels in \cref{sinusbesselausgabe}. Zum einen werden dabei zwei $N+1$ Einträge umfassende, eindimensionale Arrays angelegt, die jeweils alle $t$- sowie sämtliche $u$-Werte beinhalten und zum anderen wird ein $X$-$Y$-Diagramm erzeugt, in dem alle $u$-Werte gegen die entsprechenden $t$-Werte aufgetragen sind. Demnach befindet sich $t$ auf der $x$-Achse und $u$ auf der $y$-Achse. Um nun die Informationsübertragung zu bewerkstelligen, ist es notwendig im Programmcode vor den Anschlüssen der \glqq Build XY Graph\grqq -Kästen weitere Blockdiagrammobjekte hinzuzufügen, welche das Leitungssignal in ein für den Graphen passendes Eingangssignal umwandeln. Zumeist geschieht dies in LabVIEW automatisch und wird dann an der entsprechenden Stelle auf der Leitung mit einem kleinen, roten Punkt gekennzeichnet.
+			
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselp}
-		\caption{In dieser Abbildung ist die Ausgabe dargestellt.}
+		\caption{In dieser Abbildung ist das Frontpanel als Ausgabe und Benutzeroberfläche dargestellt.}
 		\label{sinusbesselausgabe}
-		\centering
 	\end{figure}
 
-	\noindent LabView bietet die Möglichkeit .
+	\noindent Zusätzlich 
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselc}
-		\caption{.}
+		\caption{Die Abbildung zeigt das gestaltete Programm-Icon sowie die gesetzten Anschlussmöglichkeiten.}
+		\label{sinusbesselicon}
 	\end{figure}
+	
+	\noindent LabVIEW bietet die Möglichkeit ein bereits vorhandenes, selbst geschriebenes, funktionsfähiges Programm so zu bearbeiten, dass es für andere LabVIEW-Programme bzw. -Projekte als Blockdiagrammobjekt nutzbar wird. Dazu müssen zunächst die Anschlüsse festgelegt werden, sowohl die Eingänge als auch die Ausgänge. Allgemein kann es sich dabei um verschiedenste Arten von Ein-und Ausgangssignalen handeln. Bei der programmierten Sinus-Funktion verhält es sich demnach so, dass fünf Eingangs- und zwei Ausgangsanschlüsse generiert werden müssen, welche jeweils nur Gleitkommazahlen annehmen bzw. übergeben. Die Amplitude $A$, die Frequenz $f$, die Phasenverschiebung $\varphi$, die Anzahl der Punkte $N$ und die Ordnung $\nu$ der Bessel-Funktion bilden hierbei die Eingänge, die $t$-Werte sowie die $u$- bzw. $y$-Werte erscheinen über die beiden Ausgänge. Des Weiteren ist es in LabVIEW möglich das entsprechende Blockdiagrammobjekt-Icon des Programms zu gestalten. Das komplette Resultat ist in \cref{sinusbesselicon} dargestellt.
+	
+	\emph{Hinweis:} Aus der Betrachtung des Programmcodes in \cref{sinusbesselprogrammcode} geht hervor, dass das Blockdiagrammobjekt, welches das Array-Ausgabeelement des Frontpanels bildet und alle $u$-Werte abgreifen soll, inkorrekt eingefügt ist. Denn anstelle einer Implementierung nach der Multiplikation mit der Amplitude $A$, befindet sich das besagte Blockdiagrammobjekt davor. Sodass das Array lediglich die Werte des Ausdrucks
+	
+	\begin{equation}
+	\sin(2\pi f t + \varphi)
+	\end{equation}
+	
+	\noindent angibt, welche zwischen $-1$ und $1$ liegen. %Da die Ausgabefunktion als Array jedoch grundsätzlich keinen Einfluss auf das folgende Vorgehen hat, kann mit der Sinus-Funktion weitergearbeitet werden.
 	
 	\subsection{Lissajous-Figuren}
 	
@@ -144,7 +153,6 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/lissajous-bilder/Lissajousd}
 		\caption{Dargestellt ist der LabVIEW-Programmcode, mit dem sich Lissajous-Figuren realisieren lassen.}
 		\label{lissajouscode}
-		\centering
 	\end{figure}
 
 	\begin{figure}[H]
@@ -152,7 +160,6 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/lissajous-bilder/Lissajousp}
 		\caption{Die Abbildung zeigt das Frontpanel, in dem sich im Anzeigeelement eine Lissajous-Figur befindet. Auf der linken Seite können die entsprechenden $f_1$-, $f_2$-, $\varphi_1$-, $\varphi_2$- und $N$-Werte abgelesen werden.}
 		\label{lissajous}
-		\centering
 	\end{figure}
 	
 	\section{Tag 2}

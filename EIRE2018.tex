@@ -158,7 +158,13 @@ ngerman
 	
 	\subsection{Lissajous-Figuren}
 	
-	Im Folgenden sollen je nach Werteeinstellungen auf dem Anzeigeelement der Benutzeroberfläche verschiedene Lissajous-Figuren entstehen. Dies ist in \cref{lissajous} zu sehen. Eine Lissajous-Figur entsteht dadurch, dass man . Dazu wird ein LabVIEW-Programm geschrieben, dessen Blockdiagramm und Programmcode in \cref{lissajousprogrammcode} zu erkennen ist.
+	Im Folgenden sollen je nach Werteeinstellungen auf dem Anzeigeelement der Benutzeroberfläche verschiedene Lissajous-Figuren entstehen. Dies ist in \cref{lissajous} zu sehen. Die Basis für eine solche Lissajous-Figur bilden zwei verschiedene Sinusschwingungen, welche beide dieselbe Gestalt wie die \cref{u} besitzen:
+	
+	\begin{equation}
+	u_1(A_1,f_1,t,\varphi_1) = A_1 \cdot \sin(2\pi f_1 t + \varphi_1) \ \ \ \textnormal{und} \ \ \ u_2(A_2,f_2,t,\varphi_2) = A_2 \cdot \sin(2\pi f_2 t + \varphi_2) \ ,
+	\end{equation}
+	
+	\noindent mit den unterschiedlichen Amplituden $A_1$ und $A_2$, den Frequenzen $f_1$ und $f_2$ sowie den Phasenverschiebungen $\varphi_1$ und $\varphi_2$. Zudem bedarf es eines zweidimensionalen kartesischen Koordinatensystems mit Rechts- und Hochachse. Eine Lissajous-Figur entsteht nun dadurch, dass man der $x$-Achse die Funktion $u_1$ und der $y$-Achse die Funktion $u_2$ zuweist. Je nachdem wie man die Werte für $A_1$, $A_2$, $f_1$, $f_2$, $\varphi_1$, $\varphi_2$ und $N$ wählt, ergeben sich dann unterschiedliche Lissajous-Figuren. Dazu wird ein LabVIEW-Programm geschrieben, dessen Blockdiagramm und Programmcode in \cref{lissajousprogrammcode} zu erkennen ist.
 	
 	\begin{figure}[H]
 		\centering
@@ -167,7 +173,7 @@ ngerman
 		\label{lissajousprogrammcode}
 	\end{figure}
 
-	\noindent 
+	\noindent Für die Amplituden soll einfachheitshalber $A_1 = A_2 = 1$ gelten.
 
 	\begin{figure}[H]
 		\centering

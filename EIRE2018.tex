@@ -237,14 +237,14 @@ ngerman
 	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos
 	
 	\subsection{Digitales Oszilloskop ohne ExpressVI} % hier ist halt die Tagreihenfolge bissl gebrochen. Ich glaube, wir haben das an Tag 2 angefangen und Tag 3 beendet
-	Das Oszilloskop-Programm von zuvor wird ersetzt durch eines, dass anstelle des ExpressVIs Konfiguration, Messung und Cleanup getrennt enthält.
+	Das Oszilloskopprogramm von zuvor wird ersetzt durch eines, dass anstelle des ExpressVIs Konfiguration, Messung und Cleanup getrennt enthält.
 	Dieses ist in \cref{fig_tag23_oszi_manuell_block} dargestellt, während in \cref{fig_tag23_oszi_manuell_front} die Frontplatte bei einem Eingangssignal von \SI{600}{\hertz}.
 	
 	\begin{figure}[H]  
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/ManuellVId}
 		\centering
 		\caption{
-			Oszilloskop-Programm, das eine Abtastung vornimmt und das Ergebnis im Zeitbild sowie im Frequenzbild mit und ohne Hann-Fenster darstellt.
+			Oszilloskopprogramm, das eine Abtastung vornimmt und das Ergebnis im Zeitbild sowie im Frequenzbild mit und ohne Hann-Fenster darstellt.
 			Außerdem ist die Speicherung der Daten in einem Textdokument ermöglicht.
 		}
 		\label{fig_tag23_oszi_manuell_block}
@@ -255,7 +255,7 @@ ngerman
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/ManuellVIp}
 		\centering
 		\caption{
-			Oszilloskop-Frontplatte. Dargestellt wird das gemessene Signal im Zeitbild sowie im Frequenzbild mit und ohne Von-Hann-Fenster. Einstellbar ist die Abtastfrequenz, die Anzahl der Messpunkte, der Eingangskanal des Messgerätes und der maximale messbare Wert, wobei der minimale auf das Negative des maximalen gesetzt wird.
+			Oszilloskopfrontplatte. Dargestellt wird das gemessene Signal im Zeitbild sowie im Frequenzbild mit und ohne Von-Hann-Fenster. Einstellbar ist die Abtastfrequenz, die Anzahl der Messpunkte, der Eingangskanal des Messgerätes und der maximale messbare Wert, wobei der minimale auf das Negative des maximalen gesetzt wird.
 			Mithilfe des Stopp-Knopfes kann das Programm gestoppt werden und mit dem Speichern-Knopf werden die aktuellen Messwerte aus allen drei Diagrammen in eine Textdatei exportiert.
 		}
 		\label{fig_tag23_oszi_manuell_front}
@@ -301,13 +301,82 @@ ngerman
 	\subsubsection{Erzeugung} %TODO hier ansetzen mit EIRE2018Dateien/Tag3/Soundkarteoutoszi
 	% + Ausgabe über Soundkarte
 	
+	Es soll nun ein amplitudenmoduliertes Signal erzeugt werden und über die Soundkarte des verwendeten PCs ausgegeben werden.
+	Dabei wird das Signal der Soundkarte wieder auf den Analog-Digital-Wandler gegeben und mit dem zuvor erstellten Oszilloskopprogramm verarbeitet.
+	In \cref{fig_tag3_am_soundkarte_block} ist das dazu verwendete LabView-Programm dargestellt.
+	Moduliert werden soll die Überlagerung zweier Signale mit einstellbarer Frequenz und Amplitude.
+	Auch Trägerfrequenz und Modulationsgrad soll einstellbar sein.
+	Die Amplitudenmodulation lässt sich durch die Gleichung
+	\begin{equation}
+		S_{AM}(t)=S_T (1+m \cdot s_s(t)) \cdot \cos(2\pi f_T t)
+	\end{equation}
+	beschreiben.
+	Da die Überlagerung von zwei sinusförmigen Signalen beliebiger aber fester Frequenz moduliert werden soll gilt:
+	\begin{equation}
+		s_s(t) = A_1 \cos (2\pi f_1 t) + A_2 \cos (2\pi f_2 t)
+	\end{equation}
+	
+	Diese beiden Gleichungen sollen im Folgenden durch Operationen auf Arrays realisiert und als Audiosignal ausgegeben werden.	
+	Dazu wird das in \cref{sinusfkt} erstellte Programm verwendet, um Arrays von Sinusfunktionen zu erstellen.
+	Diesem wird in jedem Fall die Phase 0 zugeführt und 44100 Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.%TODO fact-Check,ob das wirklich cd audio abtast ist und Logik-Check, ob man das wirklich deswegen macht.
+	Dem Programm wird zunächst eine Amplitude von 1 gegeben und dann werden alle Array-Elemente mit der gewählten Phase multipliziert.
+	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler  vorhanden war, der dies nötig machte. %TODO Jannik, sachma, ob das ok ist. Ich finds unschöne, weil plötzlich imperfekt, aber ich hab keine bessere Lösung und müsste man maybe oben bei den Sinusbessel anmerken, dass da der Fehler war und der später gefixt wurde
+	In \cref{fig_tag3_am_soundkarte_block} ist zu erkennen, dass zunächst zwei Sinus-Arrays erstellt werden, für die jeweils eine Signalfrequenz und -amplitude gewählt werden.
+	Die beiden resultierenden Arrays werden addiert, mit dem Modulationsgrad multipliziert und dann mit dem Array der Trägerfrequenz multipliziert.
+	Dieses wurde zuvor in gleicher Art und Weise mit der Trägerfrequenz erstellt.
+	Für die Amplitude des Trägersignals wird der Kehrwert der maximalen Signalamplitude gewählt, damit die resultierende Amplitude immer auf 1 liegt, da die Soundkarte höhere Werte nicht verarbeitet.
+	Das resultierende Array wird im Zeit- und Frequenzbild dargestellt und dann mithilfe der entsprechenden VIs über die Soundkarte ausgegeben. %TODO sicherstellen, dass vorher irgendwo steht dass VI für visual instrument oder so steht.
+	
+	
+	\begin{figure}[H]  
+		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/Soundkarteoutoszi/AMd}
+		\centering
+		\caption{
+			Blockdiagramm des Programms zur Erzeugung eines amplitudenmodulierten Signals und Ausgabe dessen über die Soundkarte.
+		}
+		\label{fig_tag3_am_soundkarte_block}
+		\centering
+	\end{figure}
+	
+	\begin{figure}[H]  
+		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/Soundkarteoutoszi/AMp}
+		\centering
+		\caption{
+			Frontplatte des Programms zur Erzeugung eines amplitudenmodulierten Signals und Ausgabe dessen über die Soundkarte.
+		}
+		\label{fig_tag3_am_soundkarte_front}
+		\centering
+	\end{figure}
+
+	\begin{figure}[H]  
+		\includegraphics[width=0.7\textwidth]{Origin-Files/AM-Zeit}
+		\centering
+		\caption{
+			Ausgabe des Oszilloskopprogramms im Zeitraum bei Erfassung des amplitudenmodulierten Signals, das mittels der Soundkarte ausgegeben wird.
+		}
+		\label{fig_tag3_am_soundkarte_zeit}
+		\centering
+	\end{figure}
+	
+	\begin{figure}[H]  
+		\includegraphics[width=0.7\textwidth]{Origin-Files/AM-Freq-Hann}
+		\centering
+		\caption{
+			Ausgabe des Oszilloskopprogramms im Frequenzraum bei Erfassung des amplitudenmodulierten Signals, das mittels der Soundkarte ausgegeben wird.
+		}
+		\label{fig_tag3_am_soundkarte_freq}
+		\centering
+	\end{figure}
+
+
 	\subsubsection{Demodulation}
 	%Betrag, Quadrat
-	
+	%TODO: unklar wo, aber absichtlicher Leakage und Vielfaches der Abtastfrequenz
 	\section{Tag 4}
 	
 	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation}
-	
+	%zunächst Träger durch Bandpass mit Grenzfrequenzen bei +- 20Hz um geratenen Träger: Vgl. Radio
+	%m=0,2 und m=1,2 vergleichen => höherer Modulationsgrad macht höhere Spitzen im Demodulierten
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/Oszilloskop__modifiziertd}
@@ -327,7 +396,7 @@ ngerman
 	\end{figure}
 	
 	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals}
-	
+	% Grundlagen AM+FM, Seitenbänder AM, AM größere Bandbreite benötigt
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/FMPM-Erzeugungd}
@@ -359,7 +428,7 @@ ngerman
 	\end{figure}
 	
 	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
-	
+	% 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMd}
@@ -371,7 +440,7 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMp}
 		\caption{.}
 	\end{figure}
-
+\iffalse
 	\begin{figure}[H] %FM-Diagramm
 		\centering
 		\includegraphics[width=1.0\textwidth]{}
@@ -389,7 +458,8 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{}
 		\caption{.}
 	\end{figure}
-	
+\fi
+	%Fktion nur schön für bestimmten Bereich von k, weil , wenn zu hoch: zu viele Oberwellen, zu klein: demoduliertes Signal geht im Rauschen unter
 	\subsubsection{Erweiterte Demodulation mit Bandpass und zusätzlicher Integration des Signals}
 	
 	\begin{figure}[H]
@@ -403,7 +473,7 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMp}
 		\caption{.}
 	\end{figure}
-
+\iffalse
 	\begin{figure}[H] %FM-Diagramm mit Bandpass und Integration
 		\centering
 		\includegraphics[width=1.0\textwidth]{}
@@ -415,7 +485,7 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{}
 		\caption{.}
 	\end{figure}
-	
+\fi
 	
 	%\printbibliography
 \end{document}

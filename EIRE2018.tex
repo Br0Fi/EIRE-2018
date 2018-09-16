@@ -160,11 +160,11 @@ ngerman
 	
 	Im Folgenden sollen je nach Werteeinstellungen auf dem Anzeigeelement der Benutzeroberfläche verschiedene Lissajous-Figuren entstehen. Dies ist in \cref{lissajous} zu sehen. Die Basis für eine solche Lissajous-Figur bilden zwei verschiedene Sinusschwingungen, welche beide dieselbe Gestalt wie die \cref{u} besitzen:
 	
-	\begin{equation}
+	\begin{equation} \label{u1u2}
 	u_1(A_1,f_1,t,\varphi_1) = A_1 \cdot \sin(2\pi f_1 t + \varphi_1) \ \ \ \textnormal{und} \ \ \ u_2(A_2,f_2,t,\varphi_2) = A_2 \cdot \sin(2\pi f_2 t + \varphi_2) \ ,
 	\end{equation}
 	
-	\noindent mit den unterschiedlichen Amplituden $A_1$ und $A_2$, den Frequenzen $f_1$ und $f_2$ sowie den Phasenverschiebungen $\varphi_1$ und $\varphi_2$. Zudem bedarf es eines zweidimensionalen kartesischen Koordinatensystems mit Rechts- und Hochachse. Eine Lissajous-Figur entsteht nun dadurch, dass man der $x$-Achse die Funktion $u_1$ und der $y$-Achse die Funktion $u_2$ zuweist. Je nachdem wie man die Werte für $A_1$, $A_2$, $f_1$, $f_2$, $\varphi_1$, $\varphi_2$ und $N$ wählt, ergeben sich dann unterschiedliche Lissajous-Figuren. Dazu wird ein LabVIEW-Programm geschrieben, dessen Blockdiagramm und Programmcode in \cref{lissajousprogrammcode} zu erkennen ist.
+	\noindent mit den unterschiedlichen Amplituden $A_1$ und $A_2$, den Frequenzen $f_1$ und $f_2$ sowie den Phasenverschiebungen $\varphi_1$ und $\varphi_2$. Zudem bedarf es eines zweidimensionalen kartesischen Koordinatensystems mit Rechts- und Hochachse. Eine Lissajous-Figur entsteht nun dadurch, dass man der $x$-Achse die Funktion $u_1$ und der $y$-Achse die Funktion $u_2$ zuweist. Je nachdem wie man die Werte für $A_1$, $A_2$, $f_1$, $f_2$, $\varphi_1$, $\varphi_2$ und $N$ wählt, ergeben sich dann unterschiedliche Lissajous-Figuren.
 	
 	\begin{figure}[H]
 		\centering
@@ -173,14 +173,16 @@ ngerman
 		\label{lissajousprogrammcode}
 	\end{figure}
 
-	\noindent Für die Amplituden soll einfachheitshalber $A_1 = A_2 = 1$ gelten.
+	\noindent Das dazugehörige LabVIEW-Programm sowie dessen Blockdiagramm und Programmcode sind in \cref{lissajousprogrammcode} zu erkennen. Die in \cref{sinusfkt} erstellte Sinus-Funktion bildet die Grundlage, denn mit dieser lassen sich die beiden separaten Schwingungen $u_1$ und $u_2$ aus \cref{u1u2} realisieren. Dabei ist es möglich das Sinus-Programm als Blockdiagrammobjekt in den Programmcode einfügen, jeweils einmal für $u_1$ und $u_2$, was in \cref{lissajousprogrammcode} deutlich wird. An die offenen Eingangsanschlüsse müssen entsprechende, sogenannte \glqq Controler\grqq\ für die Frequenzen $f_1$ und $f_2$, für die Phasenverschiebungen $\varphi_1$ und $\varphi_2$ sowie für die Zahl der Stützstellen $N$ angeschlossen werden. Die dazugehörigen Bedien- bzw. Eingabeelemente befinden sich links auf dem Frontpanel des Programms, so wie es in \cref{lissajous} dargestellt ist. Für die Amplituden soll einfachheitshalber $A_1 = A_2 = 1$ gelten.
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/lissajous-bilder/Lissajousp}
-		\caption{Die Abbildung zeigt das Frontpanel, in dem sich im Anzeigeelement eine Lissajous-Figur befindet. Auf der linken Seite können die entsprechenden $f_1$-, $f_2$-, $\varphi_1$-, $\varphi_2$- und $N$-Werte abgelesen werden.}
+		\caption{Die Abbildung zeigt das Frontpanel bzw. die Benutzeroberfläche, in dem sich im Anzeigeelement eine Lissajous-Figur befindet. Auf der linken Seite können die entsprechenden $f_1$-, $f_2$-, $\varphi_1$-, $\varphi_2$- und $N$-Werte abgelesen werden.}
 		\label{lissajous}
 	\end{figure}
+
+	\noindent An den Ausgangsanschlüssen wird ein $X$-$Y$-Diagramm angebracht, wobei die $u_1$-Werte auf der $x$-Achse und die $u_2$-Werte auf der $y$-Achse liegen. Wie beim Programm in \cref{sinusfkt}, ist dem Ausgabeelement an der entsprechenden Stelle auf der Leitung ein passendes Blockdiagrammobjekt zur Signalumwandlung vorgeschaltet. Je nach Wahl der $f_1$-, $f_2$-, $\varphi_1$-, $\varphi_2$- und $N$-Werte können sich somit die unterschiedlichsten Lissajous-Figuren formen.
 	
 	\section{Tag 2}
 	
@@ -318,9 +320,9 @@ ngerman
 	
 	Diese beiden Gleichungen sollen im Folgenden durch Operationen auf Arrays realisiert und als Audiosignal ausgegeben werden.	
 	Dazu wird das in \cref{sinusfkt} erstellte Programm verwendet, um Arrays von Sinusfunktionen zu erstellen.
-	Diesem wird in jedem Fall die Phase 0 zugeführt und 44100 Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.%TODO fact-Check,ob das wirklich cd audio abtast ist und Logik-Check, ob man das wirklich deswegen macht.
+	Diesem wird in jedem Fall die Phase 0 zugeführt und 44100 Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.%TODO fact-Check,ob das wirklich cd audio abtast ist und Logik-Check, ob man das wirklich deswegen macht. - Nach Wiki ein klares Ja: https://de.wikipedia.org/wiki/Abtastrate ; vong Logik her würde ich auch ein Ja geben.
 	Dem Programm wird zunächst eine Amplitude von 1 gegeben und dann werden alle Array-Elemente mit der gewählten Phase multipliziert.
-	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler  vorhanden war, der dies nötig machte. %TODO Jannik, sachma, ob das ok ist. Ich finds unschöne, weil plötzlich imperfekt, aber ich hab keine bessere Lösung und müsste man maybe oben bei den Sinusbessel anmerken, dass da der Fehler war und der später gefixt wurde
+	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler vorhanden war, der dies nötig machte. %TODO Jannik, sachma, ob das ok ist. Ich finds unschöne, weil plötzlich imperfekt, aber ich hab keine bessere Lösung und müsste man maybe oben bei den Sinusbessel anmerken, dass da der Fehler war und der später gefixt wurde - hab ich oben angemerkt, du könntest allerdings auch sowas wie "Dies geht auf den in Abschnitt blabla bereits angesprochenen Fehler zurück." schreiben und was dann für dieses Programm daraus resultiert ; wenn du aber das andere stehen lassen möchtest, wäre mir das auch recht.
 	In \cref{fig_tag3_am_soundkarte_block} ist zu erkennen, dass zunächst zwei Sinus-Arrays erstellt werden, für die jeweils eine Signalfrequenz und -amplitude gewählt werden.
 	Die beiden resultierenden Arrays werden addiert, mit dem Modulationsgrad multipliziert und dann mit dem Array der Trägerfrequenz multipliziert.
 	Dieses wurde zuvor in gleicher Art und Weise mit der Trägerfrequenz erstellt.
@@ -369,14 +371,17 @@ ngerman
 	\end{figure}
 
 
-	\subsubsection{Demodulation}
+	\subsubsection{Demodulation} \label{DemodulationAM}
 	%Betrag, Quadrat
-	%TODO: unklar wo, aber absichtlicher Leakage und Vielfaches der Abtastfrequenz
+	%TODO: unklar wo, aber absichtlicher Leakage und Vielfaches der Abtastfrequenz ; pls Label beibehalten, evtl. aus subsubsection eine subsection machen
 	\section{Tag 4}
 	
 	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation}
 	%zunächst Träger durch Bandpass mit Grenzfrequenzen bei +- 20Hz um geratenen Träger: Vgl. Radio
 	%m=0,2 und m=1,2 vergleichen => höherer Modulationsgrad macht höhere Spitzen im Demodulierten
+	
+	Das allgemeine Ziel dieses Abschnitts ist die Demodulation des gemessenen, amplitudenmodulierten Signals unter Zuhilfenahme der Multiplikation mit der Trägerfrequenz. Voraussetzung dafür ist das in \cref{DemodulationAM} bereits erstellte Programm. 
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/Oszilloskop__modifiziertd}

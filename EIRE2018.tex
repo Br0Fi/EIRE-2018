@@ -64,8 +64,7 @@ ngerman
 	locale=DE,
 	separate-uncertainty
 }
-%\bibliography{6Mi_M3_29-11-2017_References}
-%TODO anpassen
+\bibliography{EIRE2018_References}
 
 \begin{document}
 	
@@ -141,7 +140,7 @@ ngerman
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselc}
+		\includegraphics[width=0.5\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselc} %hab's kleiner gemacht, weil es so heslig ist.
 		\caption{Die Abbildung zeigt das gestaltete Programm-Icon sowie die gesetzten Anschlussmöglichkeiten.}
 		\label{sinusbesselicon}
 	\end{figure}
@@ -154,7 +153,8 @@ ngerman
 	\sin(2\pi f t + \varphi)
 	\end{equation}
 	
-	\noindent angibt, welche zwischen $-1$ und $1$ liegen. Da die Ausgabefunktion als Array einen erheblichen Einfluss auf das folgende Vorgehen hat, kann mit dem Sinus-Programm in dieser Form nicht weitergearbeitet werden. Im weiteren Verlauf der Projektbearbeitung ist der beschriebene Fehler allerdings behoben worden. Eine berichtigte, aktualisierte Version des Programms liegt an dieser Stelle jedoch nicht vor. 
+	\noindent angibt, welche zwischen $-1$ und $1$ liegen. Da die Ausgabefunktion als Array einen erheblichen Einfluss auf das folgende Vorgehen hat, kann mit dem Sinus-Programm in dieser Form nicht weitergearbeitet werden. Im weiteren Verlauf der Projektbearbeitung ist der beschriebene Fehler allerdings behoben worden. Eine berichtigte, aktualisierte Version des Programms liegt an dieser Stelle jedoch nicht vor.
+	\label{sinus_amp_fehler}
 	
 	\subsection{Lissajous-Figuren}
 	
@@ -168,7 +168,7 @@ ngerman
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/lissajous-bilder/Lissajousd}
+		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag1/lissajous-bilder/Lissajousd} %hab's kleiner gemacht, weil war zu groß
 		\caption{Dargestellt ist das Blockdiagramm und der LabVIEW-Programmcode, mit dem sich Lissajous-Figuren realisieren lassen.}
 		\label{lissajousprogrammcode}
 	\end{figure}
@@ -232,9 +232,21 @@ ngerman
 	%eig. zunächst Fertigstellung von Tag2 Teil 1
 	\subsection{Leakage-Effekt und Fensterfunktion}
 	\label{leakage}
-	Wenn die Signalfrequenz kein Vielfaches des Produkts aus Abtastfrequenz und Zahl an Messpunkten pro Messung ist, tritt aufgrund der Endlichkeit des Messprozesses der sogenannte \enquote{Leakage-Effekt} auf. %TODO Bild?
+	Wenn die Signalfrequenz kein Vielfaches des Produkts aus Abtastfrequenz und Zahl an Messpunkten pro Messung ist, tritt aufgrund der Endlichkeit des Messprozesses der sogenannte \enquote{Leakage-Effekt} auf.
 	%https://de.wikipedia.org/wiki/Datei:Spectral_leakage_Sine.svg
 	Dieser verursacht eine Verbreiterung des Peaks der Signalfrequenz im Frequenzbild.
+	Dies ist in \cref{fig_leakage_veranschaulichung} dargestellt.
+	
+	\begin{figure}[H]  
+		\includegraphics[width=1\textwidth]{EIRE2018Dateien/sonstige_Dateien/leakage}
+		\centering
+		\caption{
+			Zeitlich unlimitierte (\enquote{ungefensterte}) Sinusschwingung oben und zeitlich limitierte Sinusschwingung unten (limitiert mit Rechteck-Fensterfunktion). Daneben deren Fourier-Transformierten. \cite{Leakage} %ist wörtlich übernommen, aber sollte mit dem cite ja fine sein
+		}
+		\label{fig_leakage_veranschaulichung}
+		\centering
+	\end{figure}
+
 	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden.
 	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos
 	
@@ -300,7 +312,11 @@ ngerman
 	
 	\subsection{Amplitudenmodulierte Signale} %SoundkarteOuszi
 	
+<<<<<<< HEAD
 	\subsubsection{Erzeugung eines amplitudenmodulierten Signals} %TODO hier ansetzen mit EIRE2018Dateien/Tag3/Soundkarteoutoszi
+=======
+	\subsubsection{Erzeugung} %EIRE2018Dateien/Tag3/Soundkarteoutoszi
+>>>>>>> d8f0fd9851d46c5b9c5929388cfc3ec23eb0456a
 	% + Ausgabe über Soundkarte
 	
 	Es soll nun ein amplitudenmoduliertes Signal (auch als AM-Signal bezeichnet) erzeugt werden und über die Soundkarte des verwendeten PCs ausgegeben werden.
@@ -320,15 +336,16 @@ ngerman
 	
 	Diese beiden Gleichungen sollen im Folgenden durch Operationen auf Arrays realisiert und als Audiosignal ausgegeben werden.	
 	Dazu wird das in \cref{sinusfkt} erstellte Programm verwendet, um Arrays von Sinusfunktionen zu erstellen.
-	Diesem wird in jedem Fall die Phase 0 zugeführt und 44100 Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.%TODO fact-Check,ob das wirklich cd audio abtast ist und Logik-Check, ob man das wirklich deswegen macht. - Nach Wiki ein klares Ja: https://de.wikipedia.org/wiki/Abtastrate ; vong Logik her würde ich auch ein Ja geben.
+	Diesem wird in jedem Fall die Phase 0 zugeführt und 44100 Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.
 	Dem Programm wird zunächst eine Amplitude von 1 gegeben und dann werden alle Array-Elemente mit der gewählten Phase multipliziert.
-	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler vorhanden war, der dies nötig machte. %TODO Jannik, sachma, ob das ok ist. Ich finds unschöne, weil plötzlich imperfekt, aber ich hab keine bessere Lösung und müsste man maybe oben bei den Sinusbessel anmerken, dass da der Fehler war und der später gefixt wurde - hab ich oben angemerkt, du könntest allerdings auch sowas wie "Dies geht auf den in Abschnitt blabla bereits angesprochenen Fehler zurück." schreiben und was dann für dieses Programm daraus resultiert ; wenn du aber das andere stehen lassen möchtest, wäre mir das auch recht.
+	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler vorhanden war, der dies nötig machte (vgl \cref{sinus_amp_fehler}).
 	In \cref{fig_tag3_am_soundkarte_block} ist zu erkennen, dass zunächst zwei Sinus-Arrays erstellt werden, für die jeweils eine Signalfrequenz und -amplitude gewählt werden.
 	Die beiden resultierenden Arrays werden addiert, mit dem Modulationsgrad multipliziert und dann mit dem Array der Trägerfrequenz multipliziert.
-	Dieses wurde zuvor in gleicher Art und Weise mit der Trägerfrequenz erstellt.
+	Dieses wurde zuvor in gleicher Art und Weise mit dem Sinus-Programm bei der einstellbaren Trägerfrequenz erstellt.
 	Für die Amplitude des Trägersignals wird der Kehrwert der maximalen Signalamplitude gewählt, damit die resultierende Amplitude immer auf 1 liegt, da die Soundkarte höhere Werte nicht verarbeitet.
 	Das resultierende Array wird im Zeit- und Frequenzbild dargestellt und dann mithilfe der entsprechenden VIs über die Soundkarte ausgegeben. %TODO sicherstellen, dass vorher irgendwo steht dass VI für visual instrument oder so steht.
-	
+	Hierfür wird die Abtastrate von \SI{44100}{\hertz}, die Anzahl der Kanäle von 1 und %16 eingestellt und der Modus \enquote{Continuos Samples} gewählt, da das Signal fortlaufend erzeugt werden soll.
+	Außerdem wird das Element zur Ausgabe von Fehlern verwendet, dass es erlaubt, das Programm beim Auftreten von Fehlern wahlweise zu beenden oder weiterlaufen zu lassen und das Signal in jedem Schleifendurchlauf 
 	
 	\begin{figure}[H]  
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/Soundkarteoutoszi/AMd}
@@ -495,5 +512,5 @@ ngerman
 	\end{figure}
 \fi
 	
-	%\printbibliography
+	\printbibliography
 \end{document}

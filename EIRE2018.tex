@@ -300,10 +300,10 @@ ngerman
 	
 	\subsection{Amplitudenmodulierte Signale} %SoundkarteOuszi
 	
-	\subsubsection{Erzeugung} %TODO hier ansetzen mit EIRE2018Dateien/Tag3/Soundkarteoutoszi
+	\subsubsection{Erzeugung eines amplitudenmodulierten Signals} %TODO hier ansetzen mit EIRE2018Dateien/Tag3/Soundkarteoutoszi
 	% + Ausgabe über Soundkarte
 	
-	Es soll nun ein amplitudenmoduliertes Signal erzeugt werden und über die Soundkarte des verwendeten PCs ausgegeben werden.
+	Es soll nun ein amplitudenmoduliertes Signal (auch als AM-Signal bezeichnet) erzeugt werden und über die Soundkarte des verwendeten PCs ausgegeben werden.
 	Dabei wird das Signal der Soundkarte wieder auf den Analog-Digital-Wandler gegeben und mit dem zuvor erstellten Oszilloskopprogramm verarbeitet.
 	In \cref{fig_tag3_am_soundkarte_block} ist das dazu verwendete LabView-Programm dargestellt.
 	Moduliert werden soll die Überlagerung zweier Signale mit einstellbarer Frequenz und Amplitude.
@@ -380,13 +380,16 @@ ngerman
 	%zunächst Träger durch Bandpass mit Grenzfrequenzen bei +- 20Hz um geratenen Träger: Vgl. Radio
 	%m=0,2 und m=1,2 vergleichen => höherer Modulationsgrad macht höhere Spitzen im Demodulierten
 	
-	Das allgemeine Ziel dieses Abschnitts ist die Demodulation des gemessenen, amplitudenmodulierten Signals unter Zuhilfenahme der Multiplikation mit der Trägerfrequenz. Voraussetzung dafür ist das in \cref{DemodulationAM} bereits erstellte Programm. 
+	Das allgemeine Ziel dieses Abschnitts ist die Demodulation des gemessenen, amplitudenmodulierten Signals unter Zuhilfenahme der Multiplikation mit der Trägerfrequenz. In der Theorie führt das Multiplizieren der amplitudenmodulierten Signal-Funktion mit der Schwingungsfunktion, welche lediglich der Trägerfrequenz des AM-Signals unterliegt, dazu, dass 
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/Oszilloskop__modifiziertd}
 		\caption{.}
+		\label{MultiTraegerProgrammcode}
 	\end{figure}
+
+	\noindent Dieses Verfahren soll nun in ein LabVIEW-Programm übertragen werden, dessen dazugehöriger Programmcode in \ref{MultiTraegerProgrammcode} zu sehen ist. Voraussetzung dafür ist das in \cref{DemodulationAM} bereits erstellte Programm. Zunächst wird in der Demodulator-Case-Konstruktion eine weitere Option mit dem Namen \glqq Multiplikation mit Träger\grqq\ hinzugefügt. Darin 
 
 	\begin{figure}[H]
 		\centering

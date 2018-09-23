@@ -423,35 +423,53 @@ ngerman
 	
 	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals}
 	% Grundlagen AM+FM, Seitenbänder AM, AM größere Bandbreite benötigt
+	
+	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt. Bei der dazugehörigen Benutzeroberfläche, welche unter anderem in \cref{FMAusgabekleinesk}, \cref{FMAusgabegroßesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite. Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und sogar teilweise außerhalb der While-Schleife. Deren Funktionsweise 
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/FMPM-Erzeugungd}
-		\caption{.}
+		\caption{In dieser Abbildung ist das LabVIEW-Blockdiagramm bzw. der Programmcode zu sehen, mit dem ein (Ursprungs-)Signal zuerst wahlweise phasen- oder frequenzmoduliert und anschließend über die Computer-Soundkarte ausgeben wird.}
+		\label{FMProgrammcode}
 	\end{figure}
+
+	\noindent
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/FM-FMPM-Erzeugungp}
-		\caption{.}
+		\caption{Die Abbildung zeigt das Frontpanel bzw. die Benutzeroberfläche des LabVIEW-Programms zur Umsetzung der Frequenzmodulation. Der hierbei verwendete $k$-Wert ist relativ klein. Allgemein besteht mit dem entsprechenden, sich oben auf dem Frontpanel befindenden Bedienelement die Möglichkeit die Art der Modulation auszuwählen: Entweder Frequenzmodulation (Abkürzung: FM) oder Phasenmodulation (Abkürzung: PM).}
+		\label{FMAusgabekleinesk}
 	\end{figure}
-
+	
+	\noindent 
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/anderekbei10000Traegerfr/FM-FMPM-Erzeugungp}
-		\caption{.}
+		\caption{In der Abbildung ist das Frontpanel bzw. die Benutzeroberfläche des LabVIEW-Programms zur Realisierung der Frequenzmodulation zu sehen. Der dabei betrachtete $k$-Wert ist vergleichsweise groß.}
+		\label{FMAusgabegroßesk}
 	\end{figure}
-
+	
+	\noindent
+	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungd1}
-		\caption{.}
+		\includegraphics[width=0.8\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungd1} %Möglicherweise ist 0.8 immer noch zu groß
+		\caption{Es ist der in \cref{FMProgrammcode} nicht sichtbare Teil des LabVIEW-Programmcodes dargestellt, der notwendig ist, um die Art der Modulation auf der Benutzeroberfläche des Programms auszuwählen zu können. Bei diesem hier abgebildeten Programmcodeteil handelt es sich um eine weitere Option in der Case-Konstruktion, welche darauf abzielt die Phasenmodulation zu ergänzen.}
+		\label{PMProgrammcode}
 	\end{figure}
-
+	
+	\noindent
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungp}
-		\caption{.}
+		\caption{Die Abbildung zeigt das Frontpanel bzw. die Benutzeroberfläche des LabVIEW-Programms zur Realisierung der Phasenmodulation.}
+		\label{PMAusgabe}
 	\end{figure}
+
+	\noindent 
 	
 	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
 	% 

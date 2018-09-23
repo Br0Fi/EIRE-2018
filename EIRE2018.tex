@@ -89,6 +89,10 @@ ngerman
 	\end{titlepage}
 	\tableofcontents
 	\newpage
+%TODO Deckblatt prüfen
+%TODO sagen, dass man alle Diagramme mit Linienverbindung gemacht hat und warum?
+%TODO am Ende: Tage raus
+%TODO am Ende: Begriffe vereinheitlichen
 
 	\section{Tag 1}
 	
@@ -310,14 +314,9 @@ ngerman
 	Man stellt fest, dass man vor der Abtastung bereits wissen muss, welche Frequenzen im Signal vorkommen. 
 	
 	
-	\subsection{Amplitudenmodulierte Signale} %SoundkarteOuszi
-	
-<<<<<<< HEAD
-	\subsubsection{Erzeugung eines amplitudenmodulierten Signals} %TODO hier ansetzen mit EIRE2018Dateien/Tag3/Soundkarteoutoszi
-=======
-	\subsubsection{Erzeugung} \label{AMSignalErzeugung} %EIRE2018Dateien/Tag3/Soundkarteoutoszi 
->>>>>>> d8f0fd9851d46c5b9c5929388cfc3ec23eb0456a
-	% + Ausgabe über Soundkarte
+	\subsection{Amplitudenmodulierte Signale}
+
+	\subsubsection{Erzeugung} \label{AMSignalErzeugung}
 	
 	Es soll nun ein amplitudenmoduliertes Signal (auch als AM-Signal bezeichnet) erzeugt werden und über die Soundkarte des verwendeten PCs ausgegeben werden.
 	Dabei wird das Signal der Soundkarte wieder auf den Analog-Digital-Wandler gegeben und mit dem zuvor erstellten Oszilloskopprogramm verarbeitet.
@@ -361,7 +360,7 @@ ngerman
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/Soundkarteoutoszi/AMp}
 		\centering
 		\caption{
-			Frontplatte des Programms zur Erzeugung eines amplitudenmodulierten Signals und Ausgabe dessen über die Soundkarte.
+			Frontplatte des Programms zur Erzeugung eines amplitudenmodulierten Signals und Ausgabe dessen über die Soundkarte. %TODO Charakteristik beschreiben
 		}
 		\label{fig_tag3_am_soundkarte_front}
 		\centering
@@ -387,10 +386,42 @@ ngerman
 		\centering
 	\end{figure}
 
+	%TODO: unklar wo: absichtlicher Leakage und Vielfaches der Abtastfrequenz
 
-	\subsubsection{Demodulation} \label{DemodulationAM}
+	\subsubsection{Demodulation eines AM-Signals durch Quadrieren und Betragsbildung} \label{DemodulationAM}
 	%Betrag, Quadrat
-	%TODO: unklar wo, aber absichtlicher Leakage und Vielfaches der Abtastfrequenz ; pls Label beibehalten, evtl. aus subsubsection eine subsection machen
+	Um nun das amplitudenmodulierte Signal im Oszilloskopprogramm wieder demodulieren zu können, wird ein Case-Konstrukt eingeführt, welches nach Auswahl des Benutzers wahlweise das Signal nicht demoduliert, mit sich selbst multipliziert oder den Betrag des Signals bildet, da in den letzten beiden Fällen unter anderem wieder die Ursprungsfrequenzen vorliegen.
+	Nach diesem Schritt wird das Signal im Zeit- und Frequenzbild dargestellt und danach zusätzlich durch einen Tiefpass geführt, der auftretende höhere Frequenzen herausfiltert, und dann erneut im Zeit- und Frequenzbild dargestellt.
+	Außerdem wird die Speicherung von zuvor erweitert, sodass das Signal vor der Demodulation, vor dem Tiefpass und nach diesem gespeichert werden kann.
+	Das fertige Programm ist in \cref{fig_tag3_am_demod_block} und die zugehörige Frontplatte in \cref{fig_tag3_am_demod_front} dargestellt.
+
+	\begin{figure}[H]  
+	\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/modifizierterOszi/Oszilloskop__modifiziertd}
+	\centering
+	\caption{
+		Blockdiagramm des Programms zur Demodulation und Darstellung eines amplitudenmodulierten Signals.
+	}
+	\label{fig_tag3_am_demod_block}
+	\centering
+\end{figure}
+
+\begin{figure}[H]  
+	\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/modifizierterOszi/Oszilloskop__modifiziertp}
+	\centering
+	\caption{
+		Frontplatte des Programms zur Demodulation und Darstellung eines amplitudenmodulierten Signals.
+		Einstellbar ist die Art der Demodulation (keine, Quadrieren, Betragsbildung), die Grenzfrequenz des Tiefpasses nach der Demodulation, maximal messbarer Wert, Messfrequenz, Anzahl der Messpunkte pro Messdurchgang und Eingangskanal, an dem der Analog-Digital-Wandler angeschlossen ist.
+		Die Grafiken zeigen jeweils im Zeit- und Frequenzbild (mit Hanning-Fensterfunktion) das Signal vor, nach und während der Demodulation.
+		Die aktuellen Punkte in allen sechs Grafiken können in einer Textdatei gespeichert werden.
+	}
+	\label{fig_tag3_am_demod_front}
+	\centering
+\end{figure}
+	
+	%TODO Orign-Grafiken und Beschreibung Charakteristik, Vergleich
+	%Betrag-Eingang und Quadrat-Eingang obv. gleich
+	%TODO verwendete Frequenzen angeben: i think: Träger 10.000Hz, Signale: 700Hz mit Ampl. 1 und 1000Hz bei Ampl. 3 mit m=0,2
+
 	\section{Tag 4}
 	
 	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation}
@@ -406,7 +437,12 @@ ngerman
 
 	\noindent Demnach handelt es sich um ein breites Frequenzspektrum, in dem man sogar die Frequenz(en) des modulierten, ursprünglichen Signals deutlich erkennen kann. Von einem theoretischen Standpunkt aus ist die komplette Demodulation des AM-Signals damit abgeschlossen. Zusätzlich lassen sich durch einen Tiefpass mit hinreichend großer Grenzfrequenz die hohen Frequenzanteile aus dem Spektrum herausfiltern, sodass letztendlich nur noch die besagten Frequenzen des amplitudenmodulierten Ursprungssignals übrig bleiben. 
 	
-	Dieses Verfahren soll nun in ein LabVIEW-Programm übertragen werden, dessen dazugehöriger Programmcode in \ref{MultiTraegerProgrammcode} zu sehen ist. Voraussetzung ist dabei das in \cref{DemodulationAM} bereits erstellte Programm. Alle zuvor eingefügten Methoden zur Demodulation (\glqq Quadrat\grqq\ und \glqq Betrag\grqq ) sollen frei auswählbar bleiben. Dafür wird zunächst die Demodulator-Case-Konstruktion um eine weitere Option mit dem Namen \glqq Multiplikation mit Träger\grqq\ ergänzt und somit ein neues, ausfüllbares Case-Feld erzeugt. Darin werden diverse Blockdiagrammobjekte angelegt, welche die Demodulation des über die Computer-Soundkarte gemessenen AM-Signals umsetzten. Zuerst muss die Trägerfrequenz des amplitudenmodulierten Signals geraten werden. Dazu wird sowohl ein weiteres Bedienelement auf dem Frontpanel hinzugefügt als auch ein entsprechendes Blockdiagrammobjekt im Programmcode erstellt.
+	Dieses Verfahren soll nun in ein LabVIEW-Programm übertragen werden, dessen dazugehöriger Programmcode in \ref{MultiTraegerProgrammcode} zu sehen ist. Voraussetzung ist dabei das in \cref{DemodulationAM} bereits erstellte Programm.
+	Alle zuvor eingefügten Methoden zur Demodulation (\glqq Quadrat\grqq\ und \glqq Betrag\grqq ) sollen frei auswählbar bleiben.
+	Dafür wird zunächst die Demodulator-Case-Konstruktion um eine weitere Option mit dem Namen \glqq Multiplikation mit Träger\grqq\ ergänzt und somit ein neues, ausfüllbares Case-Feld erzeugt.
+	Darin werden diverse, später näher beschriebene Blockdiagrammobjekte angelegt, welche die Demodulation des über die Computer-Soundkarte gemessenen AM-Signals umsetzten.
+	Zuerst muss hierbei vom Nutzer die Trägerfrequenz des amplitudenmodulierten Signals geraten werden.
+	Dazu wird sowohl ein weiteres Bedienelement auf dem Frontpanel hinzugefügt als auch ein entsprechendes Blockdiagrammobjekt im Programmcode erstellt. %TODO im Deutschen würde es Frontpaneel heißen, ich hab immer Frontplatte geschrieben, würde aber notfalls auch den Anglizismus durchgehen lassen. Wir sollten es aber einheitlich machen, können wir am Ende angleichen
 	
 	\begin{figure}[H]
 		\centering
@@ -490,13 +526,13 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{}
 		\caption{.}
 	\end{figure}
-
+\fi
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/OsziPlusFMPMp}
 		\caption{.}
 	\end{figure}
-
+\iffalse
 	\begin{figure}[H] %PM-Diagramm
 		\centering
 		\includegraphics[width=1.0\textwidth]{}

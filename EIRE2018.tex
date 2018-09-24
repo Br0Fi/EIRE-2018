@@ -144,7 +144,7 @@ ngerman
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselc} %hab's kleiner gemacht, weil es so heslig ist.
+		\includegraphics[width=0.5\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselc}
 		\caption{Die Abbildung zeigt das gestaltete Programm-Icon sowie die gesetzten Anschlussmöglichkeiten.}
 		\label{sinusbesselicon}
 	\end{figure}
@@ -316,7 +316,7 @@ ngerman
 	
 	\subsection{Amplitudenmodulierte Signale}
 
-	\subsubsection{Erzeugung} \label{AMSignalErzeugung}
+	\subsubsection{Erzeugung eines amplitudenmodulierten Signals} \label{AMSignalErzeugung}
 	
 	Es soll nun ein amplitudenmoduliertes Signal (auch als AM-Signal bezeichnet) erzeugt werden und über die Soundkarte des verwendeten PCs ausgegeben werden.
 	Dabei wird das Signal der Soundkarte wieder auf den Analog-Digital-Wandler gegeben und mit dem zuvor erstellten Oszilloskopprogramm verarbeitet.
@@ -336,8 +336,8 @@ ngerman
 	Diese beiden Gleichungen sollen im Folgenden durch Operationen auf Arrays realisiert und als Audiosignal ausgegeben werden.	
 	Dazu wird das in \cref{sinusfkt} erstellte Programm verwendet, um Arrays von Sinusfunktionen zu erstellen.
 	Diesem wird in jedem Fall die Phase 0 zugeführt und 44100 Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.
-	Dem Programm wird zunächst eine Amplitude von 1 gegeben und dann werden alle Array-Elemente mit der gewählten Phase multipliziert.
-	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler vorhanden war, der dies nötig machte (vgl \cref{sinus_amp_fehler}).
+	Dem Programm wird zunächst eine Amplitude von 1 gegeben und dann werden alle Array-Elemente mit der gewählten Amplitude multipliziert.
+	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler vorhanden war, der dies nötig machte (vgl. \cref{sinus_amp_fehler}).
 	In \cref{fig_tag3_am_soundkarte_block} ist zu erkennen, dass zunächst zwei Sinus-Arrays erstellt werden, für die jeweils eine Signalfrequenz und -amplitude gewählt werden.
 	Die beiden resultierenden Arrays werden addiert, mit dem Modulationsgrad multipliziert und dann mit dem Array der Trägerfrequenz multipliziert.
 	Dieses wurde zuvor in gleicher Art und Weise mit dem Sinus-Programm bei der einstellbaren Trägerfrequenz erstellt.
@@ -460,7 +460,34 @@ ngerman
 	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals}
 	% Grundlagen AM+FM, Seitenbänder AM, AM größere Bandbreite benötigt
 	
-	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt. Bei der dazugehörigen Benutzeroberfläche, welche unter anderem in \cref{FMAusgabekleinesk}, \cref{FMAusgabegroßesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite. Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und sogar teilweise außerhalb der While-Schleife. Deren Funktionsweise 
+	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt. Bei der dazugehörigen Benutzeroberfläche, welche unter anderem in \cref{FMAusgabekleinesk}, \cref{FMAusgabegroßesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite. Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und teilweise außerhalb der While-Schleife. Deren Anordnung und Funktionsweise ist die gleiche wie beim LabVIEW-Programm in \cref{AMSignalErzeugung}. Diagrammausgabe-bla. Genauso wie in \cref{fig_tag3_am_soundkarte_block} aus \cref{AMSignalErzeugung} sieht man auf der linken Seite des Programmcodes zunächst die Erzeugung des (Ursprungs-)Signals $s(t)$ gemäß \cref{Ursprungssignal}. Weiterhin ist dabei die zusätzliche, aufgrund des in \cref{sinusfkt} aufgetretenen Programmierfehlers notwendige Amplitudenmultiplikation zu beachten. Außerdem soll $N = 44.100$ gelten. Da der Vorgang der $s(t)$-Konstruktion komplett identisch zu der in \cref{AMSignalErzeugung} bereits ausführlich beschriebenen Vorgehensweise ist, wird an dieser Stelle nicht weiter auf die (Ursprungs-)Signalentstehung eingegangen. 
+	
+	Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der (Ursprungs-)Signalentstehung findet im Programmcode die Modulation des Signals statt. Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichneten Bedienelement auf der Benutzeroberfläche samt dazugehörigem Controler an der entsprechenden Stelle im Programmcode.                                 Im folgenden Programmteil wird zwischen Phasen- und Frequenzmodulation unterschieden.
+	
+	
+	
+	
+	
+	Die Frequenzmodulation des (Ursprungs-)Signals $s(t)$ soll gemäß der Gleichung
+	
+	\begin{equation} \label{FMFormel}
+	S_{FM}(t) = \cos (2\pi (f_0 t + k \cdot \int s(t) dt))
+	\end{equation}
+	
+	\noindent geschehen, wobei $t$ die Zeit, $f_0$ die sogenannte Trägerfrequenz und $k$ eine beliebige Konstante ist. Am Programmcode in \cref{FMProgrammcode} lässt sich die unter Verwendung der von LabVIEW zur Verfügung gestellten numerischen Operationen, Funktionen und Konstanten erfolgte Umsetzung dieser Formel betrachten. Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, anSinuserstellendem in sinusfkt konstruiertem programm abgegriffen werden. Durch zusätzliche Controler und dazugehörige Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. . %Jetzt kommt das mit dem t, der Case (+warum simpson?) und While und dann eig fertig. Uuuuund dann andere k-Effekte erkären
+	
+	
+	
+	
+	
+	
+	Phasenmoduliert man das Ursprungssignal $s(t)$, so nimmt das daraus entstehende Signal $S_{PM}(t)$ die Form
+	
+	\begin{equation} \label{PMFormel}
+	S_{PM}(t) = \cos (2\pi (f_0 t + k \cdot s(t)))
+	\end{equation}
+	
+	\noindent an. Dabei bildet $f_0$ die Trägerfrequenz und $t$ die Zeit. $k$ ist ein fester, aber beliebig wählbarer Faktor. Aufgrund der Ähnlichkeit von \cref{PMFormel} zu \cref{FMFormel}, ist auch die  ähnlich, sodass nur Caseteilchen da so geändert werden muss für PM-bla. 
 	
 	\begin{figure}[H]
 		\centering

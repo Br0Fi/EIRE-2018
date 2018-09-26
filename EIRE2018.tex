@@ -94,9 +94,8 @@ ngerman
 %TODO am Ende: Tage raus
 %TODO am Ende: Begriffe vereinheitlichen
 
-	\section{Tag 1}
 	
-	\subsection{Aufbau einer Sinus- bzw. Bessel-Funktion} \label{sinusfkt}
+	\section{Aufbau einer Sinus- bzw. Bessel-Funktion} \label{sinusfkt}
 	
 	Zunächst soll unter Verwendung des graphischen Programmiersystems \glqq LabVIEW\grqq\ eine Sinus-Funktion realisiert werden. Mithilfe der von LabVIEW zur Verfügung gestellten numerischen Operationen, Konstanten und Schleifen lässt sich ein Programm schreiben, welches eine Sinusschwingung $u$ der Form
 	
@@ -160,7 +159,7 @@ ngerman
 	\noindent angibt, welche zwischen $-1$ und $1$ liegen. Da die Ausgabefunktion als Array einen erheblichen Einfluss auf das folgende Vorgehen hat, kann mit dem Sinus-Programm in dieser Form nicht weitergearbeitet werden. Im weiteren Verlauf der Projektbearbeitung ist der beschriebene Fehler allerdings behoben worden. Eine berichtigte, aktualisierte Version des Programms liegt an dieser Stelle jedoch nicht vor.
 	\label{sinus_amp_fehler}
 	
-	\subsection{Lissajous-Figuren}
+	\section{Lissajous-Figuren}
 	
 	Im Folgenden sollen je nach Werteeinstellungen auf dem Anzeigeelement der Benutzeroberfläche verschiedene Lissajous-Figuren entstehen. Dies ist in \cref{lissajous} zu sehen. Die Basis für eine solche Lissajous-Figur bilden zwei verschiedene Sinusschwingungen, welche beide dieselbe Gestalt wie die \cref{u} besitzen:
 	
@@ -188,9 +187,8 @@ ngerman
 
 	\noindent An den Ausgangsanschlüssen wird ein $X$-$Y$-Diagramm angebracht, wobei die $u_1$-Werte auf der $x$-Achse und die $u_2$-Werte auf der $y$-Achse liegen. Wie beim Programm in \cref{sinusfkt}, ist dem Ausgabeelement an der entsprechenden Stelle auf der Leitung ein passendes Blockdiagrammobjekt zur Signalumwandlung vorgeschaltet. Je nach Wahl der $f_1$-, $f_2$-, $\varphi_1$-, $\varphi_2$- und $N$-Werte können sich somit die unterschiedlichsten Lissajous-Figuren formen.
 	
-	\section{Tag 2}
 	
-	\subsection{Digitales Oszilloskop mit ExpressVI}
+	\section{Digitales Oszilloskop mit ExpressVI}
 	Es wird ein Funktionsgenerator verwendet.
 	Dessen Signal wird über einen Analog-Digital-Wandler durch den Computer erfasst.
 	Zunächst wird das Signal in LabView mit dem entsprechenden ExpressVI verarbeitet.
@@ -215,6 +213,9 @@ ngerman
 	\centering
 	\end{figure}
 	
+	
+	\section{Abtasten von Signalen}
+	
 	\subsection{Fouriertheorem} %kp, ob man so Theorie wiedergeben soll und ob man das mit Bindestrich schreibt.
 	Gemäß des Fouriertheorems kann jede periodische Funktion als Fourierreihe bzw. Fourierintegral ausgedrückt werden.
 	Dies ist nützlich bei der Zerlegung eines möglicherweise verrauschten Signals in seine Bestandteile.
@@ -232,7 +233,6 @@ ngerman
 	Dies bezeichnet man als Aliasing.
 	
 	
-	\section{Tag 3}
 	%eig. zunächst Fertigstellung von Tag2 Teil 1
 	\subsection{Leakage-Effekt und Fensterfunktion}
 	\label{leakage}
@@ -253,8 +253,8 @@ ngerman
 
 	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden. %mit denen das Signal mutlipliziert wird? Wäre das immer wahr?
 	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos
+	Der Unterschied zwischen Spektralanalyse mit und ohne Von-Hann-Fenster ist in \cref{fig_tag23_oszi_manuell_front} zu erkennen, da dort ohne Fenster-Funktion zusätzliche Frequenzen in der Nähe des Peaks auftreten.
 	
-%TODO: unklar wo, am besten bei Leakage: absichtlicher Leakage und Vielfaches der Abtastfrequenz
 
 	\subsection{Digitales Oszilloskop ohne ExpressVI} % hier ist halt die Tagreihenfolge bissl gebrochen. Ich glaube, wir haben das an Tag 2 angefangen und Tag 3 beendet
 	Das Oszilloskopprogramm von zuvor wird ersetzt durch eines, dass anstelle des ExpressVIs Konfiguration, Messung und Cleanup getrennt enthält.
@@ -315,10 +315,13 @@ ngerman
 	Es ist an den beiden Signalen zu erkennen, dass sich ein falsch abgetastetes Signal nicht mehr von einem korrekt abgetasteten Signal bei der entsprechenden Differenzfrequenz unterscheiden lässt.
 	Man stellt fest, dass man vor der Abtastung bereits wissen muss, welche Frequenzen im Signal vorkommen. 
 	
+	\subsection{Unpassende Abtastrate}
+	%Tag3/AbtastTheorem-abtast1000bei1000Punkte
+	%TODO: Vielfaches der Abtastfrequenz
 	
-	\subsection{Amplitudenmodulierte Signale}
+	\section{Amplitudenmodulierte Signale}
 
-	\subsubsection{Erzeugung eines amplitudenmodulierten Signals} \label{AMSignalErzeugung}
+	\subsection{Erzeugung eines amplitudenmodulierten Signals} \label{AMSignalErzeugung}
 	
 	Es soll nun ein amplitudenmoduliertes Signal (auch als AM-Signal bezeichnet) erzeugt werden und über die Soundkarte des verwendeten PCs ausgegeben werden.
 	Dabei wird das Signal der Soundkarte wieder auf den Analog-Digital-Wandler gegeben und mit dem zuvor erstellten Oszilloskopprogramm verarbeitet.
@@ -337,15 +340,15 @@ ngerman
 	
 	Diese beiden Gleichungen sollen im Folgenden durch Operationen auf Arrays realisiert und als Audiosignal ausgegeben werden.	
 	Dazu wird das in \cref{sinusfkt} erstellte Programm verwendet, um Arrays von Sinusfunktionen zu erstellen.
-	Diesem wird in jedem Fall die Phase 0 zugeführt und 44100 Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.
-	Dem Programm wird zunächst eine Amplitude von 1 gegeben und dann werden alle Array-Elemente mit der gewählten Amplitude multipliziert.
+	Diesem wird in jedem Fall die Phase $0$ zugeführt und $44100$ Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.
+	Dem Programm wird zunächst eine Amplitude von $1$ gegeben und dann werden alle Array-Elemente mit der gewählten Amplitude multipliziert.
 	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler vorhanden war, der dies nötig machte (vgl. \cref{sinus_amp_fehler}).
 	In \cref{fig_tag3_am_soundkarte_block} ist zu erkennen, dass zunächst zwei Sinus-Arrays erstellt werden, für die jeweils eine Signalfrequenz und -amplitude gewählt werden.
 	Die beiden resultierenden Arrays werden addiert, mit dem Modulationsgrad multipliziert und dann mit dem Array der Trägerfrequenz multipliziert.
 	Dieses wurde zuvor in gleicher Art und Weise mit dem Sinus-Programm bei der einstellbaren Trägerfrequenz erstellt.
-	Für die Amplitude des Trägersignals wird der Kehrwert der maximalen Signalamplitude gewählt, damit die resultierende Amplitude immer auf 1 liegt, da die Soundkarte höhere Werte nicht verarbeitet.
+	Für die Amplitude des Trägersignals wird der Kehrwert der maximalen Signalamplitude gewählt, damit die resultierende Amplitude immer auf $1$ liegt, da die Soundkarte höhere Werte nicht verarbeitet.
 	Das resultierende Array wird im Zeit- und Frequenzbild dargestellt und dann mithilfe der entsprechenden VIs über die Soundkarte ausgegeben. %TODO sicherstellen, dass vorher irgendwo steht dass VI für visual instrument oder so steht.
-	Hierfür wird die Abtastrate von \SI{44100}{\hertz}, die Anzahl der Kanäle von 1 und %16 eingestellt und der Modus \enquote{Continuos Samples} gewählt, da das Signal fortlaufend erzeugt werden soll.
+	Hierfür wird die Abtastrate von \SI{44100}{\hertz}, die Anzahl der Kanäle von $1$ eingestellt und der Modus \enquote{Continuos Samples} gewählt, da das Signal fortlaufend erzeugt werden soll.
 	Außerdem wird das Element zur Ausgabe von Fehlern verwendet, dass es erlaubt, das Programm beim Auftreten von Fehlern wahlweise zu beenden oder weiterlaufen zu lassen und das Signal in jedem Schleifendurchlauf 
 	
 	\begin{figure}[H]  
@@ -387,9 +390,15 @@ ngerman
 		\centering
 	\end{figure}
 
+	In \cref{fig_tag3_am_soundkarte} sind die Daten dargestellt, die die Speicherfunktion des so erstellten Oszilloskops erzeugt hat.
+	Dass man anhand der Zeitdomäne wenig erkennen kann, liegt an den hohen auftretenden Frequenzen.
+	Dieses Schema ist eines, dass sich für die kommenden Untersuchungen fortsetzen wird, weshalb im Folgenden nur noch die Frequenzdomäne dargestellt werden wird.
+	In der Frequenzdomäne lässt sich hier erkennen, dass die eingestellte Trägerfrequenz von %TODO hart komisch
+	Darüber hinaus ist zu sehen, dass einige zusätzliche Frequenzen erheblicher Leistung auftreten.
+	Diese lassen sich nur durch Störeffekte bei der Erzeugung des Signals durch die Soundkarte erklären. %und theoretisch durch Erfassung, halte ich halt für unwahrscheinlicher
+	
 
-
-	\subsubsection{Demodulation eines AM-Signals durch Quadrieren und Betragsbildung} \label{DemodulationAM}
+	\subsection{Demodulation eines AM-Signals durch Quadrieren und Betragsbildung} \label{DemodulationAM}
 	%Betrag, Quadrat
 	Um nun das amplitudenmodulierte Signal im Oszilloskopprogramm wieder demodulieren zu können, wird ein Case-Konstrukt eingeführt, welches nach Auswahl des Benutzers wahlweise das Signal nicht demoduliert, mit sich selbst multipliziert oder den Betrag des Signals bildet, da in den letzten beiden Fällen unter anderem wieder die Ursprungsfrequenzen vorliegen.
 	Nach diesem Schritt wird das Signal im Zeit- und Frequenzbild dargestellt und danach zusätzlich durch einen Tiefpass geführt, der auftretende höhere Frequenzen herausfiltert, und dann erneut im Zeit- und Frequenzbild dargestellt.
@@ -498,7 +507,6 @@ ngerman
 	%Betrag-Eingang und Quadrat-Eingang obv. gleich
 	%TODO verwendete Frequenzen angeben: i think: Träger 10.000Hz, Signale: 700Hz mit Ampl. 1 und 1000Hz bei Ampl. 3 mit m=0,2
 
-	\section{Tag 4}
 	
 	%TODO gemessen wird NICHT "über die Computer-Soundkarte", sondern "über den Analog-Digital-Wandler in Kombination/Verbindung mit der Computer-Soundkarte"
 	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation} \label{DemodTraeger}
@@ -580,10 +588,8 @@ ngerman
 		\label{AMDemodfailm02}
 	\end{figure}
 	
-	\subsection{Phasen- und frequenzmodulierte Signale}
-	
-	\subsubsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung}
-	% Grundlagen AM+FM, Seitenbänder AM, AM größere Bandbreite benötigt
+	\section{Phasen- und frequenzmodulierte Signale}
+	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung}eite benötigt
 		
 	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. 
 	

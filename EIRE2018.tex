@@ -459,35 +459,10 @@ ngerman
 	
 	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals}
 	% Grundlagen AM+FM, Seitenbänder AM, AM größere Bandbreite benötigt
+		
+	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. 
 	
-	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt. Bei der dazugehörigen Benutzeroberfläche, welche unter anderem in \cref{FMAusgabekleinesk}, \cref{FMAusgabegroßesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite. Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und teilweise außerhalb der While-Schleife. Deren Anordnung und Funktionsweise ist die gleiche wie beim LabVIEW-Programm in \cref{AMSignalErzeugung}. Diagrammausgabe-bla. Genauso wie in \cref{fig_tag3_am_soundkarte_block} aus \cref{AMSignalErzeugung} sieht man auf der linken Seite des Programmcodes zunächst die Erzeugung des (Ursprungs-)Signals $s(t)$ gemäß \cref{Ursprungssignal}. Weiterhin ist dabei die zusätzliche, aufgrund des in \cref{sinusfkt} aufgetretenen Programmierfehlers notwendige Amplitudenmultiplikation zu beachten. Außerdem soll $N = 44.100$ gelten. Da der Vorgang der $s(t)$-Konstruktion komplett identisch zu der in \cref{AMSignalErzeugung} bereits ausführlich beschriebenen Vorgehensweise ist, wird an dieser Stelle nicht weiter auf die (Ursprungs-)Signalentstehung eingegangen. 
-	
-	Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der (Ursprungs-)Signalentstehung findet im Programmcode die Modulation des Signals statt. Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichneten Bedienelement auf der Benutzeroberfläche samt dazugehörigem Controler an der entsprechenden Stelle im Programmcode.                                 Im folgenden Programmteil wird zwischen Phasen- und Frequenzmodulation unterschieden.
-	
-	
-	
-	
-	
-	Die Frequenzmodulation des (Ursprungs-)Signals $s(t)$ soll gemäß der Gleichung
-	
-	\begin{equation} \label{FMFormel}
-	S_{FM}(t) = \cos (2\pi (f_0 t + k \cdot \int s(t) dt))
-	\end{equation}
-	
-	\noindent geschehen, wobei $t$ die Zeit, $f_0$ die sogenannte Trägerfrequenz und $k$ eine beliebige Konstante ist. Am Programmcode in \cref{FMProgrammcode} lässt sich die unter Verwendung der von LabVIEW zur Verfügung gestellten numerischen Operationen, Funktionen und Konstanten erfolgte Umsetzung dieser Formel betrachten. Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, anSinuserstellendem in sinusfkt konstruiertem programm abgegriffen werden. Durch zusätzliche Controler und dazugehörige Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. . %Jetzt kommt das mit dem t, der Case (+warum simpson?) und While und dann eig fertig. Uuuuund dann andere k-Effekte erkären
-	
-	
-	
-	
-	
-	
-	Phasenmoduliert man das Ursprungssignal $s(t)$, so nimmt das daraus entstehende Signal $S_{PM}(t)$ die Form
-	
-	\begin{equation} \label{PMFormel}
-	S_{PM}(t) = \cos (2\pi (f_0 t + k \cdot s(t)))
-	\end{equation}
-	
-	\noindent an. Dabei bildet $f_0$ die Trägerfrequenz und $t$ die Zeit. $k$ ist ein fester, aber beliebig wählbarer Faktor. Aufgrund der Ähnlichkeit von \cref{PMFormel} zu \cref{FMFormel}, ist auch die  ähnlich, sodass nur Caseteilchen da so geändert werden muss für PM-bla. 
+	Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt. Bei der dazugehörigen Benutzeroberfläche, welche unter anderem in \cref{FMAusgabekleinesk}, \cref{FMAusgabegroßesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite. In diesem Fall handelt es sich bei den Anzeigeelementen um zwei Diagramme, die das phasen- oder frequenzmodulierte Signal, je nachdem welche Modulationsart ausgewählt ist, zum einen im Zeit- und zum andern im Frequenzbild anzeigen. 
 	
 	\begin{figure}[H]
 		\centering
@@ -496,7 +471,7 @@ ngerman
 		\label{FMProgrammcode}
 	\end{figure}
 
-	\noindent
+	\noindent Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und teilweise außerhalb der While-Schleife. Deren Anordnung und Funktionsweise ist die gleiche wie beim LabVIEW-Programm in \cref{AMSignalErzeugung}. Genauso wie in \cref{fig_tag3_am_soundkarte_block} aus \cref{AMSignalErzeugung} sieht man auf der linken Seite des Programmcodes zunächst die Erzeugung des (Ursprungs-)Signals $s(t)$ gemäß \cref{Ursprungssignal}. Weiterhin ist dabei die zusätzliche, aufgrund des in \cref{sinusfkt} aufgetretenen Programmierfehlers notwendige Amplitudenmultiplikation zu beachten. Außerdem soll $N = 44.100$ gelten. Da der Vorgang der $s(t)$-Konstruktion komplett identisch zu der in \cref{AMSignalErzeugung} bereits ausführlich beschriebenen Vorgehensweise ist, wird an dieser Stelle nicht weiter auf die (Ursprungs-)Signalentstehung eingegangen. Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der (Ursprungs-)Signalentstehung findet im Programmcode die Modulation des Signals statt. Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. 
 
 	\begin{figure}[H]
 		\centering
@@ -505,7 +480,17 @@ ngerman
 		\label{FMAusgabekleinesk}
 	\end{figure}
 	
-	\noindent 
+	\noindent Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen. Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichnetes Bedienelement auf der Benutzeroberfläche samt dazugehörigem Controler an der entsprechenden Stelle im Programmcode.
+	
+	Im Folgenden wird zwischen Frequenz- und Phasenmodulation unterschieden.
+	
+	Die Frequenzmodulation des (Ursprungs-)Signals $s(t)$ soll gemäß der Gleichung
+	
+	\begin{equation} \label{FMFormel}
+	S_{FM}(t) = \cos (2\pi (f_0 t + k \cdot \int s(t) dt))
+	\end{equation}
+	
+	\noindent geschehen, wobei $t$ die Zeit, $f_0$ die sogenannte Trägerfrequenz und $k$ eine beliebige Konstante ist. Am Programmcode in \cref{FMProgrammcode} lässt sich die unter Verwendung der von LabVIEW zur Verfügung gestellten numerischen Operationen, Funktionen und Konstanten erfolgte Umsetzung dieser Formel betrachten. 
 	
 	\begin{figure}[H]
 		\centering
@@ -514,7 +499,7 @@ ngerman
 		\label{FMAusgabegroßesk}
 	\end{figure}
 	
-	\noindent
+	\noindent Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, am Ausgangsanschluss des aus \cref{sinusfkt} stammenden, Sinus-erstellenden Programms abgegriffen werden. Das dazugehörige Blockdiagrammobjekt befindet sich im linken Programmcode-Bereich, welcher der (Ursprungs-)Signalerzeugung dient. Durch zusätzliche Controler und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht. Dabei wird auf die Simpsonregel (\glqq Simpson's Rule\grqq ) zurückgegriffen, da diese im Vergleich zu anderen bekannten Verfahren der numerischen Integration am effizientesten ist. 
 	
 	\begin{figure}[H]
 		\centering
@@ -523,7 +508,17 @@ ngerman
 		\label{PMProgrammcode}
 	\end{figure}
 	
-	\noindent
+	\noindent Die gesamte Berechnung (FM-/PM-Modulation sowie (Ursprungs-)Signalerzeugung) und der Großteil der Signalausgabe finden in einer While-Schleife statt, was auch aus \cref{FMProgrammcode} hervorgeht. Ebenso wie bei den zuvor behandelten Abschnitten ist der While-Schleife ein \glqq Stopp\grqq -Knopf beigefügt, um das Programm bei Bedarf anhalten zu können.
+	
+	Vergleicht man die Diagramme des frequenzmodulierten Signals in \cref{FMAusgabekleinesk} mit denen aus \cref{FMAusgabegroßesk}, so lässt sich feststellen, dass im Zeitbild die tausendfach höhere Trägerfrequenz deutlich zum Tragen kommt, sodass zahlreiche Nulldurchgänge stattfinden. Der Graph erscheint daher wie ein \glqq weißer Block\grqq\ aus Linien. Der Vergleich der beiden Frequenzbilder legt die Vermutung nahe, dass die Vergrößerung des $k$-Wertes zu schärfer definierten Peaks im Frequenzspektrum führt.
+	
+	Phasenmoduliert man das Ursprungssignal $s(t)$, so nimmt das daraus entstehende Signal $S_{PM}(t)$ die Form
+	
+	\begin{equation} \label{PMFormel}
+	S_{PM}(t) = \cos (2\pi (f_0 t + k \cdot s(t)))
+	\end{equation}
+	
+	\noindent an. Dabei bildet $f_0$ die Trägerfrequenz und $t$ die Zeit. $k$ ist ein fester, aber beliebig wählbarer Faktor. Aufgrund der Ähnlichkeit von \cref{PMFormel} zu \cref{FMFormel}, verläuft auch die Realisierung der Phasenmodulation als LabVIEW-Programm ähnlich zur Programm-Umsetzung der Frequenzmodulation. 
 	
 	\begin{figure}[H]
 		\centering
@@ -532,10 +527,16 @@ ngerman
 		\label{PMAusgabe}
 	\end{figure}
 
-	\noindent 
+	\noindent Daher besteht lediglich die Notwendigkeit das für die Phasenmodulation reservierte, freie, ausfüllbare Case-Feld passend zu besetzen. Wie im Programmcode in \cref{PMProgrammcode} zu erkennen, wird hierbei die Leitung direkt durch das Case-Feld gezogen, ohne das übertragene Signal zu bearbeiten oder zu verändern. In Kombination mit der bereits durch die Frequenzmodulation existierenden Programm-Struktur ist damit die Umsetzung der Phasenmodulation abgeschlossen. Das sich ergebene, phasenmodulierte Signal $S_{PM}(t)$ bzw. $\tilde{S}_{PM}(f)$ ist in den beiden Diagrammen auf der Benutzeroberfläche des Programms aus \cref{PMAusgabe} dargestellt.
+	
+	\emph{Hinweis:} Bei diesem LabVIEW-Programm zur Erzeugung von phasen- und frequenzmodulierten Signalen ist zu beachten, dass zwischen den $k$-Werten der Frequenzmodulation und den $k$-Werten der Phasenmodulation stets eine Diskrepanz um einen Faktor der Größenordnung $10^4$ vorliegt.
+	
+	
 	
 	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
-	% 
+	
+	
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMd}

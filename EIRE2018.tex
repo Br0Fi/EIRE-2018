@@ -425,9 +425,13 @@ ngerman
 
 	\section{Tag 4}
 	
-	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation}
-		
-	Das allgemeine Ziel dieses Abschnitts ist die Demodulation des über die Computer-Soundkarte gemessenen amplitudenmodulierten Signals unter Zuhilfenahme der Multiplikation mit der Trägerfrequenz. In der mathematischen Theorie führt das Multiplizieren der amplitudenmodulierten Signal-Funktion mit der Schwingungsfunktion, welche lediglich der Trägerfrequenz des AM-Signals unterliegt, dazu, dass sich mit dem passenden Additionstheorem als Ergebnis eine additive Aneinanderreihung von Schwingungstermen unterschiedlichster Frequenzen bildet. Letztere lassen sich unter Verwendung einer Fourier-Transformation im Frequenzspektrum dieses neu gewonnenen Schwingungsterms betrachten. Neben den diversen Peaks an Stellen mit vergleichsweise hohen Frequenzen, befinden sich darin ebenfalls Peaks bei relativ niedrigen Frequenzwerten.
+	%TODO gemessen wird NICHT "über die Computer-Soundkarte", sondern "über den Analog-Digital-Wandler in Kombination/Verbindung mit der Computer-Soundkarte"
+	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation} \label{DemodTraeger}
+	%TODO Die txt-Datei-Diagramme fehlen noch	
+	Das allgemeine Ziel dieses Abschnitts ist die Demodulation eines über die Computer-Soundkarte gemessenen amplitudenmodulierten Signals unter Zuhilfenahme der Multiplikation mit der Trägerfrequenz. 
+	In der mathematischen Theorie führt das Multiplizieren der amplitudenmodulierten Signal-Funktion mit der Schwingungsfunktion, welche lediglich der Trägerfrequenz des AM-Signals unterliegt, dazu, dass sich mit dem passenden Additionstheorem als Ergebnis eine additive Aneinanderreihung von Schwingungstermen unterschiedlichster Frequenzen bildet. 
+	Letztere lassen sich unter Verwendung einer Fourier-Transformation im Frequenzspektrum dieses neu gewonnenen Schwingungsterms betrachten. 
+	Neben den diversen Peaks an Stellen mit vergleichsweise hohen Frequenzen, befinden sich darin ebenfalls Peaks bei relativ niedrigen Frequenzwerten.
 		
 	\begin{figure}[H]
 		\centering
@@ -436,9 +440,12 @@ ngerman
 		\label{MultiTraegerProgrammcode}
 	\end{figure}
 
-	\noindent Demnach handelt es sich um ein breites Frequenzspektrum, in dem man sogar die Frequenz(en) des modulierten, ursprünglichen Signals deutlich erkennen kann. Von einem theoretischen Standpunkt aus ist die komplette Demodulation des AM-Signals damit abgeschlossen. Zusätzlich lassen sich durch einen Tiefpass mit hinreichend großer Grenzfrequenz die hohen Frequenzanteile aus dem Spektrum herausfiltern, sodass letztendlich nur noch die besagten Frequenzen des amplitudenmodulierten Ursprungssignals übrig bleiben. 
+	\noindent Demnach handelt es sich um ein breites Frequenzspektrum, in dem man sogar die Frequenz(en) des modulierten, ursprünglichen Signals deutlich erkennen kann. 
+	Von einem theoretischen Standpunkt aus ist die komplette Demodulation des AM-Signals damit abgeschlossen. 
+	Zusätzlich lassen sich durch einen Tiefpass mit hinreichend großer Grenzfrequenz die hohen Frequenzanteile aus dem Spektrum herausfiltern, sodass letztendlich nur noch die besagten Frequenzen des amplitudenmodulierten Ursprungssignals übrig bleiben. 
 	
-	Dieses Verfahren soll nun in ein LabVIEW-Programm übertragen werden, dessen dazugehöriger Programmcode in \ref{MultiTraegerProgrammcode} zu sehen ist. Voraussetzung ist dabei das in \cref{DemodulationAM} bereits erstellte Programm.
+	Dieses Verfahren soll nun in ein LabVIEW-Programm übertragen werden, dessen dazugehöriger Programmcode in \ref{MultiTraegerProgrammcode} zu sehen ist. 
+	Voraussetzung ist dabei das in \cref{DemodulationAM} bereits erstellte Programm.
 	Alle zuvor eingefügten Methoden zur Demodulation (\glqq Quadrat\grqq\ und \glqq Betrag\grqq ) sollen frei auswählbar bleiben.
 	Dafür wird zunächst die Demodulator-Case-Konstruktion um eine weitere Option mit dem Namen \glqq Multiplikation mit Träger\grqq\ ergänzt und somit ein neues, ausfüllbares Case-Feld erzeugt.
 	Darin werden diverse, später näher beschriebene Blockdiagrammobjekte angelegt, welche die Demodulation des über die Computer-Soundkarte gemessenen AM-Signals umsetzten.
@@ -452,18 +459,62 @@ ngerman
 		\label{MultiTraegerFrontpanel}
 	\end{figure}
 
-	\noindent Mit einem Bandpass sechzehnter Ordnung soll die geratene Trägerfrequenz aus dem Frequenzspektrum des AM-Signals herausgefiltert werden. Die obere bzw. untere Grenzfrequenz des Bandpassfilters bildet der geratene Trägerfrequenzwert zuzüglich bzw. abzüglich einem Wert von $20\,$Hz. Dieser $20\,$Hz-Wert ist hinreichend groß gewählt, um einerseits Überlappungen mit anderen Frequenz-Peaks zu vermeiden und andererseits die Gesamtheit des Trägerfrequenz-Peaks zu erfassen. Es wird also ein Bereich von $\pm 20\,$Hz um die Trägerfrequenz \glqq herausgeschnitten\glqq . Die dazugehörige Schwingungsfunktion wird nun mit dem unveränderten, gemessenen amplitudenmodulierten Signal multipliziert. Das Ergebnis dieser Operation ist, wie zuvor im Theorie-Teil erwähnt, ein breites Frequenzspektrum mit zahlreichen Peaks an unterschiedlich hohen und niedrigen Frequenzwerten, was im rechten, mittleren Diagramm in \cref{MultiTraegerFrontpanel} erkennbar ist. Überdies sind in \cref{MultiTraegerFrontpanel} noch fünf weitere Anzeigeelemente in Diagramm-Form dargestellt: Die beiden Oberen zeigen das über die Computer-Soundkarte gemessene amplitudenmodulierte Signal ohne Demodulation, zum einen im Zeitbild und zum andern im Frequenzbild. Im linken, mittleren Anzeigeelement ist ein Diagramm zu sehen, in dem der zeitliche Signalverlauf nach der Durchführung der Trägerfrequenzmultiplikation und somit auch nach der kompletten Demodulation veranschaulicht ist. Die beiden unteren Anzeigeelemente stellen, sowohl im Zeit- als auch im Frequenzbild, das demodulierte AM-Signal nach der bereits im Theorie-Teil angesprochenen Tiefpassfilterung dar. Genauso wie in \cref{DemodulationAM} findet die Tiefpassfilterung außerhalb der Demodulator-Case-Konstruktion statt. Dabei bedarf es eines zusätzlichen Bedienelements auf dem Frontpanel sowie eines dazugehörigen Blockdiagrammobjekts im Programmcode, um die entsprechende Grenzfrequenz für den Tiefpass festzulegen. Diese liegt in \cref{MultiTraegerFrontpanel} bei $1.600\,$Hz. Zudem befinden sich auf der Benutzeroberfläche in \cref{MultiTraegerFrontpanel} sämtliche Bedien- bzw. Eingabeelemente oben links.
+	\noindent Mit einem Bandpass sechzehnter Ordnung soll die geratene Trägerfrequenz aus dem Frequenzspektrum des AM-Signals herausgefiltert werden. 
+	Die obere bzw. untere Grenzfrequenz des Bandpassfilters bildet der geratene Trägerfrequenzwert zuzüglich bzw. abzüglich einem Wert von $20\,$Hz. 
+	Dieser $20\,$Hz-Wert ist hinreichend groß gewählt, um einerseits Überlappungen mit anderen Frequenz-Peaks zu vermeiden und andererseits die Gesamtheit des Trägerfrequenz-Peaks zu erfassen. 
+	Es wird also ein Bereich von $\pm 20\,$Hz um die Trägerfrequenz \glqq herausgeschnitten\glqq . 
+	Die dazugehörige Schwingungsfunktion wird nun mit dem unveränderten, gemessenen amplitudenmodulierten Signal multipliziert. 
+	Das Ergebnis dieser Operation ist, wie zuvor im Theorie-Teil erwähnt, ein breites Frequenzspektrum mit zahlreichen Peaks an unterschiedlich hohen und niedrigen Frequenzwerten, was im rechten, mittleren Diagramm in \cref{MultiTraegerFrontpanel} erkennbar ist. 
+	Überdies sind in \cref{MultiTraegerFrontpanel} noch fünf weitere Anzeigeelemente in Diagramm-Form dargestellt: Die beiden Oberen zeigen das über die Computer-Soundkarte gemessene amplitudenmodulierte Signal ohne Demodulation, zum einen im Zeitbild und zum andern im Frequenzbild. 
+	Im linken, mittleren Anzeigeelement ist ein Diagramm zu sehen, in dem der zeitliche Signalverlauf nach der Durchführung der Trägerfrequenzmultiplikation und somit auch nach der kompletten Demodulation veranschaulicht ist. 
+	Die beiden unteren Anzeigeelemente stellen, sowohl im Zeit- als auch im Frequenzbild, das demodulierte AM-Signal nach der bereits im Theorie-Teil angesprochenen Tiefpassfilterung dar. 
+	Genauso wie in \cref{DemodulationAM} findet die Tiefpassfilterung außerhalb der Demodulator-Case-Konstruktion statt. 
+	Dabei bedarf es eines zusätzlichen Bedienelements auf dem Frontpanel sowie eines dazugehörigen Blockdiagrammobjekts im Programmcode, um die entsprechende Grenzfrequenz für den Tiefpass festzulegen. 
+	Diese liegt in \cref{MultiTraegerFrontpanel} bei $1.600\,$Hz. 
+	Zudem befinden sich auf der Benutzeroberfläche in \cref{MultiTraegerFrontpanel} sämtliche Bedien- bzw. Eingabeelemente oben links.
 	
-	Das für den in \cref{MultiTraegerFrontpanel} gezeigten Programmdurchlauf verwendete Ursprungssignal, welches in \cref{AMSignalErzeugung} amplitudenmoduliert wurde und dieselbe Gestalt wie in \cref{Ursprungssignal} besitzt, wird unter anderem durch die Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz bestimmt. Dies lässt sich insbesondere anhand der Bedienelemente-Einstellung des Frontpanels in \cref{fig_tag3_am_soundkarte_front} nachvollziehen. Die Demodulation des über die Computer-Soundkarte gemessenen amplitudenmodulierten Signals mittels Trägerfrequenzmultiplikation und die anschließende Tiefpassfilterung führten schlussendlich zu dem Frequenzbild, was unten rechts auf der Benutzeroberfläche in \cref{MultiTraegerFrontpanel} dargestellt ist. Dieses Frequenzspektrum weist zwei deutliche Peaks bei $700\,$Hz und $1.000\,$Hz auf, welche genau den $f_1$- und $f_2$-Werten des Ursprungssignals entsprechen. Daher kann man als Fazit sagen, dass es sich wohl um eine erfolgreich funktionierende Amplitudenmodulation sowie Demodulation handelt. Anzumerken ist noch, dass bei einem größer gewählten Modulationsgrad $m$ in \cref{AMFormel} die Peaks im Frequenzspektrum bei den eingestellten $f_1$- und $f_2$-Werten höher ausfallen und damit leichter zu erkennen sind.  
+	Das für den in \cref{MultiTraegerFrontpanel} gezeigten Programmdurchlauf verwendete Ursprungssignal, welches in \cref{AMSignalErzeugung} amplitudenmoduliert wurde und dieselbe Gestalt wie in \cref{Ursprungssignal} besitzt, wird unter anderem durch die Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz bestimmt. 
+	Dies lässt sich insbesondere anhand der Bedienelemente-Einstellung des Frontpanels in \cref{fig_tag3_am_soundkarte_front} nachvollziehen. 
+	Die Demodulation des über die Computer-Soundkarte gemessenen amplitudenmodulierten Signals mittels Trägerfrequenzmultiplikation und die anschließende Tiefpassfilterung führten schlussendlich zu dem Frequenzbild, was unten rechts auf der Benutzeroberfläche in \cref{MultiTraegerFrontpanel} dargestellt ist. 
+	Dieses Frequenzspektrum weist zwei deutliche Peaks bei $700\,$Hz und $1.000\,$Hz auf, welche genau den $f_1$- und $f_2$-Werten des Ursprungssignals entsprechen. 
+	Daher kann man als Fazit sagen, dass es sich wohl um eine erfolgreich funktionierende Amplitudenmodulation sowie Demodulation handelt. 
+	Anzumerken ist noch, dass bei einem größer gewählten Modulationsgrad $m$ in \cref{AMFormel} die Peaks im Frequenzspektrum bei den eingestellten $f_1$- und $f_2$-Werten höher ausfallen und damit leichter zu erkennen sind. 
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/exaktTraegerRate10000m0,2}
+		\caption{.}
+		\label{}
+	\end{figure}
+
+	\noindent 
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/exaktTraegerRate10000m1,2}
+		\caption{.}
+		\label{}
+	\end{figure}
+
+	\noindent 
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/nichtexaktTraegerRate10050m0,2}
+		\caption{.}
+		\label{}
+	\end{figure}
 	
+	\subsection{Phasen- und frequenzmodulierte Signale}
 	
-	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals}
+	\subsubsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung}
 	% Grundlagen AM+FM, Seitenbänder AM, AM größere Bandbreite benötigt
 		
 	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. 
 	
-	Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt. Bei der dazugehörigen Benutzeroberfläche, welche unter anderem in \cref{FMAusgabekleinesk}, \cref{FMAusgabegrossesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite. In diesem Fall handelt es sich bei den Anzeigeelementen um zwei Diagramme, die das phasen- oder frequenzmodulierte Signal, je nachdem welche Modulationsart ausgewählt ist, zum einen im Zeit- und zum andern im Frequenzbild anzeigen. 
+	Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt. 
+	Bei der dazugehörigen Benutzeroberfläche, welche unter anderem in \cref{FMAusgabekleinesk}, \cref{FMAusgabegrossesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite. 
+	In diesem Fall handelt es sich bei den Anzeigeelementen um zwei Diagramme, die das phasen- oder frequenzmodulierte Signal, je nachdem welche Modulationsart ausgewählt ist, zum einen im Zeit- und zum andern im Frequenzbild anzeigen. 
 
 	\begin{figure}[H]
 		\centering
@@ -472,7 +523,15 @@ ngerman
 		\label{FMProgrammcode}
 	\end{figure}
 
-	\noindent Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und teilweise außerhalb der While-Schleife. Deren Anordnung und Funktionsweise ist die gleiche wie beim LabVIEW-Programm in \cref{AMSignalErzeugung}. Genauso wie in \cref{fig_tag3_am_soundkarte_block} aus \cref{AMSignalErzeugung} sieht man auf der linken Seite des Programmcodes zunächst die Erzeugung des (Ursprungs-)Signals $s(t)$ gemäß \cref{Ursprungssignal}. Weiterhin ist dabei die zusätzliche, aufgrund des in \cref{sinusfkt} aufgetretenen Programmierfehlers notwendige Amplitudenmultiplikation zu beachten. Außerdem soll $N = 44.100$ gelten. Da der Vorgang der $s(t)$-Konstruktion komplett identisch zu der in \cref{AMSignalErzeugung} bereits ausführlich beschriebenen Vorgehensweise ist, wird an dieser Stelle nicht weiter auf die (Ursprungs-)Signalentstehung eingegangen. Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der (Ursprungs-)Signalentstehung findet im Programmcode die Modulation des Signals statt. Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. 
+	\noindent Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und teilweise außerhalb der While-Schleife. 
+	Deren Anordnung und Funktionsweise ist die gleiche wie beim LabVIEW-Programm in \cref{AMSignalErzeugung}. 
+	Genauso wie in \cref{fig_tag3_am_soundkarte_block} aus \cref{AMSignalErzeugung} sieht man auf der linken Seite des Programmcodes zunächst die Erzeugung des (Ursprungs-)Signals $s(t)$ gemäß \cref{Ursprungssignal}. 
+	Weiterhin ist dabei die zusätzliche, aufgrund des in \cref{sinusfkt} aufgetretenen Programmierfehlers notwendige Amplitudenmultiplikation zu beachten. 
+	Außerdem soll $N = 44.100$ gelten. 
+	Da der Vorgang der $s(t)$-Konstruktion komplett identisch zu der in \cref{AMSignalErzeugung} bereits ausführlich beschriebenen Vorgehensweise ist, wird an dieser Stelle nicht weiter auf die (Ursprungs-)Signalentstehung eingegangen. 
+	Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der (Ursprungs-)Signalentstehung findet im Programmcode die Modulation des Signals statt. 
+	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. 
+	Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. 
 
 	\begin{figure}[H]
 		\centering
@@ -481,9 +540,11 @@ ngerman
 		\label{FMAusgabekleinesk}
 	\end{figure}
 	
-	\noindent Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen. Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichnetes Bedienelement auf der Benutzeroberfläche samt dazugehörigem Controler an der entsprechenden Stelle im Programmcode.
+	\noindent Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen. 
+	Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichnetes Bedienelement auf der Benutzeroberfläche samt dazugehörigem Controler an der entsprechenden Stelle im Programmcode.
 	
-	Im Folgenden wird zwischen Frequenz- und Phasenmodulation unterschieden.
+	Im Folgenden wird zwischen Frequenz- und Phasenmodulation (FM und PM) unterschieden. 
+	Außerdem wird die Funktionsweise des LabVIEW-Programms näher erläutert.
 	
 	Die Frequenzmodulation des (Ursprungs-)Signals $s(t)$ soll gemäß der Gleichung
 	
@@ -491,7 +552,8 @@ ngerman
 	S_{FM}(t) = \cos (2\pi (f_0 t + k \cdot \int s(t) dt))
 	\end{equation}
 	
-	\noindent geschehen, wobei $t$ die Zeit, $f_0$ die sogenannte Trägerfrequenz und $k$ eine beliebige Konstante ist. Am Programmcode in \cref{FMProgrammcode} lässt sich die unter Verwendung der von LabVIEW zur Verfügung gestellten numerischen Operationen, Funktionen und Konstanten erfolgte Umsetzung dieser Formel betrachten. 
+	\noindent geschehen, wobei $t$ die Zeit, $f_0$ die sogenannte Trägerfrequenz und $k$ eine beliebige Konstante ist. 
+	Am Programmcode in \cref{FMProgrammcode} lässt sich die unter Verwendung der von LabVIEW zur Verfügung gestellten numerischen Operationen, Funktionen und Konstanten erfolgte Umsetzung dieser Formel betrachten. 
 	
 	\begin{figure}[H]
 		\centering
@@ -500,7 +562,11 @@ ngerman
 		\label{FMAusgabegrossesk}
 	\end{figure}
 	
-	\noindent Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, am Ausgangsanschluss des aus \cref{sinusfkt} stammenden, Sinus-erstellenden Programms abgegriffen werden. Das dazugehörige Blockdiagrammobjekt befindet sich im linken Programmcode-Bereich, welcher der (Ursprungs-)Signalerzeugung dient. Durch zusätzliche Controler und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht. Dabei wird auf die Simpsonregel (\glqq Simpson's Rule\grqq ) zurückgegriffen, da diese im Vergleich zu anderen bekannten Verfahren der numerischen Integration am effizientesten ist. 
+	\noindent Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, am Ausgangsanschluss des aus \cref{sinusfkt} stammenden, Sinus-erstellenden Programms abgegriffen werden. 
+	Das dazugehörige Blockdiagrammobjekt befindet sich im linken Programmcode-Bereich, welcher der (Ursprungs-)Signalerzeugung dient. 
+	Durch zusätzliche Controler und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. 
+	Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht. 
+	Dabei wird auf die Simpsonregel (\glqq Simpson's Rule\grqq ) zurückgegriffen, da diese im Vergleich zu anderen bekannten Verfahren der numerischen Integration am effizientesten ist. 
 	
 	\begin{figure}[H]
 		\centering
@@ -509,9 +575,12 @@ ngerman
 		\label{PMProgrammcode}
 	\end{figure}
 	
-	\noindent Die gesamte Berechnung (FM-/PM-Modulation sowie (Ursprungs-)Signalerzeugung) und der Großteil der Signalausgabe finden in einer While-Schleife statt, was auch aus \cref{FMProgrammcode} hervorgeht. Ebenso wie bei den zuvor behandelten Abschnitten ist der While-Schleife ein \glqq Stopp\grqq -Knopf beigefügt, um das Programm bei Bedarf anhalten zu können.
+	\noindent Die gesamte Berechnung (FM-/PM-Modulation sowie (Ursprungs-)Signalerzeugung) und der Großteil der Signalausgabe finden in einer While-Schleife statt, was auch aus \cref{FMProgrammcode} hervorgeht. 
+	Ebenso wie bei den zuvor behandelten Abschnitten ist der While-Schleife ein \glqq Stopp\grqq -Knopf beigefügt, um das Programm bei Bedarf anhalten zu können.
 
-	Vergleicht man die Diagramme des frequenzmodulierten Signals in \cref{FMAusgabekleinesk} mit denen aus \cref{FMAusgabegrossesk}, so lässt sich feststellen, dass im Zeitbild die tausendfach höhere Trägerfrequenz deutlich zum Tragen kommt, sodass zahlreiche Nulldurchgänge stattfinden. Der Graph erscheint daher wie ein \glqq weißer Block\grqq\ aus Linien. Der Vergleich der beiden Frequenzbilder legt die Vermutung nahe, dass die Vergrößerung des $k$-Wertes zu schärfer definierten Peaks im Frequenzspektrum führt.
+	Vergleicht man die Diagramme des frequenzmodulierten Signals in \cref{FMAusgabekleinesk} mit denen aus \cref{FMAusgabegrossesk}, so lässt sich feststellen, dass im Zeitbild die tausendfach höhere Trägerfrequenz deutlich zum Tragen kommt, sodass zahlreiche Nulldurchgänge stattfinden. 
+	Der Graph erscheint daher wie ein \glqq weißer Block\grqq\ aus Linien. 
+	Der Vergleich der beiden Frequenzbilder legt die Vermutung nahe, dass die Vergrößerung des $k$-Wertes zu schärfer definierten Peaks im Frequenzspektrum führt.
 	
 	Phasenmoduliert man das Ursprungssignal $s(t)$, so nimmt das daraus entstehende Signal $S_{PM}(t)$ die Form
 	
@@ -519,7 +588,10 @@ ngerman
 	S_{PM}(t) = \cos (2\pi (f_0 t + k \cdot s(t)))
 	\end{equation}
 	
-	\noindent an. Dabei bildet $f_0$ die Trägerfrequenz und $t$ die Zeit. $k$ ist ein fester, aber beliebig wählbarer Faktor. Aufgrund der Ähnlichkeit von \cref{PMFormel} zu \cref{FMFormel}, verläuft auch die Realisierung der Phasenmodulation als LabVIEW-Programm ähnlich zur Programm-Umsetzung der Frequenzmodulation. 
+	\noindent an. 
+	Dabei bildet $f_0$ die Trägerfrequenz und $t$ die Zeit. 
+	$k$ ist ein fester, aber beliebig wählbarer Faktor. 
+	Aufgrund der Ähnlichkeit von \cref{PMFormel} zu \cref{FMFormel}, verläuft auch die Realisierung der Phasenmodulation als LabVIEW-Programm ähnlich zur Programm-Umsetzung der Frequenzmodulation. 
 	
 	\begin{figure}[H]
 		\centering
@@ -528,73 +600,90 @@ ngerman
 		\label{PMAusgabe}
 	\end{figure}
 
-	\noindent Daher besteht lediglich die Notwendigkeit das für die Phasenmodulation reservierte, freie, ausfüllbare Case-Feld passend zu besetzen. Wie im Programmcode in \cref{PMProgrammcode} zu erkennen, wird hierbei die Leitung direkt durch das Case-Feld gezogen, ohne das übertragene Signal zu bearbeiten oder zu verändern. In Kombination mit der bereits durch die Frequenzmodulation existierenden Programm-Struktur ist damit die Umsetzung der Phasenmodulation abgeschlossen. Das sich ergebene, phasenmodulierte Signal $S_{PM}(t)$ bzw. $\tilde{S}_{PM}(f)$ ist in den beiden Diagrammen auf der Benutzeroberfläche des Programms aus \cref{PMAusgabe} dargestellt.
+	\noindent Daher besteht lediglich die Notwendigkeit das für die Phasenmodulation reservierte, freie, ausfüllbare Case-Feld passend zu besetzen. 
+	Wie im Programmcode in \cref{PMProgrammcode} zu erkennen, wird hierbei die Leitung direkt durch das Case-Feld gezogen, ohne das übertragene Signal zu bearbeiten oder zu verändern. 
+	In Kombination mit der bereits durch die Frequenzmodulation existierenden Programm-Struktur ist damit die Umsetzung der Phasenmodulation abgeschlossen. 
+	Das sich ergebene, phasenmodulierte Signal $S_{PM}(t)$ bzw. $\tilde{S}_{PM}(f)$ ist in den beiden Diagrammen auf der Benutzeroberfläche des Programms aus \cref{PMAusgabe} dargestellt.
 	
 	\emph{Hinweis:} Bei diesem LabVIEW-Programm zur Erzeugung von phasen- und frequenzmodulierten Signalen ist zu beachten, dass zwischen den $k$-Werten der Frequenzmodulation und den $k$-Werten der Phasenmodulation stets eine Diskrepanz um einen Faktor der Größenordnung $10^4$ vorliegt.
 	
 	
 	
-	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
+	\subsubsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
 	
-	
+	Im Folgenden soll ein über die Computer-Soundkarte gemessenes Signal, welches entweder phasen- oder frequenzmoduliert wurde, demoduliert werden. 
+	Das in \cref{DemodTraeger} erhaltene LabVIEW-Programm dient dabei als Vorlage. 
+	Von links nach rechts gelesen, beinhaltet dessen Programmcode, welcher in \cref{MultiTraegerProgrammcode} dargestellt ist, einen Programmteil zur Messdatenaufnahme mittels Analog-Digital-Wandler, einen für die Demodulation von AM-Signalen zuständigen Programmbereich, einen Tiefpassfilter sechzehnter Ordnung, einige Blockdiagrammobjekte zur Realisierung der Anzeige- bzw. Ausgabeelemente auf dem Frontpanel, eine durch den sich auf der Benutzeroberfläche befindlichen \glqq Stopp\grqq -Knopf und eine Speicherfunktion mit dazugehörigem \glqq Speichern\grqq -Knopf.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMd}
 		\caption{.}
 	\end{figure}
-
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMp}
 		\caption{.}
 	\end{figure}
-\iffalse
+	
 	\begin{figure}[H] %FM-Diagramm
 		\centering
-		\includegraphics[width=1.0\textwidth]{}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,005}
 		\caption{.}
 	\end{figure}
-\fi
+	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/OsziPlusFMPMp}
+		\includegraphics[width=0.8\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/OsziPlusFMPMd5} %Möglicherweise ist 0.8 immer noch zu groß
 		\caption{.}
 	\end{figure}
-\iffalse
+		
 	\begin{figure}[H] %PM-Diagramm
 		\centering
-		\includegraphics[width=1.0\textwidth]{}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,1}
 		\caption{.}
 	\end{figure}
-\fi
+	
+	
+	
 	%Fktion nur schön für bestimmten Bereich von k, weil , wenn zu hoch: zu viele Oberwellen, zu klein: demoduliertes Signal geht im Rauschen unter
 	\subsubsection{Erweiterte Demodulation mit Bandpass und zusätzlicher Integration des Signals}
+	
+	
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMd}
 		\caption{.}
 	\end{figure}
-
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMd6} %Möglicherweise ist 0.8 immer noch zu groß
+		\caption{.}
+	\end{figure}
+		
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMp}
 		\caption{.}
 	\end{figure}
-\iffalse
-	\begin{figure}[H] %FM-Diagramm mit Bandpass und Integration
+	
+	\begin{figure}[H] %FM-Diagramm mit Bandpass
 		\centering
-		\includegraphics[width=1.0\textwidth]{}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FMmitBandpassundInt/Frequenzbild_mit_Hanning_nach_BP_und_Demod}
 		\caption{.}
 	\end{figure}
-
+	
 	\begin{figure}[H] %PM-Diagramm mit Bandpass und Integration 
 		\centering
-		\includegraphics[width=1.0\textwidth]{}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PMmitBandpassundInt/Frequenzbild_mit_Hanning_nach_BP,Int,Demod}
 		\caption{.}
 	\end{figure}
-\fi
+	
 	
 	\printbibliography
+	
+	
 \end{document}

@@ -251,9 +251,11 @@ ngerman
 		\centering
 	\end{figure}
 
-	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden.
+	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden. %mit denen das Signal mutlipliziert wird? Wäre das immer wahr?
 	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos
 	
+%TODO: unklar wo, am besten bei Leakage: absichtlicher Leakage und Vielfaches der Abtastfrequenz
+
 	\subsection{Digitales Oszilloskop ohne ExpressVI} % hier ist halt die Tagreihenfolge bissl gebrochen. Ich glaube, wir haben das an Tag 2 angefangen und Tag 3 beendet
 	Das Oszilloskopprogramm von zuvor wird ersetzt durch eines, dass anstelle des ExpressVIs Konfiguration, Messung und Cleanup getrennt enthält.
 	Dieses ist in \cref{fig_tag23_oszi_manuell_block} dargestellt, während in \cref{fig_tag23_oszi_manuell_front} die Frontplatte bei einem Eingangssignal von \SI{600}{\hertz}.
@@ -368,24 +370,24 @@ ngerman
 
 	
 
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[t]{0.5\textwidth}
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Zeit}
-		\caption{Zeitdomäne}
-	\end{subfigure}%
-	\begin{subfigure}[t]{0.5\textwidth}
+		\begin{subfigure}[t]{0.5\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{Origin-Files/AM-Zeit}
+			\caption{Zeitdomäne}
+		\end{subfigure}%
+		\begin{subfigure}[t]{0.5\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{Origin-Files/AM-Freq-Hann}
+			\caption{Frequenzdomäne}
+		\end{subfigure}
+		\label{fig_tag3_am_soundkarte}
+		\caption{Ausgabe des Oszilloskopprogramms in der Zeit- und Frequenzdomäne bei Erfassung des amplitudenmodulierten Signals, das mittels der Soundkarte ausgegeben wird.}
 		\centering
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Freq-Hann}
-		\caption{Frequenzdomäne}
-	\end{subfigure}
-	\label{fig_tag3_am_soundkarte}
-	\caption{Ausgabe des Oszilloskopprogramms in der Zeit- und Frequenzdomäne bei Erfassung des amplitudenmodulierten Signals, das mittels der Soundkarte ausgegeben wird.}
-	\centering
-\end{figure}
+	\end{figure}
 
-	%TODO: unklar wo: absichtlicher Leakage und Vielfaches der Abtastfrequenz
+
 
 	\subsubsection{Demodulation eines AM-Signals durch Quadrieren und Betragsbildung} \label{DemodulationAM}
 	%Betrag, Quadrat
@@ -419,76 +421,80 @@ ngerman
 
 
 	\begin{figure}[H]  
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Betrag-Eingang}
+		\includegraphics[width=0.7\textwidth]{Origin-Files/AM-Demod-Betrag-Eingang}
 		\centering
-		\caption{abc
+		\caption{Ausgabe des Oszilloskopprogramms für das Eingangssignal in der Frequenzdomäne, bei Einspeisung eines amplitudenmodulierten Signals. %TODO Einspeisung?
 			}
-		\label{}
+		\label{fig_tag3_am_demod_eingang}
 		\centering
 	\end{figure}
 
 	\begin{figure}[H]  
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Betrag-preTP}
+		\includegraphics[width=0.7\textwidth]{Origin-Files/AM-Demod-Betrag-preTP}
 		\centering
-		\caption{abc
+		\caption{Ausgabe des Oszilloskopprogramms in der Frequenzdomäne nach Bilden des Betrags eines amplitudenmodulierten Signals. Die Tiefpassfilterung wurde noch nicht durchgeführt.
 		}
-		\label{}
+		\label{fig_tag3_am_demod_betrag_preTP}
 		\centering
 	\end{figure}
 
-	\begin{figure}[H]  
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Betrag-demod}
+	\begin{figure}[H]
 		\centering
-		\caption{abc
-		}
-		\label{}
-		\centering
-	\end{figure}
-
-	\begin{figure}[H]  
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Betrag-demod-Bereich}
-		\centering
-		\caption{abc
-		}
-		\label{}
-		\centering
-	\end{figure}
-
-
-	\begin{figure}[H]  
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Quadrat-Eingang}
-		\centering
-		\caption{abc
-		}
-		\label{}
-		\centering
-	\end{figure}
-	\begin{figure}[H]  
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Quadrat-preTP}
-		\centering
-		\caption{abc
-		}
-		\label{}
-		\centering
-	\end{figure}
-	\begin{figure}[H]  
-		\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Quadrat-demod}
+		\begin{subfigure}[t]{0.5\textwidth}
 			\centering
-			\caption{abc
-			}
-			\label{}
+			\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Betrag-demod}
+			\caption{gesamter Frequenzbereich}
+		\end{subfigure}%
+		\begin{subfigure}[t]{0.5\textwidth}
 			\centering
+			\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Betrag-demod-Bereich}
+			\caption{geringer Frequenzbereich}
+		\end{subfigure}
+		\label{fig_tag3_am_demod_betrag_vollst}
+		\caption{Ausgabe des Oszilloskopprogramms in der Frequenzdomäne nach vollständiger Demodulation durch Bilden des Betrags und Tiefpassfilterung des amplitudenmodulierten Signals.}
+		\centering
 	\end{figure}
+
+
+
+\iffalse %auskommentiert, weil natürlich gleich wie Betrag
 	\begin{figure}[H]  
+		\includegraphics[width=0.7\textwidth]{Origin-Files/AM-Demod-Quadrat-Eingang}
+		\centering
+		\caption{abc
+		}
+		\label{}
+		\centering
+	\end{figure}
+\fi
+
+	\begin{figure}[H]  
+		\includegraphics[width=0.7\textwidth]{Origin-Files/AM-Demod-Quadrat-preTP}
+		\centering
+		\caption{Ausgabe des Oszilloskopprogramms in der Frequenzdomäne nach Quadrieren eines amplitudenmodulierten Signals. Die Tiefpassfilterung wurde noch nicht durchgeführt.
+		}
+		\label{fig_tag3_am_demod_quadrat_preTP}
+		\centering
+	\end{figure}
+
+	\begin{figure}[H] %TODO Der tauscht die letzten beiden: Nach Text schreiben prüfen
+		\centering
+		\begin{subfigure}[t]{0.5\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Quadrat-demod}
+			\caption{gesamter Frequenzbereich}
+		\end{subfigure}%
+		\begin{subfigure}[t]{0.5\textwidth}
+			\centering
 			\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Quadrat-demod-Bereich}
-				\centering
-				\caption{abc
-				}
-				\label{}
-				\centering
+			\caption{geringer Frequenzbereich}
+		\end{subfigure}
+		\label{fig_tag3_am_demod_quadrat_vollst}
+		\caption{Ausgabe des Oszilloskopprogramms in der Frequenzdomäne nach vollständiger Demodulation durch Quadrieren und Tiefpassfilterung des amplitudenmodulierten Signals.}
+		\centering
 	\end{figure}
 
-	%TODO Orign-Grafiken: Gruppieren, Beschreibung Charakteristik, Vergleich
+	%TODO Orign-Grafiken: Beschreibung Charakteristik, Vergleich
 	%Betrag-Eingang und Quadrat-Eingang obv. gleich
 	%TODO verwendete Frequenzen angeben: i think: Träger 10.000Hz, Signale: 700Hz mit Ampl. 1 und 1000Hz bei Ampl. 3 mit m=0,2
 

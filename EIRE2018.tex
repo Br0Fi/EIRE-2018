@@ -365,14 +365,14 @@ ngerman
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/Soundkarteoutoszi/AMp}
 		\centering
 		\caption{
-			Frontplatte des Programms zur Erzeugung eines amplitudenmodulierten Signals und Ausgabe dessen über die Soundkarte. %TODO Charakteristik beschreiben
+			Frontplatte des Programms zur Erzeugung eines amplitudenmodulierten Signals und Ausgabe dessen über die Soundkarte.
 		}
 		\label{fig_tag3_am_soundkarte_front}
 		\centering
 	\end{figure}
 
 	
-
+\iffalse %auskommentiert weil ergibt keinen Sinn und ist eh später zus ehen.
 	\begin{figure}[H]
 		\centering
 		\begin{subfigure}[t]{0.5\textwidth}
@@ -389,13 +389,15 @@ ngerman
 		\caption{Ausgabe des Oszilloskopprogramms in der Zeit- und Frequenzdomäne bei Erfassung des amplitudenmodulierten Signals, das mittels der Soundkarte ausgegeben wird.}
 		\centering
 	\end{figure}
+\fi
 
-	In \cref{fig_tag3_am_soundkarte} sind die Daten dargestellt, die die Speicherfunktion des so erstellten Oszilloskops erzeugt hat.
-	Dass man anhand der Zeitdomäne wenig erkennen kann, liegt an den hohen auftretenden Frequenzen.
-	Dieses Schema ist eines, dass sich für die kommenden Untersuchungen fortsetzen wird, weshalb im Folgenden nur noch die Frequenzdomäne dargestellt werden wird.
-	In der Frequenzdomäne lässt sich hier erkennen, dass die eingestellte Trägerfrequenz von %TODO hart komisch
-	Darüber hinaus ist zu sehen, dass einige zusätzliche Frequenzen erheblicher Leistung auftreten.
-	Diese lassen sich nur durch Störeffekte bei der Erzeugung des Signals durch die Soundkarte erklären. %und theoretisch durch Erfassung, halte ich halt für unwahrscheinlicher
+	Auf das Ergebnis der Modulation wird im folgenden Abschnitt eingegangen.
+	%TODO folgendes nach hinten schieben bei Bild zu Eingangssignal
+	%Dass man anhand der Zeitdomäne wenig erkennen kann, liegt an den hohen auftretenden Frequenzen.
+	%Dieses Schema ist eines, dass sich für die kommenden Untersuchungen fortsetzen wird, weshalb im Folgenden nur noch die Frequenzdomäne dargestellt werden wird.
+	%In der Frequenzdomäne lässt sich hier erkennen, dass die eingestellte Trägerfrequenz von %TODO hart komisch
+	%Darüber hinaus ist zu sehen, dass einige zusätzliche Frequenzen erheblicher Leistung auftreten.
+	%Diese lassen sich nur durch Störeffekte bei der Erzeugung des Signals durch die Soundkarte erklären. %und theoretisch durch Erfassung, halte ich halt für unwahrscheinlicher
 	
 
 	\subsection{Demodulation eines AM-Signals durch Quadrieren und Betragsbildung} \label{DemodulationAM}
@@ -589,7 +591,7 @@ ngerman
 	\end{figure}
 	
 	\section{Phasen- und frequenzmodulierte Signale}
-	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung}eite benötigt
+	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung}
 		
 	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. 
 	

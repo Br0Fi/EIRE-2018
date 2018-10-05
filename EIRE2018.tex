@@ -508,10 +508,9 @@ ngerman
 	%TODO verwendete Frequenzen angeben: i think: Träger 10.000Hz, Signale: 700Hz mit Ampl. 1 und 1000Hz bei Ampl. 3 mit m=0,2
 
 	
-	%TODO gemessen wird NICHT "über die Computer-Soundkarte", sondern "über den Analog-Digital-Wandler in Kombination/Verbindung mit der Computer-Soundkarte"
 	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation} \label{DemodTraeger}
-	%TODO Die txt-Datei-Diagramme fehlen noch	
-	Das allgemeine Ziel dieses Abschnitts ist die Demodulation eines über die Computer-Soundkarte gemessenen amplitudenmodulierten Signals unter Zuhilfenahme der Multiplikation mit der Trägerfrequenz. 
+	
+	Das allgemeine Ziel dieses Abschnitts ist die Demodulation eines über den Analog-Digital-Wandler in Verbindung mit der Computer-Soundkarte gemessenen amplitudenmodulierten Signals unter Zuhilfenahme der Multiplikation mit der Trägerfrequenz. 
 	In der mathematischen Theorie führt das Multiplizieren der amplitudenmodulierten Signal-Funktion mit der Schwingungsfunktion, welche lediglich der Trägerfrequenz des AM-Signals unterliegt, dazu, dass sich mit dem passenden Additionstheorem als Ergebnis eine additive Aneinanderreihung von Schwingungstermen unterschiedlichster Frequenzen bildet. 
 	Letztere lassen sich unter Verwendung einer Fourier-Transformation im Frequenzspektrum dieses neu gewonnenen Schwingungsterms betrachten. 
 	Neben den diversen Peaks an Stellen mit vergleichsweise hohen Frequenzen, befinden sich darin ebenfalls Peaks bei relativ niedrigen Frequenzwerten.
@@ -519,7 +518,7 @@ ngerman
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/Oszilloskop__modifiziertd}
-		\caption{Die Abbildung zeigt das LabVIEW-Blockdiagramm bzw. den Programmcode zur Demodulation eines über die Computer-Soundkarte gemessenen amplitudenmodulierten Signals mittels Trägerfrequenzmultiplikation.}
+		\caption{Die Abbildung zeigt das LabVIEW-Blockdiagramm bzw. den Programmcode zur Demodulation eines über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessenen amplitudenmodulierten Signals mittels Trägerfrequenzmultiplikation.}
 		\label{MultiTraegerProgrammcode}
 	\end{figure}
 
@@ -531,14 +530,14 @@ ngerman
 	Voraussetzung ist dabei das in \cref{DemodulationAM} bereits erstellte Programm.
 	Alle zuvor eingefügten Methoden zur Demodulation (\glqq Quadrat\grqq\ und \glqq Betrag\grqq ) sollen frei auswählbar bleiben.
 	Dafür wird zunächst die Demodulator-Case-Konstruktion um eine weitere Option mit dem Namen \glqq Multiplikation mit Träger\grqq\ ergänzt und somit ein neues, ausfüllbares Case-Feld erzeugt.
-	Darin werden diverse, später näher beschriebene Blockdiagrammobjekte angelegt, welche die Demodulation des über die Computer-Soundkarte gemessenen AM-Signals umsetzten.
+	Darin werden diverse, später näher beschriebene Blockdiagrammobjekte angelegt, welche die Demodulation des über den Analog-Digital-Wandler in Verbindung mit der Computer-Soundkarte gemessenen AM-Signals umsetzten.
 	Zuerst muss hierbei vom Nutzer die Trägerfrequenz des amplitudenmodulierten Signals geraten werden.
-	Dazu wird sowohl ein weiteres Bedienelement auf dem Frontpanel hinzugefügt als auch ein entsprechendes Blockdiagrammobjekt im Programmcode erstellt. %TODO im Deutschen würde es Frontpaneel heißen, ich hab immer Frontplatte geschrieben, würde aber notfalls auch den Anglizismus durchgehen lassen. Wir sollten es aber einheitlich machen, können wir am Ende angleichen
+	Dazu wird sowohl ein weiteres Bedienelement auf dem Frontpanel hinzugefügt als auch ein entsprechendes Blockdiagrammobjekt im Programmcode erstellt.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/Oszilloskop__modifiziertp}
-		\caption{Die Abbildung veranschaulicht die LabVIEW-Benutzeroberfläche bzw. das LabVIEW-Frontpanel des Programms zur Demodulation eines über die Computer-Soundkarte gemessenen AM-Signals mittels Trägerfrequenzmultiplikation. Alle sechs Anzeige- bzw. Ausgabeelemente zeigen in zweidimensionalen, kartesischen Diagrammen das an bestimmten Stellen des Bearbeitungsprozesses abgegriffene AM-Signal, jeweils im Zeitbild und im Frequenzbild mit Hanning-Fenster. Die beiden oberen Diagramme stellen das über die Computer-Soundkarte gemessene AM-Signal vor der Demodulation dar. In den beiden mittleren Diagrammen sieht man das Ergebnis der Demodulation des amplitudenmodulierten Signals ohne Tiefpassfilterung. Die unteren beiden Diagramme veranschaulichen das demodulierte AM-Signal nach der Tiefpassfilterung.}
+		\caption{Die Abbildung veranschaulicht die LabVIEW-Benutzeroberfläche bzw. das LabVIEW-Frontpanel des Programms zur Demodulation eines über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessenen AM-Signals mittels Trägerfrequenzmultiplikation. Alle sechs Anzeige- bzw. Ausgabeelemente zeigen in zweidimensionalen, kartesischen Diagrammen das an bestimmten Stellen des Bearbeitungsprozesses abgegriffene AM-Signal, jeweils im Zeitbild und im Frequenzbild mit Hanning-Fenster. Die beiden oberen Diagramme stellen das über den Analog-Digital-Wandler in Verbindung mit der Computer-Soundkarte gemessene AM-Signal vor der Demodulation dar. In den beiden mittleren Diagrammen sieht man das Ergebnis der Demodulation des amplitudenmodulierten Signals ohne Tiefpassfilterung. Die unteren beiden Diagramme veranschaulichen das demodulierte AM-Signal nach der Tiefpassfilterung.}
 		\label{MultiTraegerFrontpanel}
 	\end{figure}
 
@@ -548,7 +547,7 @@ ngerman
 	Es wird also ein Bereich von $\pm 20\,$Hz um die Trägerfrequenz \glqq herausgeschnitten\glqq . 
 	Die dazugehörige Schwingungsfunktion wird nun mit dem unveränderten, gemessenen amplitudenmodulierten Signal multipliziert. 
 	Das Ergebnis dieser Operation ist, wie zuvor im Theorie-Teil erwähnt, ein breites Frequenzspektrum mit zahlreichen Peaks an unterschiedlich hohen und niedrigen Frequenzwerten, was im rechten, mittleren Diagramm in \cref{MultiTraegerFrontpanel} erkennbar ist. 
-	Überdies sind in \cref{MultiTraegerFrontpanel} noch fünf weitere Anzeigeelemente in Diagramm-Form dargestellt: Die beiden Oberen zeigen das über die Computer-Soundkarte gemessene amplitudenmodulierte Signal ohne Demodulation, zum einen im Zeitbild und zum andern im Frequenzbild. 
+	Überdies sind in \cref{MultiTraegerFrontpanel} noch fünf weitere Anzeigeelemente in Diagramm-Form dargestellt: Die beiden Oberen zeigen das über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessene amplitudenmodulierte Signal ohne Demodulation, zum einen im Zeitbild und zum andern im Frequenzbild. 
 	Im linken, mittleren Anzeigeelement ist ein Diagramm zu sehen, in dem der zeitliche Signalverlauf nach der Durchführung der Trägerfrequenzmultiplikation und somit auch nach der kompletten Demodulation veranschaulicht ist. 
 	Die beiden unteren Anzeigeelemente stellen, sowohl im Zeit- als auch im Frequenzbild, das demodulierte AM-Signal nach der bereits im Theorie-Teil angesprochenen Tiefpassfilterung dar. 
 	Genauso wie in \cref{DemodulationAM} findet die Tiefpassfilterung außerhalb der Demodulator-Case-Konstruktion statt. 
@@ -558,38 +557,49 @@ ngerman
 	
 	Das für den in \cref{MultiTraegerFrontpanel} gezeigten Programmdurchlauf verwendete Ursprungssignal, welches in \cref{AMSignalErzeugung} amplitudenmoduliert wurde und dieselbe Gestalt wie in \cref{Ursprungssignal} besitzt, wird unter anderem durch die Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz bestimmt. 
 	Dies lässt sich insbesondere anhand der Bedienelemente-Einstellung des Frontpanels in \cref{fig_tag3_am_soundkarte_front} nachvollziehen. 
-	Die Demodulation des über die Computer-Soundkarte gemessenen amplitudenmodulierten Signals mittels Trägerfrequenzmultiplikation und die anschließende Tiefpassfilterung führten schlussendlich zu dem Frequenzbild, was unten rechts auf der Benutzeroberfläche in \cref{MultiTraegerFrontpanel} dargestellt ist. 
-	Dieses Frequenzspektrum weist zwei deutliche Peaks bei $700\,$Hz und $1.000\,$Hz auf, welche genau den $f_1$- und $f_2$-Werten des Ursprungssignals entsprechen. 
-	Daher kann man als Fazit sagen, dass es sich wohl um eine erfolgreich funktionierende Amplitudenmodulation sowie Demodulation handelt. 
-	Anzumerken ist noch, dass bei einem größer gewählten Modulationsgrad $m$ in \cref{AMFormel} die Peaks im Frequenzspektrum bei den eingestellten $f_1$- und $f_2$-Werten höher ausfallen und damit leichter zu erkennen sind. Dieser Effekt wird vor allem beim Vergleich von \cref{AMDemodsuccm02} mit \cref{AMDemodsuccm12} deutlich.
-	
+				
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/exaktTraegerRate10000m0,2}
-		\caption{In dieser Abbildung .}
+		\caption{In dieser Abbildung ist das Ergebnis einer erfolgreichen Demodulation des über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessenen AM-Signals zu sehen. Bei diesem Frequenzbild mit Hanning-Fenster handelt sich um das aus \cref{MultiTraegerFrontpanel} bekannte, rechts unten auffindbare Frontpanel-Diagramm. Der Trägerfrequenz-Wert von $10.000\,$Hz wurde exakt geraten. Der Modulationsgrad des AM-Signals beträgt $0,2$. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
 		\label{AMDemodsuccm02}
 	\end{figure}
 
-	\noindent 
-
+	\noindent Die Demodulation des über den Analog-Digital-Wandler in Verbindung mit der Computer-Soundkarte gemessenen amplitudenmodulierten Signals mittels Trägerfrequenzmultiplikation und die anschließende Tiefpassfilterung führten schlussendlich zu dem Frequenzbild, was unten rechts auf der Benutzeroberfläche in \cref{MultiTraegerFrontpanel} dargestellt ist.
+	Dieses Frequenzspektrum weist zwei deutliche Peaks bei $700\,$Hz und $1.000\,$Hz auf, welche genau den $f_1$- und $f_2$-Werten des Ursprungssignals entsprechen. 
+	Daher kann man als Fazit sagen, dass es sich wohl um eine erfolgreich funktionierende Amplitudenmodulation sowie Demodulation handelt. 
+	
+	Anzumerken ist noch, dass bei einem größer gewählten Modulationsgrad $m$ in \cref{AMFormel} die Peaks im Frequenzspektrum bei den eingestellten $f_1$- und $f_2$-Werten höher ausfallen und damit leichter zu erkennen sind. 
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/exaktTraegerRate10000m1,2}
-		\caption{.}
+		\caption{Die Abbildung veranschaulicht das Ergebnis einer erfolgreichen Demodulation des über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen AM-Signals bei einem Modulationsgrad von $m = 1,2$. Bei diesem Frequenzbild mit Hanning-Fenster handelt sich um das aus \cref{MultiTraegerFrontpanel} bekannte, rechts unten auffindbare Frontpanel-Diagramm. Der Trägerfrequenz-Wert von $10.000\,$Hz wurde exakt geraten. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
 		\label{AMDemodsuccm12}
 	\end{figure}
 
-	\noindent 
-
+	\noindent Dieser Effekt wird vor allem beim Vergleich von \cref{AMDemodsuccm02} mit \cref{AMDemodsuccm12} deutlich. 
+	Hierbei liegt nämlich eine Versechsfachung des Modulationsgrads $m$ vor. 
+	
+	Anhand der \cref{AMDemodfailm02} lässt sich erkennen, welche Folgen sich beim Versuch der Demodulation ergeben, sobald man die (geratene) Trägerfrequenz zu weit außerhalb des $\pm 20\,$Hz-Bereichs wählt.
+	Hierbei wurde der Trägerfrequenz-Wert nämlich auf $10.050\,$Hz geraten, gleichwohl die tatsächliche Trägerfrequenz des AM-Signals bei $10.000\,$Hz liegt. 
+	Bei dem in \cref{AMDemodfailm02} gezeigte Frequenzbild mit Hanning-Fenster, welches äquivalent zum aus \cref{MultiTraegerFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm ist, kann man daher nicht die beiden vom Ursprungssignal stammenden Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz ablesen.
+	Denn bei diesen Frequenz-Werten sind keine Peaks zu sehen.
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/nichtexaktTraegerRate10050m0,2}
-		\caption{.}
+		\caption{Die Abbildung zeigt das Ergebnis einer misslungenen Demodulation des über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen AM-Signals. Der geratenen Trägerfrequenz-Wert liegt bei $10.050\,$Hz, die tatsächliche Trägerfrequenz des AM-Signals beträgt jedoch $10.000\,$Hz. Der Wert des Modulationsgrads lautet $0,2$. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
 		\label{AMDemodfailm02}
 	\end{figure}
+
+	\noindent Stattdessen lassen sich in dem Teil des Frequenzspektrums, der nach der Tiefpassfilterung übrig geblieben ist, einige verstreute Peaks unterschiedlicher Höhe und Breite an verschiedenen Frequenz-Werten lokalisieren.
+	Folglich ist die Demodulation mittels Trägerfrequenzmultiplikation in diesem Fall nicht gelungen.
+	
 	
 	\section{Phasen- und frequenzmodulierte Signale}
-	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung}eite benötigt
+	
+	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung}
 		
 	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. 
 	
@@ -692,9 +702,12 @@ ngerman
 	
 	\subsubsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
 	
-	Im Folgenden soll ein über die Computer-Soundkarte gemessenes Signal, welches entweder phasen- oder frequenzmoduliert wurde, demoduliert werden. 
+	Im Folgenden soll ein über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessenes Signal, welches entweder phasen- oder frequenzmoduliert wurde, demoduliert werden. 
 	Das in \cref{DemodTraeger} erhaltene LabVIEW-Programm dient dabei als Vorlage. 
 	Von links nach rechts gelesen, beinhaltet dessen Programmcode, welcher in \cref{MultiTraegerProgrammcode} dargestellt ist, einen Programmteil zur Messdatenaufnahme mittels Analog-Digital-Wandler, einen für die Demodulation von AM-Signalen zuständigen Programmbereich, einen Tiefpassfilter sechzehnter Ordnung, einige Blockdiagrammobjekte zur Realisierung der Anzeige- bzw. Ausgabeelemente auf dem Frontpanel, eine durch den sich auf der Benutzeroberfläche befindlichen \glqq Stopp\grqq -Knopf und eine Speicherfunktion mit dazugehörigem \glqq Speichern\grqq -Knopf.
+	
+	
+	Der Tiefpass wird auf einen Bandpass erweitert, wobei die obere und untere Grenzfrequenz 
 	
 	\begin{figure}[H]
 		\centering

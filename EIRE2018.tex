@@ -326,8 +326,43 @@ ngerman
 	Man stellt fest, dass man vor der Abtastung bereits wissen muss, welche Frequenzen im Signal vorkommen. 
 	
 	\subsection{Unpassende Abtastrate}
-	%Tag3/AbtastTheorem-abtast1000bei1000Punkte
-	%TODO: Vielfaches der Abtastfrequenz
+	Zusätzlich zu den zuvor genannten Effekten kann bei der Abtastung von Signalen noch ein weiterer Effekt auftreten, der im Folgenden kurz beleuchtet werden soll.
+	Dabei wird das Produkt aus Abtastfrequenz und Anzahl der Messpunkte pro Messdurchgang als \enquote{Abtastrate} bezeichnet. %Anführungsstriche gut?
+	Wenn die Signalfrequenz kein Vielfaches der Abtastrate ist, führt dies dazu, dass eine eigentlich scharfe Frequenz im Spektrum unscharf wird und Frequenzen geringerer Intensität in der Nähe dieser überdeckt werden.
+	%Er hat das leider sehr schlecht erklärt und keinerlei Fachbegriffe verwendet, die man hier aufgreifen könnte. Und im Internet hab ich auch nichts zu dem Effekt gefunden, weshalb ich dann halt meine Worte genutzt habe.
+	Auch dies wird absichtlich herbeigeführt und in \crefrange{fig_tag3_unpassend_230hz}{fig_tag3_unpassend_235hz} dargestellt.
+	Hierbei beträgt die Abtastfrequenz \SI{1000}{\hertz} und die Anzahl der Messpunkte pro Messdurchgang \num{100}, woraus sich eine Abtastrate von \SI{10}{\hertz} ergibt.
+	
+	\begin{figure}[H]  
+		\includegraphics[width=0.5\textwidth]{Origin-Files/unpassend_230nonhann}
+		\centering
+		\caption{
+			Spektrum eines Signals mit einer Frequenz von \SI{230}{\hertz}, was ein Vielfaches der Abtastrate ist, weshalb hier die Signalfrequenz scharf zu erkennen ist.
+		}
+		\label{fig_tag3_unpassend_230hz}
+		\centering
+	\end{figure}
+	
+	\begin{figure}[H]  
+		\includegraphics[width=0.5\textwidth]{Origin-Files/unpassend_233nonhann}
+		\centering
+		\caption{
+			Spektrum eines Signals mit einer Frequenz von \SI{233}{\hertz}, was kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird.
+		}
+		\label{fig_tag3_unpassend_233hz}
+		\centering
+	\end{figure}
+	
+	\begin{figure}[H]  
+		\includegraphics[width=0.5\textwidth]{Origin-Files/unpassend_235nonhann}
+		\centering
+		\caption{
+			Spektrum eines Signals mit einer Frequenz von \SI{235}{\hertz}, was kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird.
+		}
+		\label{fig_tag3_unpassend_235hz}
+		\centering
+	\end{figure}
+
 	
 	\section{Amplitudenmodulierte Signale}
 

@@ -91,7 +91,12 @@ ngerman
 	\newpage
 
 %TODO Deckblatt prüfen
+<<<<<<< HEAD
+%TODO sagen, dass man alle Diagramme mit Linienverbindung gemacht hat und warum?
+%TODO am Ende: Begriffe vereinheitlichen
+=======
 %TODO am Ende: Begriffe vereinheitlichen und Größe von Grafiken anpassen
+>>>>>>> 917c53e6bc94470f586ec9da984f268ede097d2e
 
 	\section{Aufbau einer Sinus- bzw. Bessel-Funktion} \label{sinusfkt}
 	
@@ -773,40 +778,45 @@ ngerman
 	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
 	
 	Im Folgenden soll ein über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessenes Signal, welches entweder phasen- oder frequenzmoduliert wurde, demoduliert werden. 
+	Der Programmcode des dafür erstellten LabVIEW-Programms ist in \cref{FMPMDemodProgrammcode1} und \cref{FMPMDemodProgrammcode2} zu sehen.
+	Die \cref{FMPMDemodFrontpanel} zeigt das dazugehörige Frontpanel.
 	Das in \cref{DemodTraeger} erhaltene LabVIEW-Programm dient dabei als Vorlage. 
-	Von links nach rechts gelesen, beinhaltet dessen Programmcode, welcher in \cref{MultiTraegerProgrammcode} dargestellt ist, einen Programmteil zur Messdatenaufnahme mittels Analog-Digital-Wandler, einen für die Demodulation von AM-Signalen zuständigen Programmbereich, einen Tiefpassfilter sechzehnter Ordnung, einige Blockdiagrammobjekte zur Realisierung der Anzeige- bzw. Ausgabeelemente auf dem Frontpanel, eine durch den sich auf der Benutzeroberfläche befindlichen \glqq Stopp\grqq -Knopf und eine Speicherfunktion mit dazugehörigem \glqq Speichern\grqq -Knopf.
+	Von links nach rechts gelesen, beinhaltet dessen Programmcode, welcher in \cref{MultiTraegerProgrammcode} dargestellt ist, einen Programmteil zur Messdatenaufnahme mittels Analog-Digital-Wandler, einen für die Demodulation von (gemessenen) AM-Signalen zuständigen Programmbereich, einen Tiefpassfilter sechzehnter Ordnung, einige Blockdiagrammobjekte zur Realisierung der Anzeige- bzw. Ausgabeelemente auf dem Frontpanel, eine Speicher- und eine Anhalte-Funktion für das Programm mit dem entsprechenden \glqq Speichern\grqq - bzw. \glqq Stopp\grqq -Knopf auf der Benutzeroberfläche.
+	Mit den passenden Erweiterungen und Veränderungen des Programmcodes lässt sich nun die Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen FM- bzw. PM-Signals umsetzen. 
+	Dazu wird eine Case-Konstruktion zwischen dem Programmteil zur Messdatenaufnahme und dem Programmbereich für die Demodulation von amplitudenmodulierten Signalen hinzugefügt, welche insgesamt zwei Case-Optionen umfasst.
 	
-	
-	Der Tiefpass wird auf einen Bandpass erweitert, wobei die obere und untere Grenzfrequenz 
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMd}
-		\caption{.}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMp}
-		\caption{.}
-	\end{figure}
-	
-	\begin{figure}[H] %FM-Diagramm
-		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,005}
-		\caption{.}
+		\caption{Die Abbildung zeigt das LabVIEW-Blockdiagramm bzw. den Programmcode zur Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen, phasen- bzw. frequenzmodulierten Signals.}
+		\label{FMPMDemodProgrammcode1}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/OsziPlusFMPMd5} %Möglicherweise ist 0.8 immer noch zu groß
-		\caption{.}
+		\caption{In dieser Abbildung ist der in \cref{FMPMDemodProgrammcode1} nicht sichtbare Teil des LabVIEW-Programmcodes zu sehen, der notwendig ist, um auf der Benutzeroberfläche des Programms zwischen der Demodulation des FM-Signals und der Demodulation des PM-Signals wechseln zu können. Bei diesem hier abgebildeten Programmcodeteil handelt es sich um die zweite Option in der Case-Konstruktion, mit dessen Hilfe die Demodulation des phasenmodulierten Signals umgesetzt wird.}
+		\label{FMPMDemodProgrammcode2}
 	\end{figure}
-		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMp}
+		\caption{In dieser Abbildung ist die LabVIEW-Benutzeroberfläche bzw. das LabVIEW-Frontpanel des Programms zur Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen, phasen- bzw. frequenzmodulierten Signals dargestellt.}
+		\label{FMPMDemodFrontpanel}
+	\end{figure}
+	
+	\begin{figure}[H] %FM-Diagramm
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,005}
+		\caption{Die Abbildung veranschaulicht . Dieses Frequenzbild mit Hanning-Fenster ist das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
+	\end{figure}
+	
 	\begin{figure}[H] %PM-Diagramm
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,1}
-		\caption{.}
+		\caption{Die Abbildung veranschaulicht . Bei diesem Frequenzbild mit Hanning-Fenster handelt es sich um das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
 	\end{figure}
 	
 	
@@ -814,7 +824,7 @@ ngerman
 	%Fktion nur schön für bestimmten Bereich von k, weil , wenn zu hoch: zu viele Oberwellen, zu klein: demoduliertes Signal geht im Rauschen unter
 	\subsection{Erweiterte Demodulation mit Bandpass und zusätzlicher Integration des Signals}
 	
-	
+	Der Tiefpass wird auf einen Bandpass erweitert, wobei die obere und untere Grenzfrequenz 
 	
 	\begin{figure}[H]
 		\centering

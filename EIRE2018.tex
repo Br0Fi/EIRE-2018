@@ -221,14 +221,26 @@ ngerman
 	Dies verursacht den sogenannten \enquote{Leakage-Effekt}, auf den in \cref{leakage} näher eingegangen wird.
 	
 	\subsection{Abtasttheorem}
-	%TODO kurze Zusammenfassung seiner Theorie-Sachen, hab ich auf Papier
 	Um ein Signal abzutasten, werden im Analog-Digital-Wandler mithilfe einer Sample-and-Hold-Schaltung zeitlich diskrete Messungen durchgeführt.
 	Dies lässt sich als Multiplikation des Signals mit einem Delta-Kamm ausdrücken.
-	Dabei treten Summen- und Differenzfrequenzen der Abtastfrequenz (und deren Oberfrequenzen) und den Frequenzen im Signal auf.
-	Im Frequenzraum ergibt sich hierdurch eine periodische Fortsetzung des Spektrums des ursprünglichen Signals, wobei die Periode der Abtastfrequenz entspricht, wobei auch die Differenzfrequenzen auftauchen. %TODO ist bissl unschön und man braucht vmtl. ein Bild. Ich weiß aber auch nicht, in wiefern man die Theorie noch mal aufrollen soll.
+	Dabei treten Summen- und Differenzfrequenzen von Abtastfrequenz und deren Oberfrequenzen mit den Frequenzen im Signal auf.
+	Im Frequenzraum ergibt sich hierdurch eine periodische Fortsetzung des Spektrums des ursprünglichen Signals, wobei die Periode der Abtastfrequenz entspricht.
+	Dies ist in \cref{fig_Aliasing_veranschaulichung} veranschaulicht.
 	Wenn die Abtastfrequenz hinreichend groß ist, kann man nun mithilfe eines Tiefpasses das Signal herausfiltern.
 	Dazu muss sie allerdings größer als das Doppelte der höchsten im Signal auftretenden Frequenz sein, da sich ansonsten das Spektrum des Signals mit den Differenzfrequenzen der nächsten Periode überlagern.
 	Dies bezeichnet man als Aliasing.
+	
+	\begin{figure}[H]  
+		\includegraphics[width=1\textwidth]{EIRE2018Dateien/sonstige_Dateien/AliasedSpectrum}
+		\centering
+		\caption{
+			Veranschaulichung des Effekts des Aliasing. Dargestellt ist ein Beispielsignal, das mit der Abtastfrequenz $f_S$ abgetastet wurde.
+			Da diese geringer ist als das Doppelte der höchsten Frequenz im Signal $B$, überlappen sich die Perioden im Frequenzraum.
+			Das ursprüngliche Signal kann durch einen Tiefpass nur unter Verlust der höheren Frequenzen rekonstruiert werden. \cite{Aliasing}
+		}
+		\label{fig_Aliasing_veranschaulichung}
+		\centering
+	\end{figure}
 	
 	
 	%eig. zunächst Fertigstellung von Tag2 Teil 1
@@ -390,9 +402,8 @@ ngerman
 \fi
 
 	Auf das Ergebnis der Modulation wird im folgenden Abschnitt eingegangen.
-	%TODO folgendes nach hinten schieben bei Bild zu Eingangssignal
-	%Dass man anhand der Zeitdomäne wenig erkennen kann, liegt an den hohen auftretenden Frequenzen.
-	%Dieses Schema ist eines, dass sich für die kommenden Untersuchungen fortsetzen wird, weshalb im Folgenden nur noch die Frequenzdomäne dargestellt werden wird.
+	
+	%Rausgenommen, weil komisch und nicht wichtig:
 	%In der Frequenzdomäne lässt sich hier erkennen, dass die eingestellte Trägerfrequenz von %TODO hart komisch
 	%Darüber hinaus ist zu sehen, dass einige zusätzliche Frequenzen erheblicher Leistung auftreten.
 	%Diese lassen sich nur durch Störeffekte bei der Erzeugung des Signals durch die Soundkarte erklären. %und theoretisch durch Erfassung, halte ich halt für unwahrscheinlicher
@@ -404,6 +415,9 @@ ngerman
 	Nach diesem Schritt wird das Signal im Zeit- und Frequenzbild dargestellt und danach zusätzlich durch einen Tiefpass geführt, der auftretende höhere Frequenzen herausfiltert, und dann erneut im Zeit- und Frequenzbild dargestellt.
 	Außerdem wird die Speicherung von zuvor erweitert, sodass das Signal vor der Demodulation, vor dem Tiefpass und nach diesem gespeichert werden kann.
 	Das fertige Programm ist in \cref{fig_tag3_am_demod_block} und die zugehörige Frontplatte in \cref{fig_tag3_am_demod_front} dargestellt.
+	Dass man in letzterem anhand der Zeitdomäne wenig erkennen kann, liegt an der Vielzahl und der Größe der auftretenden Frequenzen.
+	Diese Tatsache gilt für alle der kommenden Untersuchungen, weshalb im Folgenden nur noch die Frequenzdomäne dargestellt werden wird.
+	
 
 	\begin{figure}[H]  
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/modifizierterOszi/Oszilloskop__modifiziertd}
@@ -425,13 +439,15 @@ ngerman
 			Die aktuellen Punkte in allen sechs Grafiken können in einer Textdatei gespeichert werden.
 		}
 		\label{fig_tag3_am_demod_front}
-	\centering
+		\centering
 	\end{figure}
 
-	In \crefrange{fig_tag3_am_demod_eingang}{fig_tag3_am_demod_quadrat_vollst} sind die Graphen, die sich aus der durch den \enquote{Speichern}-Knopf erstellten Textdatei ergeben.
+	In \crefrange{fig_tag3_am_demod_eingang}{fig_tag3_am_demod_quadrat_vollst} sind die Graphen, die sich aus der durch den \enquote{Speichern}-Knopf erstellten Textdatei ergeben, dargestellt.
 	All diesen ist gemein, dass neben den rechnerisch durch die Modulation entstehenden Frequenzen noch einige andere von signifikanter Stärke vorhanden sind.
-	Diese müssen auf Störeffekte durch Netzspannung, deren Oberfrequenzen und andere Effekte bei der Erzeugung durch die Soundkarte zurückgeführt werden. %hab ich das nicht schon irgendwo geschrieben?
-	%TODO hier verwendete Frequenzen angeben: i think: Träger 10.000Hz, Signale: 700Hz mit Ampl. 1 und 1000Hz bei Ampl. 3 mit m=0,2
+	Diese müssen auf Störeffekte durch Netzfrequenz, deren Oberfrequenzen und andere Effekte bei der Erzeugung durch die Soundkarte zurückgeführt werden. %hab ich das nicht schon irgendwo geschrieben?
+	Im Folgenden wird immer ein amplitudenmoduliertes Signal mit einer Trägerfrequenz von \SI{10000}{\hertz} verwendet.
+	Vor der Modulation beinhaltet das Signal die Frequenz \SI{700}{\hertz} mit einer relativen Amplitude von \num{1} und die Frequenz \SI{1000}{\hertz} mit einer relativen Amplitude von \num{3}.
+	Als Modulationsgrad wird \num{0,2} gewählt.
 
 	\begin{figure}[H]  
 		\includegraphics[width=0.7\textwidth]{Origin-Files/AM-Demod-Betrag-Eingang}
@@ -497,7 +513,7 @@ ngerman
 		\centering
 	\end{figure}
 
-	\begin{figure}[H] %TODO Der tauscht die letzten beiden: Nach Text schreiben prüfen, maybe not
+	\begin{figure}[H]
 		\centering
 		\begin{subfigure}[t]{0.5\textwidth}
 			\centering
@@ -508,8 +524,9 @@ ngerman
 			\centering
 			\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Quadrat-demod-Bereich}
 			\caption{geringer Frequenzbereich}
+			\label{fig_tag3_am_demod_quadrat_vollst}
 		\end{subfigure}
-		\label{fig_tag3_am_demod_quadrat_vollst}
+	
 		\caption{Ausgabe des Oszilloskopprogramms in der Frequenzdomäne nach vollständiger Demodulation durch Quadrieren und Tiefpassfilterung des amplitudenmodulierten Signals.
 		Als Grenzfrequenz für den Tiefpass wurde \SI{1600}{\hertz} gewählt.
 		Hierfür muss man voraussetzen, dass bekannt ist, in welchem Frequenzbereich sich die Frequenzen im Signal befinden.
@@ -792,7 +809,7 @@ ngerman
 	\end{figure}
 	
 	
-	\printbibliography
+	\printbibliography %ist bissl un
 	
 	
 \end{document}

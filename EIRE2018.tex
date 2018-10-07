@@ -70,7 +70,7 @@ ngerman
 	
 	\begin{titlepage}
 		\centering
-		{\scshape\LARGE Protokoll zu \par}
+		{\scshape\LARGE Protokoll zu \par} %TODO zur oder zu?
 		\vspace{1cm}
 		{\scshape\huge Einführung in rechnergestütztes Experimentieren \par}
 		\vspace{3cm}
@@ -95,7 +95,8 @@ ngerman
 
 	\section{Aufbau einer Sinus- bzw. Bessel-Funktion} \label{sinusfkt}
 	
-	Zunächst soll unter Verwendung des graphischen Programmiersystems \glqq LabVIEW\grqq\ eine Sinus-Funktion realisiert werden. Mithilfe der von LabVIEW zur Verfügung gestellten numerischen Operationen, Konstanten und Schleifen lässt sich ein Programm schreiben, welches eine Sinusschwingung $u$ der Form
+	Zunächst soll unter Verwendung des graphischen Programmiersystems \glqq LabVIEW\grqq\ eine Sinus-Funktion realisiert werden. %TODO Programmiersystem->Programmiersprache
+	Mithilfe der von LabVIEW zur Verfügung gestellten numerischen Operationen, Konstanten und Schleifen lässt sich ein Programm schreiben, welches eine Sinusschwingung $u$ der Form %TODO ich würde hier VI: Visual Instrument verwenden. Deine Begriffe decken nicht viel ab
 	
 	\begin{equation} \label{u}
 	u(A,f,t,\varphi) = A \cdot \sin(2\pi f t + \varphi) \ ,
@@ -107,17 +108,19 @@ ngerman
 	t = \frac{i}{N}
 	\end{equation}
 	
-	\noindent gegeben. $N$ ist dabei die Zahl der Stützstellen und zugleich die Anzahl der zu berechnenden Wertepaare. Der Index $i$ kann Werte im Bereich zwischen $0$ und $N$ annehmen. Der besagte Programmcode befindet sich im Blockdiagramm von LabVIEW und ist in \cref{sinusbesselprogrammcode} zu sehen. 
+	\noindent gegeben. $N$ ist dabei die Zahl der Stützstellen und zugleich die Anzahl der zu berechnenden Wertepaare. Der Index $i$ kann Werte im Bereich zwischen $0$ und $N$ annehmen. Der zugehörige Programmcode, das Blockdiagramm in LabVIEW, ist in \cref{sinusbesselprogrammcode} zu sehen. 
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesseld}
-		\caption{Die Abbildung zeigt ein LabVIEW-Blockdiagramm sowie den Aufbau des Programms zur Umsetzung einer Sinus- bzw. Bessel-Funktion. Die eigentliche Werte-Berechnung findet innerhalb der For-Schleife statt. Dazu werden feste, aber beliebige Fließkommazahlen für die Amplitude $A$, die Zahl der Punkte $N$, die Frequenz $f$, die Phase $\varphi$ und die Ordnung $\nu$ der Bessel-Funktion herangezogen. Die Ausgabe der Wertepaare erfolgt in Form zweier $X$-$Y$-Graphen sowie Arrays.}
+		\caption{Die Abbildung zeigt ein LabVIEW-Blockdiagramm, also den Aufbau des Programms, zur Umsetzung einer Sinus- und Bessel-Funktion. Die eigentliche Berechnung findet innerhalb der For-Schleife statt. Dazu werden feste, aber beliebige Fließkommazahlen für die Amplitude $A$, die Zahl der Punkte $N$, die Frequenz $f$, die Phase $\varphi$ und die Ordnung $\nu$ der Bessel-Funktion herangezogen, nachdem sie auf der Frontplatte eingestellt wurden. Die Ausgabe der Wertepaare erfolgt in Form zweier $X$-$Y$-Graphen sowie Arrays.}
 		\label{sinusbesselprogrammcode}
 	\end{figure}
 
-	\noindent Das dazugehörige ausgegebene Frontpanel ist in \cref{sinusbesselausgabe} erkennbar. Die Gleitkommazahlen-Werte für $A$, $f$, $N$ und $\varphi$ sollen frei wählbar sein, zumal $u$ insbesondere von diesen abhängt. Das Programm ist daher so eingerichtet, dass auf der linken Seite des Frontpanels die entsprechenden Bedien- bzw. Eingabeelemente erscheinen. Unter gleichem Namen sind die jeweiligen Blockdiagrammobjekte im Programmcode zu finden. Im Zentrum des Programmcodes in \cref{sinusbesselprogrammcode} lässt sich eine For-Schleife erkennen. Gemäß \cref{u} sowie \cref{t} findet in dieser unter Verwendung des Laufindexes $i$ die tatsächliche Berechnung der $t$- und $u$-Werte statt. Die Blockdiagrammobjekte auf der rechten Seite des Programmcodes in \cref{sinusbesselprogrammcode} bilden die Anzeige- bzw. Ausgabeelemente des Frontpanels in \cref{sinusbesselausgabe}. Zum einen werden dabei zwei $N+1$ Einträge umfassende, eindimensionale Arrays angelegt, die jeweils alle $t$- sowie sämtliche $u$-Werte beinhalten und zum anderen wird ein $X$-$Y$-Diagramm erzeugt, in dem alle $u$-Werte gegen die entsprechenden $t$-Werte aufgetragen sind. Demnach befindet sich $t$ auf der $x$-Achse und $u$ auf der $y$-Achse. Um nun die Informationsübertragung zu bewerkstelligen, ist es notwendig im Programmcode vor den Anschlüssen der \glqq Build XY Graph\grqq -Kästen weitere Blockdiagrammobjekte hinzuzufügen, welche das Leitungssignal in ein für das Anzeigeelement ($X$-$Y$-Diagramm) passendes Eingangssignal umwandeln. Zumeist geschieht dies in LabVIEW automatisch und wird dann an der entsprechenden Stelle auf der Leitung mit einem kleinen, roten Punkt markiert.
-			
+	\noindent Das dazugehörige ausgegebene Frontpanel ist in \cref{sinusbesselausgabe} erkennbar. Die Gleitkommazahlen-Werte für $A$, $f$, $N$ und $\varphi$ sollen frei wählbar sein, zumal $u$ insbesondere von diesen abhängt. Das Programm ist daher so eingerichtet, dass auf der linken Seite des Frontpanels die entsprechenden Bedien- bzw. Eingabeelemente erscheinen. Unter gleichem Namen sind die jeweiligen Blockdiagrammobjekte im Programmcode zu finden. Im Zentrum des Programmcodes in \cref{sinusbesselprogrammcode} lässt sich eine For-Schleife erkennen. Gemäß \cref{u} sowie \cref{t} findet in dieser unter Verwendung des Laufindexes $i$ die tatsächliche Berechnung der $t$- und $u$-Werte statt. Die Blockdiagrammobjekte auf der rechten Seite des Programmcodes in \cref{sinusbesselprogrammcode} bilden die Anzeige- bzw. Ausgabeelemente des Frontpanels in \cref{sinusbesselausgabe}. Zum einen werden dabei zwei $N+1$ Einträge umfassende, eindimensionale Arrays angelegt, die jeweils alle $t$- sowie sämtliche $u$-Werte beinhalten und zum anderen wird ein $X$-$Y$-Diagramm erzeugt, in dem alle $u$-Werte gegen die entsprechenden $t$-Werte aufgetragen sind.
+	Demnach befindet sich $t$ auf der $x$-Achse und $u$ auf der $y$-Achse. %TODO wieso "demnach"? Das folgt doch nicht aus dem davor. Schreib halt "Dabei"
+	Um nun die Informationsübertragung zu bewerkstelligen, ist es notwendig im Programmcode vor den Anschlüssen der \glqq Build XY Graph\grqq -VIs weitere Blockdiagrammobjekte hinzuzufügen, welche das Leitungssignal in ein für das Anzeigeelement ($X$-$Y$-Diagramm) passendes Eingangssignal umwandeln. Zumeist geschieht dies in LabVIEW automatisch und wird dann an der entsprechenden Stelle auf der Leitung mit einem kleinen roten Punkt markiert.
+
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesselp}
@@ -128,16 +131,16 @@ ngerman
 	\noindent Zusätzlich zur Sinus-Funktion wird eine Bessel-Funktion erster Gattung $J_{\nu}$ mit LabVIEW realisiert und ebenfalls in das Programm in \cref{sinusbesselprogrammcode} mit aufgenommen. Das entsprechende Blockdiagrammobjekt ist mit \glqq $J_{\nu}(x)$ Bessel\grqq\ gekennzeichnet. Die Bessel-Funktion besitzt die allgemeine Form
 	
 	\begin{equation}
-	J_{\nu}(x) = \sum_{j=0}^{\infty}\frac{(-1)^j \cdot \left( \frac{x}{2}\right) ^{2j+\nu}}{j! \cdot \Gamma(\nu + j + 1)} \ .
+	J_{\nu}(x) = \sum_{j=0}^{\infty}\frac{(-1)^j \cdot \left( \frac{x}{2}\right) ^{2j+\nu}}{j! \cdot \Gamma(\nu + j + 1)} \ . %das juckt niemanden. aber jetzt ists auch egal
 	\end{equation}
 	
-	\noindent Wobei $\nu$ die Ordnung der Bessel-Funktion bildet, $\Gamma(\cdot)$ die Gamma-Funktion darstellt und $x$ auf Basis des Programmcodes in \cref{sinusbesselprogrammcode} als 
+	\noindent Wobei $\nu$ die Ordnung der Bessel-Funktion bildet, $\Gamma(\cdot)$ die Gamma-Funktion darstellt und $x$ auf Basis des Programmcodes in \cref{sinusbesselprogrammcode} als %eigentlich fängt man Sätze nicht mit Wobei an sondern nur Nebensätze
 	
 	\begin{equation}
 	x := 2\pi f t + \varphi = \frac{2\pi f \cdot i}{N} + \varphi
 	\end{equation}
 	
-	\noindent definiert ist. Der Fließkommazahlen-Wert für $\nu$ ist, ähnlich wie beim Sinus-Programm, über das entsprechende Bedienelement auf der linken Seite des Frontpanels einstellbar, was in \cref{sinusbesselausgabe} zu erkennen ist. Genauso wie beim Sinus-Programm findet die Berechnung der $x$- und $J_{\nu}(x)$-Werte innerhalb der For-Schleife statt. Die Werteausgabe erfolgt in Form eines $X$-$Y$-Diagramms, dessen Anzeigeelement im unteren Bereich der \cref{sinusbesselausgabe} ersichtlich ist und in dem $J_{\nu}(x)$ als Funktion von $x$ dargestellt ist. Zudem muss das Eingangssignal für das dazugehörige Blockdiagrammobjekt in \cref{sinusbesselprogrammcode} passend umgewandelt werden, so wie zuvor beim Sinus-Programm. 
+	\noindent definiert ist. Der Fließkommazahlen-Wert für $\nu$ ist, ähnlich wie beim Sinus-Programm, über das entsprechende Bedienelement auf der linken Seite des Frontpanels einstellbar, was in \cref{sinusbesselausgabe} zu erkennen ist. Genauso wie beim Sinus-Programm findet die Berechnung der $x$- und $J_{\nu}(x)$-Werte innerhalb der For-Schleife statt. Die Werteausgabe erfolgt in Form eines $X$-$Y$-Diagramms, dessen Anzeigeelement im unteren Bereich der \cref{sinusbesselausgabe} ersichtlich ist und in dem $J_{\nu}(x)$ als Funktion von $x$ dargestellt ist. Zudem muss das Eingangssignal so wie zuvor beim Sinus-Programm für das dazugehörige Blockdiagrammobjekt in \cref{sinusbesselprogrammcode} passend umgewandelt werden.
 
 	\begin{figure}[H]
 		\centering
@@ -146,7 +149,7 @@ ngerman
 		\label{sinusbesselicon}
 	\end{figure}
 	
-	\noindent LabVIEW bietet die Möglichkeit ein bereits vorhandenes, selbst geschriebenes, funktionsfähiges Programm so zu bearbeiten, dass es für andere LabVIEW-Programme bzw. -Projekte als Blockdiagrammobjekt nutzbar wird. Dazu müssen zunächst die Anschlüsse festgelegt werden, sowohl die Eingänge als auch die Ausgänge. Allgemein kann es sich dabei um verschiedenste Arten von Ein-und Ausgangssignalen handeln. Bei der programmierten Sinus-Funktion verhält es sich demnach so, dass fünf Eingangs- und zwei Ausgangsanschlüsse generiert werden müssen, welche jeweils nur Gleitkommazahlen annehmen bzw. übergeben. Die Amplitude $A$, die Frequenz $f$, die Phasenverschiebung $\varphi$, die Anzahl der Punkte $N$ und die Ordnung $\nu$ der Bessel-Funktion bilden hierbei die Eingänge, die $t$-Werte sowie die $u$- bzw. $y$-Werte erscheinen über die beiden Ausgänge. Des Weiteren ist es in LabVIEW möglich das entsprechende Blockdiagrammobjekt-Icon des Programms zu gestalten. Das komplette Resultat ist in \cref{sinusbesselicon} dargestellt.
+	\noindent LabVIEW bietet die Möglichkeit ein bereits vorhandenes, selbst geschriebenes, funktionsfähiges Programm so zu bearbeiten, dass es für andere LabVIEW-Programme bzw. -Projekte als Blockdiagrammobjekt nutzbar wird. Dazu müssen zunächst die Anschlüsse sowohl die der Eingänge als auch die der  Ausgänge \enquote{verkabelt} werden. Allgemein kann es sich dabei um verschiedenste Arten von Ein-und Ausgangssignalen handeln. Bei der programmierten Sinus-Funktion verhält es sich demnach so, dass fünf Eingangs- und zwei Ausgangsanschlüsse generiert werden müssen, welche jeweils nur Gleitkommazahlen annehmen bzw. übergeben. Die Amplitude $A$, die Frequenz $f$, die Phasenverschiebung $\varphi$, die Anzahl der Punkte $N$ und die Ordnung $\nu$ der Bessel-Funktion bilden hierbei die Eingänge, die $t$-Werte sowie die $u$- bzw. $y$-Werte erscheinen über die beiden Ausgänge. Des Weiteren ist es in LabVIEW möglich das entsprechende Blockdiagrammobjekt-Icon des Programms zu gestalten. Das komplette Resultat ist in \cref{sinusbesselicon} dargestellt.
 	
 	\emph{Hinweis:} Aus der Betrachtung des Programmcodes in \cref{sinusbesselprogrammcode} geht hervor, dass das Blockdiagrammobjekt, welches das Array-Ausgabeelement des Frontpanels bildet und alle $u$-Werte abgreifen soll, inkorrekt eingefügt ist. Denn anstelle einer Implementierung nach der Multiplikation mit der Amplitude $A$, befindet sich das besagte Blockdiagrammobjekt davor. Sodass das Array lediglich die Werte des Ausdrucks
 	
@@ -154,7 +157,7 @@ ngerman
 	\sin(2\pi f t + \varphi)
 	\end{equation}
 	
-	\noindent angibt, welche zwischen $-1$ und $1$ liegen. Da die Ausgabefunktion als Array einen erheblichen Einfluss auf das folgende Vorgehen hat, kann mit dem Sinus-Programm in dieser Form nicht weitergearbeitet werden. Im weiteren Verlauf der Projektbearbeitung ist der beschriebene Fehler allerdings behoben worden. Eine berichtigte, aktualisierte Version des Programms liegt an dieser Stelle jedoch nicht vor.
+	\noindent angibt, welche zwischen $-1$ und $1$ liegen. Da die Ausgabefunktion als Array einen erheblichen Einfluss auf das folgende Vorgehen hat, kann mit dem Sinus-Programm in dieser Form nicht weitergearbeitet werden. Im weiteren Verlauf der Projektbearbeitung ist der beschriebene Fehler allerdings behoben worden. Eine berichtigte, aktualisierte Abbildung des Programms liegt an dieser Stelle jedoch nicht vor.
 	\label{sinus_amp_fehler}
 	
 	\section{Lissajous-Figuren}
@@ -170,11 +173,11 @@ ngerman
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag1/lissajous-bilder/Lissajousd}
-		\caption{Dargestellt ist das Blockdiagramm und der LabVIEW-Programmcode, mit dem sich Lissajous-Figuren realisieren lassen.}
+		\caption{Dargestellt ist das Blockdiagramm, also der LabVIEW-Programmcode, mit dem sich Lissajous-Figuren realisieren lassen.}
 		\label{lissajousprogrammcode}
 	\end{figure}
 
-	\noindent Das dazugehörige LabVIEW-Programm sowie dessen Blockdiagramm und Programmcode sind in \cref{lissajousprogrammcode} zu erkennen. Die in \cref{sinusfkt} erstellte Sinus-Funktion bildet die Grundlage, denn mit dieser lassen sich die beiden separaten Schwingungen $u_1$ und $u_2$ aus \cref{u1u2} realisieren. Dabei ist es möglich das Sinus-Programm als Blockdiagrammobjekt in den Programmcode einfügen, jeweils einmal für $u_1$ und $u_2$, was in \cref{lissajousprogrammcode} deutlich wird. An die offenen Eingangsanschlüsse müssen entsprechende, sogenannte \glqq Controler\grqq\ für die Frequenzen $f_1$ und $f_2$, für die Phasenverschiebungen $\varphi_1$ und $\varphi_2$ sowie für die Zahl der Stützstellen $N$ angeschlossen werden. Die dazugehörigen Bedien- bzw. Eingabeelemente befinden sich links auf dem Frontpanel des Programms, so wie es in \cref{lissajous} dargestellt ist. Für die Amplituden soll einfachheitshalber $A_1 = A_2 = 1$ gelten.
+	\noindent Der dazugehörige Programmcode ist in \cref{lissajousprogrammcode} zu erkennen. Die in \cref{sinusfkt} erstellte Sinus-Funktion bildet die Grundlage, denn mit dieser lassen sich die beiden separaten Schwingungen $u_1$ und $u_2$ aus \cref{u1u2} realisieren. Dabei ist es möglich das Sinus-Programm als Blockdiagrammobjekt in den Programmcode einfügen, jeweils einmal für $u_1$ und $u_2$, was in \cref{lissajousprogrammcode} deutlich wird. An die offenen Eingangsanschlüsse müssen entsprechende, sogenannte \glqq Controls\grqq\ für die Frequenzen $f_1$ und $f_2$, für die Phasenverschiebungen $\varphi_1$ und $\varphi_2$ sowie für die Zahl der Stützstellen $N$ angeschlossen werden. Die dazugehörigen Bedien- bzw. Eingabeelemente befinden sich links auf dem Frontpanel des Programms, so wie es in \cref{lissajous} dargestellt ist. Für die Amplituden soll einfachheitshalber $A_1 = A_2 = 1$ gelten.
 
 	\begin{figure}[H]
 		\centering
@@ -189,14 +192,14 @@ ngerman
 	\section{Digitales Oszilloskop mit ExpressVI}
 	Es wird ein Funktionsgenerator verwendet.
 	Dessen Signal wird über einen Analog-Digital-Wandler durch den Computer erfasst.
-	Zunächst wird das Signal in LabView mit dem entsprechenden ExpressVI verarbeitet.
+	Zunächst wird das Signal in LabView mit dem entsprechenden ExpressVI verarbeitet, welches dem Nutzer große Teile des Konfigurationsvorgangs abnimmt.
 	Das zugehörige Programm ist in \cref{fig_tag2_oszi_express_block} und die Frontplatte in \cref{fig_tag2_oszi_express_front} dargestellt.
 	
 	\begin{figure}[H]  
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag2/expressVI_1d}
 		\centering
 		\caption{
-			Einfaches Oszilloskop mithilfe des ExpressVIs zur Verarbeitung von Daten von Messgeräten.
+			Einfaches Oszilloskop mithilfe des ExpressVIs zur Erfassung von Daten von Messgeräten. Das Programm erlaubt die graphische Darstellung einer Wellenform.
 		}
 		\label{fig_tag2_oszi_express_block}
 		\centering
@@ -205,7 +208,7 @@ ngerman
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag2/expressVI_1p}
 		\centering
 		\caption{
-			Frontplatte des einfachen Oszilloskop mithilfe des ExpressVIs zur Verarbeitung von Daten von Messgeräten. Dabei wurde durch den Funktionsgenerator ein sinusförmiges Signal ausgegeben.
+			Frontplatte des einfachen Oszilloskop mithilfe des ExpressVIs zur Erfassung von Daten von Messgeräten. Dabei wurde durch den Funktionsgenerator ein sinusförmiges Signal ausgegeben.
 		}
 		\label{fig_tag2_oszi_express_front}
 	\centering
@@ -217,7 +220,7 @@ ngerman
 	\subsection{Fouriertheorem} %kp, ob man so Theorie wiedergeben soll und ob man das mit Bindestrich schreibt.
 	Gemäß des Fouriertheorems kann jede periodische Funktion als Fourierreihe bzw. Fourierintegral ausgedrückt werden.
 	Dies ist nützlich bei der Zerlegung eines möglicherweise verrauschten Signals in seine Bestandteile.
-	Das grundsätzliche Problem hierbei ist, dass Messprozesse immer zeitlich begrenzt ist, weshalb das Signal nicht bis in die positive und negative Unendlichkeit periodisch sein kann.
+	Das grundsätzliche Problem hierbei ist, dass Messprozesse immer zeitlich begrenzt sind, weshalb das Signal nicht bis in die positive und negative Unendlichkeit periodisch sein kann.
 	Dies verursacht den sogenannten \enquote{Leakage-Effekt}, auf den in \cref{leakage} näher eingegangen wird.
 	
 	\subsection{Abtasttheorem}
@@ -228,7 +231,7 @@ ngerman
 	Dies ist in \cref{fig_Aliasing_veranschaulichung} veranschaulicht.
 	Wenn die Abtastfrequenz hinreichend groß ist, kann man nun mithilfe eines Tiefpasses das Signal herausfiltern.
 	Dazu muss sie allerdings größer als das Doppelte der höchsten im Signal auftretenden Frequenz sein, da sich ansonsten das Spektrum des Signals mit den Differenzfrequenzen der nächsten Periode überlagern.
-	Dies bezeichnet man als Aliasing.
+	Wenn dies geschieht, bezeichnet man es als Aliasing.
 	
 	\begin{figure}[H]  
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/sonstige_Dateien/AliasedSpectrum}
@@ -267,8 +270,8 @@ ngerman
 	
 
 	\subsection{Digitales Oszilloskop ohne ExpressVI} % hier ist halt die Tagreihenfolge bissl gebrochen. Ich glaube, wir haben das an Tag 2 angefangen und Tag 3 beendet
-	Das Oszilloskopprogramm von zuvor wird ersetzt durch eines, dass anstelle des ExpressVIs Konfiguration, Messung und Cleanup getrennt enthält.
-	Dieses ist in \cref{fig_tag23_oszi_manuell_block} dargestellt, während in \cref{fig_tag23_oszi_manuell_front} die Frontplatte bei einem Eingangssignal von \SI{600}{\hertz}.
+	Das Oszilloskopprogramm von zuvor wird ersetzt durch eines, das anstelle des ExpressVIs Konfiguration, Messung und Cleanup getrennt enthält.
+	Dieses ist in \cref{fig_tag23_oszi_manuell_block} dargestellt, während in \cref{fig_tag23_oszi_manuell_front} die Frontplatte bei einem Eingangssignal von \SI{600}{\hertz} abgebildet ist.
 	
 	\begin{figure}[H]  
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/ManuellVId}
@@ -292,12 +295,12 @@ ngerman
 		\centering
 	\end{figure}
 
-	Hierbei wurde ebenfalls die Möglichkeit die aktuellen Messwerte zu speichern eingeführt.
-	Dazu wurden die Strukturen, die in den Diagrammen dargestellt werden in ihre Bestandteile zerlegt und die Arrays der Y-Werte mit zwei Arrays für fortlaufende Zeit- und Frequenzwerte kombiniert und der Speicherfunktion zugeführt.
+	Hierbei wird ebenfalls die Möglichkeit die aktuellen Messwerte zu speichern eingeführt.
+	Dazu werden die Strukturen aus verschiedenen Datentypen, die in den Diagrammen dargestellt werden, in ihre Bestandteile zerlegt und die Arrays der Y-Werte mit zwei Arrays für fortlaufende Zeit- und Frequenzwerte kombiniert und der Speicherfunktion zugeführt.
 	Der Speichervorgang befindet sich innerhalb eines case-Konstrukts, das ignoriert wird, solange der Speichern-Knopf nicht gedrückt wurde.
 	Außerdem werden Fehlermeldungen einer Fehlerdialogfunktion zugeführt, die dem Nutzer erlaubt bei Fehlern wahlweise das Programm anzuhalten oder weiterlaufen zu lassen.
 	Um ein Volllaufen des Mess-Buffers zu vermeiden, wird dieser doppelt so groß wie die Anzahl der Messpunkte pro Zyklus gewählt.
-	
+	%TODO Leonut hier ansetzen mit lesen
 	\subsection{Aliasing}
 	Um den Effekt des Aliasings absichtlich herbeizuführen, werden bei einer Abtastfrequenz von \SI{1000}{\hertz} zwei verschiedene Signale abgetastet.
 	Da bei dieser Abtastfrequenz die höchste Frequenz im Signal kleiner als \SI{500}{\hertz} sein muss, ist hierbei zu erwarten, dass ein Signal von \SI{400}{\hertz} korrekt abgetastet wird, während eines mit \SI{600}{\hertz} falsch abgetastet wird.
@@ -326,18 +329,18 @@ ngerman
 	Man stellt fest, dass man vor der Abtastung bereits wissen muss, welche Frequenzen im Signal vorkommen. 
 	
 	\subsection{Unpassende Abtastrate}
-	Zusätzlich zu den zuvor genannten Effekten kann bei der Abtastung von Signalen noch ein weiterer Effekt auftreten, der im Folgenden kurz beleuchtet werden soll.
-	Dabei wird das Produkt aus Abtastfrequenz und Anzahl der Messpunkte pro Messdurchgang als \enquote{Abtastrate} bezeichnet. %Anführungsstriche gut?
+	Um den Leakage-Effekt, der in \cref{leakage} beschrieben wurde, zu bebildern, wird er in \crefrange{fig_tag3_unpassend_230hz}{fig_tag3_unpassend_235hz} absichtlich herbeigeführt.
+	Dabei wird hier das Produkt aus Abtastfrequenz und Anzahl der Messpunkte pro Messdurchgang als \enquote{Abtastrate} bezeichnet. %Anführungsstriche gut?
+	Hier beträgt die Abtastfrequenz \SI{1000}{\hertz} und die Anzahl der Messpunkte pro Messdurchgang \num{100}, woraus sich eine Abtastrate von \SI{10}{\hertz} ergibt.
 	Wenn die Signalfrequenz kein Vielfaches der Abtastrate ist, führt dies dazu, dass eine eigentlich scharfe Frequenz im Spektrum unscharf wird und Frequenzen geringerer Intensität in der Nähe dieser überdeckt werden.
-	%Er hat das leider sehr schlecht erklärt und keinerlei Fachbegriffe verwendet, die man hier aufgreifen könnte. Und im Internet hab ich auch nichts zu dem Effekt gefunden, weshalb ich dann halt meine Worte genutzt habe.
-	Auch dies wird absichtlich herbeigeführt und in \crefrange{fig_tag3_unpassend_230hz}{fig_tag3_unpassend_235hz} dargestellt.
-	Hierbei beträgt die Abtastfrequenz \SI{1000}{\hertz} und die Anzahl der Messpunkte pro Messdurchgang \num{100}, woraus sich eine Abtastrate von \SI{10}{\hertz} ergibt.
+	%mir ist erst spät klar geworden, dass das der fenster-Kram ist.
+	
 	
 	\begin{figure}[H]  
 		\includegraphics[width=0.5\textwidth]{Origin-Files/unpassend_230nonhann}
 		\centering
 		\caption{
-			Spektrum eines Signals mit einer Frequenz von \SI{230}{\hertz}, was ein Vielfaches der Abtastrate ist, weshalb hier die Signalfrequenz scharf zu erkennen ist.
+			Spektrum eines Signals mit einer Frequenz von \SI{230}{\hertz}, was ein Vielfaches der Abtastrate ist, weshalb hier die Signalfrequenz scharf zu erkennen ist. Eine Fensterfunktion wurde hier nicht verwendet.
 		}
 		\label{fig_tag3_unpassend_230hz}
 		\centering
@@ -347,7 +350,7 @@ ngerman
 		\includegraphics[width=0.5\textwidth]{Origin-Files/unpassend_233nonhann}
 		\centering
 		\caption{
-			Spektrum eines Signals mit einer Frequenz von \SI{233}{\hertz}, was kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird.
+			Spektrum eines Signals mit einer Frequenz von \SI{233}{\hertz}, was kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird. Eine Fensterfunktion wurde hier nicht verwendet.
 		}
 		\label{fig_tag3_unpassend_233hz}
 		\centering
@@ -357,13 +360,13 @@ ngerman
 		\includegraphics[width=0.5\textwidth]{Origin-Files/unpassend_235nonhann}
 		\centering
 		\caption{
-			Spektrum eines Signals mit einer Frequenz von \SI{235}{\hertz}, was kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird.
+			Spektrum eines Signals mit einer Frequenz von \SI{235}{\hertz}, was kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird. Eine Fensterfunktion wurde hier nicht verwendet.
 		}
 		\label{fig_tag3_unpassend_235hz}
 		\centering
 	\end{figure}
 
-	
+
 	\section{Amplitudenmodulierte Signale}
 
 	\subsection{Erzeugung eines amplitudenmodulierten Signals} \label{AMSignalErzeugung}

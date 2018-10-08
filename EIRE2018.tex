@@ -96,8 +96,8 @@ ngerman
 
 	\section{Aufbau einer Sinus- bzw. Bessel-Funktion} \label{sinusfkt}
 	
-	Zunächst soll unter Verwendung des graphischen Programmiersystems \glqq LabVIEW\grqq\ eine Sinus-Funktion realisiert werden. %TODO Programmiersystem->Programmiersprache
-	Mithilfe der von LabVIEW zur Verfügung gestellten numerischen Operationen, Konstanten und Schleifen (sogenannten \enquote{Visual Instruments} oder einfach VIs)lässt sich ein Programm schreiben, welches eine Sinusschwingung $u$ der Form
+	Zunächst soll unter Verwendung der graphischen Programmiersprache \glqq LabVIEW\grqq\ eine Sinus-Funktion realisiert werden.
+	Mithilfe der von LabVIEW zur Verfügung gestellten numerischen Operationen, Konstanten und Schleifen (sogenannten \enquote{Visual Instruments} oder einfach VIs) lässt sich ein Programm schreiben, welches eine Sinusschwingung $u$ der Form
 	
 	\begin{equation} \label{u}
 	u(A,f,t,\varphi) = A \cdot \sin(2\pi f t + \varphi) \ ,
@@ -301,7 +301,6 @@ ngerman
 	Der Speichervorgang befindet sich innerhalb eines case-Konstrukts, das ignoriert wird, solange der Speichern-Knopf nicht gedrückt wurde.
 	Außerdem werden Fehlermeldungen einer Fehlerdialogfunktion zugeführt, die dem Nutzer erlaubt bei Fehlern wahlweise das Programm anzuhalten oder weiterlaufen zu lassen.
 	Um ein Volllaufen des Mess-Buffers zu vermeiden, wird dieser doppelt so groß wie die Anzahl der Messpunkte pro Zyklus gewählt.
-	%TODO Leonut hier ansetzen mit lesen
 	\subsection{Aliasing}
 	Um den Effekt des Aliasings absichtlich herbeizuführen, werden bei einer Abtastfrequenz von \SI{1000}{\hertz} zwei verschiedene Signale abgetastet.
 	Da bei dieser Abtastfrequenz die höchste Frequenz im Signal kleiner als \SI{500}{\hertz} sein muss, ist hierbei zu erwarten, dass ein Signal von \SI{400}{\hertz} korrekt abgetastet wird, während eines mit \SI{600}{\hertz} falsch abgetastet wird.
@@ -319,13 +318,14 @@ ngerman
 			\includegraphics[width=1\textwidth]{Origin-Files/aliasing_abtast1000bei600sig}
 			\caption{\SI{600}{\hertz}}
 		\end{subfigure}
+		
+		\caption{Mit einer Abtastfrequenz von \SI{1000}{\hertz} abgetastete Signale, deren Frequenz einmal \SI{400}{\hertz} und einmal \SI{600}{\hertz} beträgt, sodass einmal korrekt und einmal falsch abgetastet wird. Um die Sichtbarkeit zu verbessern und die übliche Oszilloskop-Optik zu erreichen, wurden die Messpunkte hier und in den folgenden Darstellungen mit einer Linie verbunden.} %mir gefällt nicht ganz, dass das in einer caption steht, aber überall sonst wäre auch nicht optimal von daher frack it
 		\label{fig_ali}
-		\caption{Mit einer Abtastfrequenz von \SI{1000}{\hertz} abgetastete Signale, deren Frequenz einmal \SI{400}{\hertz} und einmal \SI{600}{\hertz} beträgt, sodass einmal korrekt und einmal falsch abgetastet wird. Um die Sichtbarkeit zu verbessern und die übliche Oszilloskop-Optik zu erreichen, wurden die Messpunkte hier und in den folgenden Darstellungen mit einer Linie verbunden.} %TODO letzten Satz approven und sicherstellen, dass du den nicht außerhalb einer caption haben willst.
 		\centering
 	\end{figure}
 	
 	Es fällt auf, dass sich zwischen diesen beiden Signalen kein Unterschied erkennen lässt.
-	Dies liegt daran, dass bei einer Signalfrequenz von \SI{600}{\hertz} die eigentliche Signalfrequenz nicht mehr vom idealen Tiefpass übertragen wird, während die Differenzfrequenz von Abtastfrequenz und Signalfrequenz \SI{400}{\hertz} beträgt.
+	Dies liegt daran, dass bei einer Signalfrequenz von \SI{600}{\hertz} die eigentliche Signalfrequenz nicht mehr vom idealen Tiefpass übertragen wird, während die Differenzfrequenz von Abtastfrequenz und Signalfrequenz \SI{400}{\hertz} beträgt und noch übertragen wird.
 	Es ist an den beiden Signalen zu erkennen, dass sich ein falsch abgetastetes Signal nicht mehr von einem korrekt abgetasteten Signal bei der entsprechenden Differenzfrequenz unterscheiden lässt.
 	Man stellt fest, dass man vor der Abtastung bereits wissen muss, welche Frequenzen im Signal vorkommen. 
 	
@@ -334,8 +334,9 @@ ngerman
 	Dabei wird hier das Produkt aus Abtastfrequenz und Anzahl der Messpunkte pro Messdurchgang als \enquote{Abtastrate} bezeichnet. %Anführungsstriche gut?
 	Hier beträgt die Abtastfrequenz \SI{1000}{\hertz} und die Anzahl der Messpunkte pro Messdurchgang \num{100}, woraus sich eine Abtastrate von \SI{10}{\hertz} ergibt.
 	Wenn die Signalfrequenz kein Vielfaches der Abtastrate ist, führt dies dazu, dass eine eigentlich scharfe Frequenz im Spektrum unscharf wird und Frequenzen geringerer Intensität in der Nähe dieser überdeckt werden.
+	Man stellt fest, dass man, wenn man die Signalfrequenz kennt, die Abtastrate richtig wählen muss und sich, wenn dem nicht so ist, die Verwendung einer Fensterfunktion empfiehlt.
 	%mir ist erst spät klar geworden, dass das der fenster-Kram ist.
-	
+	%kp, ob ich hier auch die gefensterten reintun sollte, denke nicht
 	
 	\begin{figure}[H]  
 		\includegraphics[width=0.5\textwidth]{Origin-Files/unpassend_230nonhann}
@@ -373,7 +374,7 @@ ngerman
 	\subsection{Erzeugung eines amplitudenmodulierten Signals} \label{AMSignalErzeugung}
 	
 	Es soll nun ein amplitudenmoduliertes Signal (auch als AM-Signal bezeichnet) erzeugt werden und über die Soundkarte des verwendeten PCs ausgegeben werden.
-	Dabei wird das Signal der Soundkarte wieder auf den Analog-Digital-Wandler gegeben und mit dem zuvor erstellten Oszilloskopprogramm verarbeitet.
+	Dann wird das Signal der Soundkarte wieder auf den Analog-Digital-Wandler gegeben und mit dem zuvor erstellten Oszilloskopprogramm verarbeitet.
 	In \cref{fig_tag3_am_soundkarte_block} ist das dazu verwendete LabView-Programm dargestellt.
 	Moduliert werden soll die Überlagerung zweier Signale mit einstellbarer Frequenz und Amplitude.
 	Auch Trägerfrequenz und Modulationsgrad soll einstellbar sein.
@@ -382,23 +383,25 @@ ngerman
 		S_{AM}(t)=S_T (1+m \cdot s(t)) \cdot \cos(2\pi f_T t)
 	\end{equation}
 	beschreiben.
+	Dabei ist $m$ der Modulationsgrad, $f_T$ die Trägerfrequenz und $S_T$ die Amplitude.
 	Da die Überlagerung von zwei sinusförmigen Signalen beliebiger aber fester Frequenz moduliert werden soll gilt:
 	\begin{equation} \label{Ursprungssignal}
 		s(t) = A_1 \cos (2\pi f_1 t) + A_2 \cos (2\pi f_2 t) \ . 
 	\end{equation}
+	Dabei sind $A_1$ und $A_2$ die Amplituden und $f_1$ und $f_2$ die Frequenzen der Signale.
 	
 	Diese beiden Gleichungen sollen im Folgenden durch Operationen auf Arrays realisiert und als Audiosignal ausgegeben werden.	
 	Dazu wird das in \cref{sinusfkt} erstellte Programm verwendet, um Arrays von Sinusfunktionen zu erstellen.
-	Diesem wird in jedem Fall die Phase $0$ zugeführt und $44100$ Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.
+	Diesem wird in jedem Fall die Phase $0$ zugeführt und es werden $44100$ Stützstellen gewählt, weil dies der Abtastrate bei CDs entspricht.
 	Dem Programm wird zunächst eine Amplitude von $1$ gegeben und dann werden alle Array-Elemente mit der gewählten Amplitude multipliziert.
 	Dies hängt lediglich damit zusammen, dass zuvor im Sinus-erstellenden Programm ein Fehler vorhanden war, der dies nötig machte (vgl. \cref{sinus_amp_fehler}).
 	In \cref{fig_tag3_am_soundkarte_block} ist zu erkennen, dass zunächst zwei Sinus-Arrays erstellt werden, für die jeweils eine Signalfrequenz und -amplitude gewählt werden.
 	Die beiden resultierenden Arrays werden addiert, mit dem Modulationsgrad multipliziert und dann mit dem Array der Trägerfrequenz multipliziert.
 	Dieses wurde zuvor in gleicher Art und Weise mit dem Sinus-Programm bei der einstellbaren Trägerfrequenz erstellt.
 	Für die Amplitude des Trägersignals wird der Kehrwert der maximalen Signalamplitude gewählt, damit die resultierende Amplitude immer auf $1$ liegt, da die Soundkarte höhere Werte nicht verarbeitet.
-	Das resultierende Array wird im Zeit- und Frequenzbild dargestellt und dann mithilfe der entsprechenden VIs über die Soundkarte ausgegeben. %TODO sicherstellen, dass vorher irgendwo steht dass VI für visual instrument oder so steht.
-	Hierfür wird die Abtastrate von \SI{44100}{\hertz}, die Anzahl der Kanäle von $1$ eingestellt und der Modus \enquote{Continuos Samples} gewählt, da das Signal fortlaufend erzeugt werden soll.
-	Außerdem wird das Element zur Ausgabe von Fehlern verwendet, dass es erlaubt, das Programm beim Auftreten von Fehlern wahlweise zu beenden oder weiterlaufen zu lassen und das Signal in jedem Schleifendurchlauf 
+	Das resultierende Array wird im Zeit- und Frequenzbild dargestellt und dann mithilfe der entsprechenden VIs über die Soundkarte ausgegeben.
+	Hierfür wird die Abtastrate auf \SI{44100}{\hertz}, die Anzahl der Kanäle auf $1$ eingestellt und der Modus \enquote{Continuos Samples} gewählt, da das Signal fortlaufend erzeugt werden soll.
+	Außerdem wird das Element zur Ausgabe von Fehlern verwendet, das es erlaubt das Programm beim Auftreten von Fehlern wahlweise zu beenden oder weiterlaufen zu lassen. %ich wollte hier noch was mit "das Signal in jedem Schleifendurchlauf" schreiben, aber ich weiß nicht mehr was
 	
 	\begin{figure}[H]  
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/Soundkarteoutoszi/AMd}
@@ -447,7 +450,7 @@ ngerman
 	%Darüber hinaus ist zu sehen, dass einige zusätzliche Frequenzen erheblicher Leistung auftreten.
 	%Diese lassen sich nur durch Störeffekte bei der Erzeugung des Signals durch die Soundkarte erklären. %und theoretisch durch Erfassung, halte ich halt für unwahrscheinlicher
 	
-
+%TODO Leonut hier lesen ansetzen
 	\subsection{Demodulation eines AM-Signals durch Quadrieren und Betragsbildung} \label{DemodulationAM}
 	%Betrag, Quadrat
 	Um nun das amplitudenmodulierte Signal im Oszilloskopprogramm wieder demodulieren zu können, wird ein Case-Konstrukt eingeführt, welches nach Auswahl des Benutzers wahlweise das Signal nicht demoduliert, mit sich selbst multipliziert oder den Betrag des Signals bildet, da in den letzten beiden Fällen unter anderem wieder die Ursprungsfrequenzen vorliegen.

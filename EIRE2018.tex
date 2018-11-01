@@ -693,7 +693,7 @@ ngerman
 	Außerdem soll $N = 44.100$ gelten. 
 	Da der Vorgang der $s(t)$-Konstruktion komplett identisch zu der in \cref{AMSignalErzeugung} bereits ausführlich beschriebenen Vorgehensweise ist, wird an dieser Stelle nicht weiter auf die (Ursprungs-)Signalentstehung eingegangen. 
 	Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der (Ursprungs-)Signalentstehung findet im Programmcode die Modulation des Signals statt. 
-	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. 
+	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. %TODO Vermerk
 	Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. 
 
 	\begin{figure}[H]
@@ -781,12 +781,13 @@ ngerman
 	Von links nach rechts gelesen, beinhaltet dessen Programmcode, welcher in \cref{MultiTraegerProgrammcode} dargestellt ist, einen Programmteil zur Messdatenaufnahme mittels Analog-Digital-Wandler, einen für die Demodulation von (gemessenen) AM-Signalen zuständigen Programmbereich, einen Tiefpassfilter sechzehnter Ordnung, einige Blockdiagrammobjekte zur Realisierung der Anzeige- bzw. Ausgabeelemente auf dem Frontpanel, eine Speicher- und eine Anhalte-Funktion für das Programm mit dem entsprechenden \glqq Speichern\grqq - bzw. \glqq Stopp\grqq -Knopf auf der Benutzeroberfläche.
 	Mit den passenden Erweiterungen und Veränderungen des Programmcodes lässt sich nun die Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen FM- bzw. PM-Signals umsetzen. 
 	Dazu wird eine Case-Konstruktion zwischen dem Programmteil zur Messdatenaufnahme und dem Programmbereich für die Demodulation von amplitudenmodulierten Signalen hinzugefügt, welche insgesamt zwei Case-Optionen umfasst.
-	
+	Auf diese Weise entstehen zwei zunächst freie, ausfüllbare Case-Felder, wobei das Erste für die Frequenzmodulation und das Zweite für die Phasenmodulation vorgesehen ist.
+	Der Wechsel zwischen diesen beiden Optionen findet dabei mit Hilfe eines sich auf der Benutzeroberfläche befindenden Kippschalters statt, welcher die der beiden reservierten Case-Feld-Reservierungen entsprechenden Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ besitzt.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMd}
-		\caption{Die Abbildung zeigt das LabVIEW-Blockdiagramm bzw. den Programmcode zur Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen, phasen- bzw. frequenzmodulierten Signals.}
+		\caption{Die Abbildung veranschaulicht das LabVIEW-Blockdiagramm bzw. den Programmcode zur Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen, phasen- bzw. frequenzmodulierten Signals.}
 		\label{FMPMDemodProgrammcode1}
 	\end{figure}
 	
@@ -807,13 +808,13 @@ ngerman
 	\begin{figure}[H] %FM-Diagramm
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,005}
-		\caption{Die Abbildung veranschaulicht . Dieses Frequenzbild mit Hanning-Fenster ist das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
+		\caption{Die Abbildung zeigt das Frequenzspektrum des FM-Signals nach Abschluss der Demodulation und Tiefpassfilterung. Bei diesem Frequenzbild mit Hanning-Fenster handelt es sich um das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
 	\end{figure}
 	
 	\begin{figure}[H] %PM-Diagramm
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,1}
-		\caption{Die Abbildung veranschaulicht . Bei diesem Frequenzbild mit Hanning-Fenster handelt es sich um das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
+		\caption{In dieser Abbildung ist das Ergebnis der Demodulation und Tiefpassfilterung des PM-Signals zu sehen. Dieses Frequenzbild mit Hanning-Fenster ist das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
 	\end{figure}
 	
 	

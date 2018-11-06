@@ -70,7 +70,7 @@ ngerman
 	
 	\begin{titlepage}
 		\centering
-		{\scshape\LARGE Protokoll zu \par} %TODO zur oder zu?
+		{\scshape\LARGE Protokoll zur \par} 
 		\vspace{1cm}
 		{\scshape\huge Einführung in rechnergestütztes Experimentieren \par}
 		\vspace{3cm}
@@ -118,7 +118,7 @@ ngerman
 	\end{figure}
 
 	\noindent Das dazugehörige ausgegebene Frontpanel ist in \cref{sinusbesselausgabe} erkennbar. Die Gleitkommazahlen-Werte für $A$, $f$, $N$ und $\varphi$ sollen frei wählbar sein, zumal $u$ insbesondere von diesen abhängt. Das Programm ist daher so eingerichtet, dass auf der linken Seite des Frontpanels die entsprechenden Bedien- bzw. Eingabeelemente erscheinen. Unter gleichem Namen sind die jeweiligen Blockdiagrammobjekte im Programmcode zu finden. Im Zentrum des Programmcodes in \cref{sinusbesselprogrammcode} lässt sich eine For-Schleife erkennen. Gemäß \cref{u} sowie \cref{t} findet in dieser unter Verwendung des Laufindexes $i$ die tatsächliche Berechnung der $t$- und $u$-Werte statt. Die Blockdiagrammobjekte auf der rechten Seite des Programmcodes in \cref{sinusbesselprogrammcode} bilden die Anzeige- bzw. Ausgabeelemente des Frontpanels in \cref{sinusbesselausgabe}. Zum einen werden dabei zwei $N+1$ Einträge umfassende, eindimensionale Arrays angelegt, die jeweils alle $t$- sowie sämtliche $u$-Werte beinhalten und zum anderen wird ein $X$-$Y$-Diagramm erzeugt, in dem alle $u$-Werte gegen die entsprechenden $t$-Werte aufgetragen sind.
-	Demnach befindet sich $t$ auf der $x$-Achse und $u$ auf der $y$-Achse. %TODO wieso "demnach"? Das folgt doch nicht aus dem davor. Schreib halt "Dabei"
+	Dabei befindet sich $t$ auf der $x$-Achse und $u$ auf der $y$-Achse. 
 	Um nun die Informationsübertragung zu bewerkstelligen, ist es notwendig im Programmcode vor den Anschlüssen der \glqq Build XY Graph\grqq -VIs weitere Blockdiagrammobjekte hinzuzufügen, welche das Leitungssignal in ein für das Anzeigeelement ($X$-$Y$-Diagramm) passendes Eingangssignal umwandeln. Zumeist geschieht dies in LabVIEW automatisch und wird dann an der entsprechenden Stelle auf der Leitung mit einem kleinen roten Punkt markiert.
 
 	\begin{figure}[H]
@@ -651,7 +651,7 @@ ngerman
 	\end{figure}
 
 	\noindent Dieser Effekt wird vor allem beim Vergleich von \cref{AMDemodsuccm02} mit \cref{AMDemodsuccm12} deutlich. 
-	Hierbei liegt nämlich eine Versechsfachung des Modulationsgrads $m$ vor. %TODO Man muss dem Leser nicht das Anwenden von Grundschulmathematik absprechen. Lass entweder den Satz oder das nämlich weg.
+	Hierbei liegt eine Versechsfachung des Modulationsgrads $m$ vor.
 	
 	Anhand der \cref{AMDemodfailm02} lässt sich erkennen, welche Folgen sich beim Versuch der Demodulation ergeben, sobald man die (geratene) Trägerfrequenz zu weit außerhalb des $\pm 20\,$Hz-Bereichs wählt.
 	Hierbei wurde der Trägerfrequenz-Wert nämlich auf $10.050\,$Hz geraten, gleichwohl die tatsächliche Trägerfrequenz des AM-Signals bei $10.000\,$Hz liegt.

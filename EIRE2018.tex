@@ -160,6 +160,9 @@ ngerman
 	\noindent angibt, welche zwischen $-1$ und $1$ liegen. Da die Ausgabefunktion als Array einen erheblichen Einfluss auf das folgende Vorgehen hat, kann mit dem Sinus-Programm in dieser Form nicht weitergearbeitet werden. Im weiteren Verlauf der Projektbearbeitung ist der beschriebene Fehler allerdings behoben worden. Eine berichtigte, aktualisierte Abbildung des Programms liegt an dieser Stelle jedoch nicht vor.
 	\label{sinus_amp_fehler}
 	
+	\newpage
+	
+	
 	\section{Lissajous-Figuren}
 	
 	Im Folgenden sollen je nach Werteeinstellungen auf dem Anzeigeelement der Benutzeroberfläche verschiedene Lissajous-Figuren entstehen. Dies ist in \cref{lissajous} zu sehen. Die Basis für eine solche Lissajous-Figur bilden zwei verschiedene Sinusschwingungen, welche beide dieselbe Gestalt wie die \cref{u} besitzen:
@@ -188,6 +191,8 @@ ngerman
 
 	\noindent An den Ausgangsanschlüssen wird ein $X$-$Y$-Diagramm angebracht, wobei die $u_1$-Werte auf der $x$-Achse und die $u_2$-Werte auf der $y$-Achse liegen. Wie beim Programm in \cref{sinusfkt}, ist dem Ausgabeelement an der entsprechenden Stelle auf der Leitung ein passendes Blockdiagrammobjekt zur Signalumwandlung vorgeschaltet. Je nach Wahl der $f_1$-, $f_2$-, $\varphi_1$-, $\varphi_2$- und $N$-Werte können sich somit die unterschiedlichsten Lissajous-Figuren formen.
 	
+	\newpage
+	
 	
 	\section{Digitales Oszilloskop mit ExpressVI}
 	Es wird ein Funktionsgenerator verwendet.
@@ -214,10 +219,12 @@ ngerman
 	\centering
 	\end{figure}
 	
+	\newpage
+	
 	
 	\section{Abtasten von Signalen}
 	
-	\subsection{Fouriertheorem} %kp, ob man so Theorie wiedergeben soll und ob man das mit Bindestrich schreibt.
+	\subsection{Fouriertheorem} %TODO kp, ob man so Theorie wiedergeben soll und ob man das mit Bindestrich schreibt. - Jannik: Internet sagt mit Bindestrich, also "Fourier-Theorem".
 	Gemäß des Fouriertheorems kann jede periodische Funktion als Fourierreihe bzw. Fourierintegral ausgedrückt werden.
 	Dies ist nützlich bei der Zerlegung eines möglicherweise verrauschten Signals in seine Bestandteile.
 	Das grundsätzliche Problem hierbei ist, dass Messprozesse immer zeitlich begrenzt sind, weshalb das Signal nicht bis in die positive und negative Unendlichkeit periodisch sein kann.
@@ -264,7 +271,7 @@ ngerman
 		\centering
 	\end{figure}
 
-	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden. %mit denen das Signal mutlipliziert wird? Wäre das immer wahr?
+	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden. %TODO mit denen das Signal mutlipliziert wird? Wäre das immer wahr? - Jannik: Nach Wiki wird immer mit Fensterfunktion multipliziert.
 	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos
 	Der Unterschied zwischen Spektralanalyse mit und ohne Von-Hann-Fenster ist in \cref{fig_tag23_oszi_manuell_front} zu erkennen, da dort ohne Fenster-Funktion zusätzliche Frequenzen in der Nähe des Peaks auftreten.
 	
@@ -366,8 +373,10 @@ ngerman
 		\label{fig_tag3_unpassend_235hz}
 		\centering
 	\end{figure}
-
-
+	
+	\newpage
+	
+	
 	\section{Amplitudenmodulierte Signale}
 
 	\subsection{Erzeugung eines amplitudenmodulierten Signals} \label{AMSignalErzeugung}
@@ -378,16 +387,20 @@ ngerman
 	Moduliert werden soll die Überlagerung zweier Signale mit einstellbarer Frequenz und Amplitude.
 	Auch Trägerfrequenz und Modulationsgrad soll einstellbar sein.
 	Die Amplitudenmodulation lässt sich durch die Gleichung
+	
 	\begin{equation} \label{AMFormel}
 		S_{AM}(t)=S_T (1+m \cdot s(t)) \cdot \cos(2\pi f_T t)
 	\end{equation}
-	beschreiben.
+	
+	\noindent beschreiben.
 	Dabei ist $m$ der Modulationsgrad, $f_T$ die Trägerfrequenz und $S_T$ die Amplitude.
 	Da die Überlagerung von zwei sinusförmigen Signalen beliebiger aber fester Frequenz moduliert werden soll gilt:
+	
 	\begin{equation} \label{Ursprungssignal}
 		s(t) = A_1 \cos (2\pi f_1 t) + A_2 \cos (2\pi f_2 t) \ . 
 	\end{equation}
-	Dabei sind $A_1$ und $A_2$ die Amplituden und $f_1$ und $f_2$ die Frequenzen der Signale.
+	
+	\noindent Dabei sind $A_1$ und $A_2$ die Amplituden und $f_1$ und $f_2$ die Frequenzen der Signale.
 	
 	Diese beiden Gleichungen sollen im Folgenden durch Operationen auf Arrays realisiert und als Audiosignal ausgegeben werden.	
 	Dazu wird das in \cref{sinusfkt} erstellte Programm verwendet, um Arrays von Sinusfunktionen zu erstellen.
@@ -586,7 +599,7 @@ ngerman
 	Neben den diversen Peaks an Stellen mit vergleichsweise hohen Frequenzen, befinden sich darin ebenfalls Peaks bei relativ niedrigen Frequenzwerten. %TODO Link auf Diagramm? - Jannik: Warum hier schon Bezug auf das Diagramm nehmen, wenn ich erst die Theorie dahinter erkläre?
 	Demnach handelt es sich um ein breites Frequenzspektrum, in dem man die Frequenz(en) des modulierten, ursprünglichen Signals deutlich erkennen kann.
 	Von einem theoretischen Standpunkt aus ist die komplette Demodulation des AM-Signals damit abgeschlossen.
-	Zusätzlich lassen sich durch einen Tiefpass mit hinreichend großer Grenzfrequenz die hohen Frequenzanteile aus dem Spektrum herausfiltern, sodass letztendlich nur noch die besagten Frequenzen des amplitudenmodulierten Ursprungssignals übrig bleiben. 
+	Zusätzlich lassen sich durch einen Tiefpass mit hinreichend großer Grenzfrequenz die hohen Frequenzanteile aus dem Spektrum herausfiltern, sodass letztendlich nur noch die besagten Frequenzen des Signals übrig bleiben, welches es zu ampliutudenmodulieren galt. 
 		
 	\begin{figure}[H]
 		\centering
@@ -617,7 +630,7 @@ ngerman
 	\end{figure}
 	
 	\noindent Das Ergebnis dieser Operation ist, wie zuvor im Theorie-Teil erwähnt, ein breites Frequenzspektrum mit zahlreichen Peaks an unterschiedlich hohen und niedrigen Frequenzwerten, was im rechten, mittleren Diagramm in \cref{MultiTraegerFrontpanel} erkennbar ist. 
-	Überdies sind in \cref{MultiTraegerFrontpanel} noch fünf weitere Anzeigeelemente in Diagramm-Form dargestellt: Die beiden Oberen zeigen das über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessene amplitudenmodulierte Signal ohne Demodulation, zum einen im Zeitbild und zum andern im Frequenzbild. %TODO musst du mMn nich nochmal erklären, wenn es in der Caption steht. - Jannik: Stimme ich teilweise zu, aber ich lass es jetzt einfach stehen.
+	Überdies sind in \cref{MultiTraegerFrontpanel} noch fünf weitere Anzeigeelemente in Diagramm-Form dargestellt: Die beiden Oberen zeigen das von der Computer-Soundkarte ausgegebene und anschließend über den Analog-Digital-Wandler gemessene, amplitudenmodulierte Signal ohne Demodulation, zum einen im Zeitbild und zum andern im Frequenzbild. %TODO musst du mMn nich nochmal erklären, wenn es in der Caption steht. - Jannik: Stimme ich teilweise zu, aber ich lass es jetzt einfach stehen.
 	Im linken, mittleren Anzeigeelement ist ein Diagramm zu sehen, in dem der zeitliche Signalverlauf nach der Durchführung der Trägerfrequenzmultiplikation und somit auch nach der kompletten Demodulation veranschaulicht ist. 
 	Die beiden unteren Anzeigeelemente stellen, sowohl im Zeit- als auch im Frequenzbild, das demodulierte AM-Signal nach der bereits im Theorie-Teil angesprochenen Tiefpassfilterung dar. 
 	Genauso wie in \cref{DemodulationAM} findet die Tiefpassfilterung außerhalb der Demodulator-Case-Konstruktion statt. 
@@ -625,18 +638,18 @@ ngerman
 	Diese liegt in \cref{MultiTraegerFrontpanel} bei $1.600\,$Hz. 
 	Zudem befinden sich auf der Benutzeroberfläche in \cref{MultiTraegerFrontpanel} sämtliche Bedien- bzw. Eingabeelemente oben links.
 	
-	Das für den in \cref{MultiTraegerFrontpanel} gezeigten Programmdurchlauf verwendete Ursprungssignal, welches in \cref{AMSignalErzeugung} amplitudenmoduliert wurde und dieselbe Gestalt wie in \cref{Ursprungssignal} besitzt, wird unter anderem durch die Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz bestimmt. 
+	Das für den in \cref{MultiTraegerFrontpanel} gezeigten Programmdurchlauf verwendete Signal, welches in \cref{AMSignalErzeugung} amplitudenmoduliert wurde und dieselbe Gestalt wie in \cref{Ursprungssignal} besitzt, wird unter anderem durch die Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz bestimmt. 
 	Dies lässt sich insbesondere anhand der Bedienelemente-Einstellung des Frontpanels in \cref{fig_tag3_am_soundkarte_front} nachvollziehen. 
 				
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/exaktTraegerRate10000m0,2}
-		\caption{In dieser Abbildung ist das Ergebnis einer erfolgreichen Demodulation des über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessenen AM-Signals zu sehen. Bei diesem Frequenzbild mit Hanning-Fenster handelt sich um das aus \cref{MultiTraegerFrontpanel} bekannte, rechts unten auffindbare Frontpanel-Diagramm. Der Trägerfrequenz-Wert von $10.000\,$Hz wurde exakt geraten. Der Modulationsgrad des AM-Signals beträgt $0,2$. Die Daten für das hier dargestellte Frequenzspektrum entstammen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen Textdatei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.} %TODO mMn ist das Programm irrelevant, vorallem weil ich es nicht erwähnt habe und wir damit inkonsistent sind. - Jannik: Dann erwähn' doch das Programm mit dem du gearbeitet hast einfach. Das Programm ist nicht irrelevant haben mir viele Praktikum-Dudes gesagt.
+		\caption{In dieser Abbildung ist das Ergebnis einer erfolgreichen Demodulation des von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen AM-Signals zu sehen. Bei diesem Frequenzbild mit Hanning-Fenster handelt sich um das aus \cref{MultiTraegerFrontpanel} bekannte, rechts unten auffindbare Frontpanel-Diagramm. Der Trägerfrequenz-Wert von $10.000\,$Hz wurde exakt geraten. Der Modulationsgrad des AM-Signals beträgt $0,2$. Die Daten für das hier dargestellte Frequenzspektrum entstammen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen Textdatei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.} %TODO mMn ist das Programm irrelevant, vorallem weil ich es nicht erwähnt habe und wir damit inkonsistent sind. - Jannik: Dann erwähn' doch das Programm mit dem du gearbeitet hast einfach, dann sind wir auch wieder konsistent. Das Programm ist nicht irrelevant haben mir viele Praktikum-Dudes gesagt.
 		\label{AMDemodsuccm02}
 	\end{figure}
 
 	\noindent Die Demodulation des von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen, amplitudenmodulierten Signals mittels Trägerfrequenzmultiplikation sowie die anschließende Tiefpassfilterung führten schlussendlich zu dem Frequenzbild, was unten rechts auf der Benutzeroberfläche in \cref{MultiTraegerFrontpanel} dargestellt ist.
-	Dieses Frequenzspektrum weist zwei deutliche Peaks bei $700\,$Hz und $1.000\,$Hz auf, welche genau den $f_1$- und $f_2$-Werten des Ursprungssignals entsprechen. 
+	Dieses Frequenzspektrum weist zwei deutliche Peaks bei $700\,$Hz und $1.000\,$Hz auf, welche genau den $f_1$- und $f_2$-Werten des zu amplitudenmodulierenden Signals entsprechen. 
 	Daher kann man als Fazit sagen, dass es sich wohl um eine erfolgreich funktionierende Amplitudenmodulation sowie Demodulation handelt. 
 	
 	Anzumerken ist noch, dass bei einem größer gewählten Modulationsgrad $m$ in \cref{AMFormel} die Peaks im Frequenzspektrum bei den eingestellten $f_1$- und $f_2$-Werten höher ausfallen und damit leichter zu erkennen sind. 
@@ -653,7 +666,7 @@ ngerman
 	
 	Anhand der \cref{AMDemodfailm02} lässt sich erkennen, welche Folgen sich beim Versuch der Demodulation ergeben, sobald man die (geratene) Trägerfrequenz zu weit außerhalb des $\pm 20\,$Hz-Bereichs wählt.
 	Hierbei wurde der Trägerfrequenz-Wert nämlich auf $10.050\,$Hz geraten, gleichwohl die tatsächliche Trägerfrequenz des AM-Signals bei $10.000\,$Hz liegt.
-	Bei dem in \cref{AMDemodfailm02} gezeigte Frequenzbild mit Hanning-Fenster, welches äquivalent zum aus \cref{MultiTraegerFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm ist, kann man daher nicht die beiden vom Ursprungssignal stammenden Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz ablesen.
+	Bei dem in \cref{AMDemodfailm02} gezeigten Frequenzbild mit Hanning-Fenster, welches äquivalent zum aus \cref{MultiTraegerFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm ist, kann man daher nicht die beiden vom ursprünglichen Signal stammenden Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz ablesen.
 	Denn bei diesen Frequenz-Werten sind keine Peaks zu sehen.
 	
 	\begin{figure}[H]
@@ -665,6 +678,8 @@ ngerman
 
 	\noindent Stattdessen lassen sich in dem Teil des Frequenzspektrums, der nach der Tiefpassfilterung übrig geblieben ist, einige verstreute Peaks unterschiedlicher Höhe und Breite an verschiedenen Frequenz-Werten lokalisieren.
 	Folglich ist die Demodulation mittels Trägerfrequenzmultiplikation in diesem Fall nicht gelungen.
+	
+	\newpage
 	
 	
 	\section{Phasen- und frequenzmodulierte Signale}
@@ -686,7 +701,7 @@ ngerman
 	
 	\noindent Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und teilweise außerhalb der While-Schleife. 
 	Deren Anordnung und Funktionsweise ist die gleiche wie beim LabVIEW-Programm in \cref{AMSignalErzeugung}. 
-	Genauso wie in \cref{fig_tag3_am_soundkarte_block} aus \cref{AMSignalErzeugung} sieht man auf der linken Seite des Programmcodes zunächst die Erzeugung des Signals $s(t)$ gemäß \cref{Ursprungssignal}. 
+	Genauso wie in \cref{fig_tag3_am_soundkarte_block} aus \cref{AMSignalErzeugung} sieht man auf der linken Seite des Programmcodes zunächst die Erzeugung des Signals $s(t)$ gemäß \cref{Ursprungssignal} mit den Frequenzen $f_1$ und $f_2$. 
 	Weiterhin ist dabei die zusätzliche, aufgrund des in \cref{sinusfkt} aufgetretenen Programmierfehlers notwendige nachträgliche Multiplikation mit der Amplitude zu beachten. 
 	Außerdem soll $N = 44.100$ gelten. 
 	Da der Vorgang der $s(t)$-Konstruktion komplett identisch zu der in \cref{AMSignalErzeugung} bereits ausführlich beschriebenen Vorgehensweise ist, wird an dieser Stelle nicht weiter auf die Signalentstehung eingegangen. 
@@ -731,7 +746,7 @@ ngerman
 	Dabei wird auf die Simpsonregel (in \cref{FMProgrammcode} mit \glqq Simpson's Rule\grqq\ gekennzeichnet) als numerisches Integrationsverfahren zurückgegriffen.
 	%TODO Blödsinn, dass auf das offensichtliche Englische zu übersetzen. Du schreibst doch auch nicht Satz von Rolle (Rolle's theorem) - Jannik: Das war nicht das Ziel. Ich wollte auf die entsprechende Stelle im Programmcode hinweisen, hätte ich eindeutiger machen sollen, sry.
 	
-	\begin{figure}[H] %TODO Das ist doch bs, das abzubilden.schreib halt in das andere, dass der bei PM nur das Signal durchleitet. - Jannik: Hab ich unten auch geschrieben. Hab das Bild extra klein gemacht, ich finde das stört im Text jetzt auch nicht so wahnsinnig und zur Vollständigkeit gehört das schon irgendwie darein.
+	\begin{figure}[H] %TODO Das ist doch bs, das abzubilden.schreib halt in das andere, dass der bei PM nur das Signal durchleitet. - Jannik: Hab ich unten auch hingeschrieben. Hab das Bild extra klein gemacht, ich finde das stört im Text jetzt auch nicht so wahnsinnig und zur Vollständigkeit gehört das schon irgendwie darein.
 		\centering
 		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungd1}
 		\caption{Es ist der in \cref{FMProgrammcode} nicht sichtbare Teil des LabVIEW-Programmcodes dargestellt, der notwendig ist, um die Art der Modulation auf der Benutzeroberfläche des Programms auszuwählen zu können. Bei diesem hier abgebildeten Programmcodeteil handelt es sich um eine weitere Option in der Case-Konstruktion, welche darauf abzielt die Phasenmodulation zu ergänzen.}
@@ -767,65 +782,112 @@ ngerman
 	\noindent Daher besteht lediglich die Notwendigkeit, das für die Phasenmodulation reservierte, freie, ausfüllbare Case-Feld passend zu besetzen. %TODO s.O. mit frei ausfüllbar - Jannik: Stehen lassen, pls.
 	Wie im Programmcode in \cref{PMProgrammcode} zu erkennen, wird hierbei die Leitung direkt durch das Case-Feld gezogen, ohne das übertragene Signal zu bearbeiten oder zu verändern. 
 	In Kombination mit der bereits durch die Frequenzmodulation existierenden Programm-Struktur ist damit die Umsetzung der Phasenmodulation abgeschlossen. 
-	Das sich ergebene, phasenmodulierte Signal $S_{PM}(t)$ bzw. $\tilde{S}_{PM}(f)$ ist in den beiden Diagrammen auf der Benutzeroberfläche des Programms aus \cref{PMAusgabe} dargestellt.
+	Das sich ergebene phasenmodulierte Signal $S_{PM}(t)$ sowie dessen Fourier-Transformierte $\tilde{S}_{PM}(f)$ sind in den beiden Diagrammen auf der Benutzeroberfläche des Programms in \cref{PMAusgabe} dargestellt.
 	
 	\emph{Hinweis:} Bei diesem LabVIEW-Programm zur Erzeugung von phasen- und frequenzmodulierten Signalen ist zu beachten, dass zwischen den $k$-Werten der Frequenzmodulation und den $k$-Werten der Phasenmodulation stets eine Diskrepanz um einen Faktor der Größenordnung $10^4$ vorliegt.
 	Denn dadurch ergeben sich für beide Modulationsarten die verlässlichsten Ergebnisse.
 	
 	
 	
-	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals}
-		%TODO Leonut hier ansetzen
-	Im Folgenden soll ein über den Analog-Digital-Wandler in Kombination mit der Computer-Soundkarte gemessenes Signal, welches entweder phasen- oder frequenzmoduliert wurde, demoduliert werden. 
+	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMDemodulation}
+	%TODO Leonut hier ansetzen
+	
+	%Allgemeiner Absatz:
+	Im Folgenden soll ein von der Computer-Soundkarte ausgegebenes (im Hintergrund wird das in \cref{FMPMErzeugung} entstandene LabVIEW-Programm ausgeführt) und anschließend über den Analog-Digital-Wandler gemessenes Signal, welches entweder phasen- oder frequenzmoduliert wurde, demoduliert werden. 
 	Der Programmcode des dafür erstellten LabVIEW-Programms ist in \cref{FMPMDemodProgrammcode1} und \cref{FMPMDemodProgrammcode2} zu sehen.
-	Die \cref{FMPMDemodFrontpanel} zeigt das dazugehörige Frontpanel.
-	Das in \cref{DemodTraeger} erhaltene LabVIEW-Programm dient dabei als Vorlage. 
-	Von links nach rechts gelesen, beinhaltet dessen Programmcode, welcher in \cref{MultiTraegerProgrammcode} dargestellt ist, einen Programmteil zur Messdatenaufnahme mittels Analog-Digital-Wandler, einen für die Demodulation von (gemessenen) AM-Signalen zuständigen Programmbereich, einen Tiefpassfilter sechzehnter Ordnung, einige Blockdiagrammobjekte zur Realisierung der Anzeige- bzw. Ausgabeelemente auf dem Frontpanel, eine Speicher- und eine Anhalte-Funktion für das Programm mit dem entsprechenden \glqq Speichern\grqq - bzw. \glqq Stopp\grqq -Knopf auf der Benutzeroberfläche.
-	Mit den passenden Erweiterungen und Veränderungen des Programmcodes lässt sich nun die Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen FM- bzw. PM-Signals umsetzen. 
-	Dazu wird eine Case-Konstruktion zwischen dem Programmteil zur Messdatenaufnahme und dem Programmbereich für die Demodulation von amplitudenmodulierten Signalen hinzugefügt, welche insgesamt zwei Case-Optionen umfasst.
-	Auf diese Weise entstehen zwei zunächst freie, ausfüllbare Case-Felder, wobei das Erste für die Frequenzmodulation und das Zweite für die Phasenmodulation vorgesehen ist.
-	Der Wechsel zwischen diesen beiden Optionen findet dabei mit Hilfe eines sich auf der Benutzeroberfläche befindenden Kippschalters statt, welcher die der beiden reservierten Case-Feld-Reservierungen entsprechenden Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ besitzt.
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMd}
-		\caption{Die Abbildung veranschaulicht das LabVIEW-Blockdiagramm bzw. den Programmcode zur Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen, phasen- bzw. frequenzmodulierten Signals.}
-		\label{FMPMDemodProgrammcode1}
-	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/OsziPlusFMPMd5} %Möglicherweise ist 0.8 immer noch zu groß
-		\caption{In dieser Abbildung ist der in \cref{FMPMDemodProgrammcode1} nicht sichtbare Teil des LabVIEW-Programmcodes zu sehen, der notwendig ist, um auf der Benutzeroberfläche des Programms zwischen der Demodulation des FM-Signals und der Demodulation des PM-Signals wechseln zu können. Bei diesem hier abgebildeten Programmcodeteil handelt es sich um die zweite Option in der Case-Konstruktion, mit dessen Hilfe die Demodulation des phasenmodulierten Signals umgesetzt wird.}
-		\label{FMPMDemodProgrammcode2}
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMd}
+		\caption{Die Abbildung veranschaulicht das LabVIEW-Blockdiagramm bzw. den Programmcode zur Demodulation eines von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen, phasen- bzw. frequenzmodulierten Signals.}
+		\label{FMPMDemodProgrammcode1}
 	\end{figure}
+	
+	\noindent Die \cref{FMPMDemodFrontpanel} zeigt das dazugehörige Frontpanel.
+	Das in \cref{DemodTraeger} erhaltene LabVIEW-Programm dient dabei als Vorlage. 
+	Von links nach rechts gelesen, beinhaltet dessen Programmcode, welcher in \cref{MultiTraegerProgrammcode} dargestellt ist, einen Programmteil zur Messdatenaufnahme mittels Analog-Digital-Wandler, einen für die Demodulation von AM-Signalen zuständigen Programmbereich, einen Tiefpassfilter sechzehnter Ordnung mit einer Grenzfrequenz von $1.600\,$Hz, einige Blockdiagrammobjekte zur Realisierung der Anzeige- bzw. Ausgabeelemente auf dem Frontpanel sowie eine Speicher- und eine Anhalte-Funktion für das Programm mit den entsprechenden \glqq Speichern\grqq - und \glqq Stopp\grqq -Knöpfen auf der Benutzeroberfläche.
+	Mit den passenden Erweiterungen und Veränderungen des Programmcodes lässt sich nun die Demodulation eines von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen FM- bzw. PM-Signals umsetzen. 
+	Dazu wird eine Case-Konstruktion zwischen dem Programmteil zur Messdatenaufnahme und dem Programmbereich für die Demodulation von amplitudenmodulierten Signalen hinzugefügt, welche insgesamt zwei Case-Optionen umfasst.
+	Auf diese Weise entstehen zwei zunächst freie, ausfüllbare Case-Felder, wobei das Erste für die Frequenzmodulation und das Zweite für die Phasenmodulation vorgesehen ist.
+	Der Wechsel zwischen diesen beiden Optionen findet dabei mit Hilfe eines sich auf der Benutzeroberfläche befindenden Kippschalters statt, welcher die der Case-Feld-Reservierungen entsprechenden Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ besitzt.
+	
+	%FM-Absatz:
+	Zur Demodulation eines gemessenen, frequenzmodulierten Signals wird die FM-Signalfunktion $S_{FM}(t)$ zunächst differenziert bzw. abgeleitet.
+	Im Programmcode in \cref{FMPMDemodProgrammcode1} wird diese numerische Differentiation innerhalb des für die Frequenzmodulation reservierten Case-Feldes (\glqq FM\grqq ) realisiert.
+	Das abgeleitete FM-Signal kann anschließend als AM-Signal betrachtet werden.
+	Daher lässt es sich nun mit Hilfe einer der drei bereits aus \cref{DemodTraeger} bekannten und auch hier zur Verfügung stehenden AM-Demodulationsmethoden (\glqq Quadrat\grqq , \glqq Betrag\grqq\ und \glqq Multiplikation mit Träger\grqq ) demodulieren.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/OsziPlusFMPMp}
-		\caption{In dieser Abbildung ist die LabVIEW-Benutzeroberfläche bzw. das LabVIEW-Frontpanel des Programms zur Demodulation eines über den Analog-Digital-Wandler und die Computer-Soundkarte gemessenen, phasen- bzw. frequenzmodulierten Signals dargestellt.}
+		\caption{In dieser Abbildung ist die LabVIEW-Benutzeroberfläche bzw. das LabVIEW-Frontpanel des Programms zur Demodulation eines von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen, frequenzmodulierten Signals (\glqq FM\grqq ) dargestellt. Die AM-Demodulation findet hierbei mittels \glqq Quadrat\grqq -Methode statt.}
 		\label{FMPMDemodFrontpanel}
 	\end{figure}
+	
+	\noindent Anhand der auf dem Frontpanel in \cref{FMPMDemodFrontpanel} ersichtlichen Anzeigeelemente kann der Demodulationsprozess eines FM-Signals verfolgt werden:
+	Die beiden oberen Diagramme bilden das Zeitbild und das Frequenzbild mit Hanning-Fenster des gemessenen FM-Signals vor der Demodulation.
+	In der Mitte befinden sich zwei Diagramme, welche das Zeitbild und das Frequenzbild mit Hanning-Fenster des abgeleiteten FM-Signals veranschaulichen.
+	Die beiden unteren Diagramme stellen das Zeitbild und das Frequenzbild mit Hanning-Fenster des demodulierten FM-Signals nach der Tiefpassfilterung dar.
 	
 	\begin{figure}[H] %FM-Diagramm
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,005}
-		\caption{Die Abbildung zeigt das Frequenzspektrum des FM-Signals nach Abschluss der Demodulation und Tiefpassfilterung. Bei diesem Frequenzbild mit Hanning-Fenster handelt es sich um das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
-
+		\caption{Die Abbildung zeigt das Frequenzspektrum eines FM-Signals mit $k=0,005$ nach Abschluss der Demodulation und Tiefpassfilterung. Bei diesem Frequenzbild mit Hanning-Fenster handelt es sich um das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet. Die verwendete AM-Demodulation findet mittels \glqq Quadrat\grqq -Methode statt.}
+		\label{FMDiagramm}
 	\end{figure}
+	
+	\noindent Ebenjenes Frequenzbild mit Hanning-Fenster und das in \cref{FMDiagramm} zu sehende Diagramm bilden somit das Ergebnis der Demodulation des FM-Signals, anhand derer man auch erkennen kann, dass es sich um eine erfolgreich umgesetzte FM-Demodulation handelt.
+	Denn die beiden deutlich sichtbaren Peaks im Frequenzspektrum liegen bei $700\,$Hz und $1.000\,$Hz, was genau den Frequenzen $f_1$ und $f_2$ des Signals $s(t)$ entspricht, welches es zu frequenzmodulieren galt.
+	
+	%PM-Absatz:
+	Im Gegensatz zur FM-Demodulation wird bei der Demodulation eines gemessenen, phasenmodulierten Signals dieses PM-Signal von vornherein als AM-Signal betrachtet.
+	Wie im Programmcodeteil in \cref{FMPMDemodProgrammcode2} zu sehen ist, werden die Leitungen daher direkt durch das für die Phasenmodulation reservierte Case-Feld (\glqq PM\grqq ) gezogen, sodass das übertragene Signal nicht verändert oder beeinflusst wird.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/OsziPlusFMPMd5}
+		\caption{In dieser Abbildung ist der in \cref{FMPMDemodProgrammcode1} nicht sichtbare Teil des LabVIEW-Programmcodes zu sehen, der notwendig ist, um auf der Benutzeroberfläche des Programms zwischen der Demodulation des FM-Signals und der Demodulation des PM-Signals wechseln zu können. Bei diesem hier abgebildeten Programmcodeteil handelt es sich um die zweite Option in der Case-Konstruktion, mit dessen Hilfe die Demodulation des phasenmodulierten Signals umgesetzt wird.}
+		\label{FMPMDemodProgrammcode2}
+	\end{figure}
+	
+	\noindent Dementsprechend durchläuft das PM-Signal anschließend eine AM-Demodulation nach den bereits erwähnten, verfügbaren AM-Demodulationsmethoden.
+	\cref{PMDiagramm} zeigt das Ergebnis der Demodulation und Tiefpassfilterung des PM-Signals.
 	
 	\begin{figure}[H] %PM-Diagramm
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PM/Frequenzbild_mit_Hanning_nach_TP_und_Demod_k0,1}
-		\caption{In dieser Abbildung ist das Ergebnis der Demodulation und Tiefpassfilterung des PM-Signals zu sehen. Dieses Frequenzbild mit Hanning-Fenster ist das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
+		\caption{In dieser Abbildung ist das Ergebnis der Demodulation und Tiefpassfilterung eines PM-Signals mit $k=0,1$ zu sehen. Dieses Frequenzbild mit Hanning-Fenster ist das Äquivalent zu dem aus \cref{FMPMDemodFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet. Die verwendete AM-Demodulation findet mittels \glqq Quadrat\grqq -Methode statt.}
+		\label{PMDiagramm}
 	\end{figure}
 	
+	\noindent Da sich die beiden in diesem Frequenzspektrum deutlich sichtbaren Peaks bei $700\,$Hz und $1.000\,$Hz befinden und diese genau den Frequenzen $f_1$ und $f_2$ des Signals $s(t)$ entsprechen, kann man von einer erfolgreichen Demodulation des gemessenen, phasenmodulierten Signals sprechen.
 	
 	
 	%Fktion nur schön für bestimmten Bereich von k, weil , wenn zu hoch: zu viele Oberwellen, zu klein: demoduliertes Signal geht im Rauschen unter
 	\subsection{Erweiterte Demodulation mit Bandpass und zusätzlicher Integration des Signals}
 	
+	Das in \cref{FMPMDemodulation} entstandene Programm bildet die Basis für das folgende LabVIEW-Programm.
+	
+	
 	Der Tiefpass wird auf einen Bandpass erweitert, wobei die obere und untere Grenzfrequenz 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	\begin{figure}[H]
 		\centering
@@ -835,7 +897,7 @@ ngerman
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMd6} %Möglicherweise ist 0.8 immer noch zu groß
+		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMd6}
 		\caption{.}
 	\end{figure}
 		

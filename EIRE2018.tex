@@ -684,14 +684,12 @@ ngerman
 	
 	\section{Phasen- und frequenzmodulierte Signale}
 
-	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung}
-		
-	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten PCs ausgibt. 
+	\subsection{Erzeugung eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMErzeugung} %Bilderanordnung schön, bitte so lassen.
 	
-	Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt. 
-	Bei der dazugehörigen Benutzeroberfläche, welche in \cref{FMAusgabekleinesk}, \cref{FMAusgabegrossesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite.
-	In diesem Fall handelt es sich bei den Anzeigeelementen um zwei Diagramme, die das phasen- oder frequenzmodulierte Signal, je nachdem welche Modulationsart ausgewählt ist, im Zeit- und Frequenzbild anzeigen. 
-
+	%Allgemeiner Absatz:
+	In diesem Abschnitt soll ein LabVIEW-Programm entstehen, welches ein Signal der in \cref{Ursprungssignal} präsentierten Form zunächst wahlweise phasen- oder frequenzmoduliert und anschließend über die Soundkarte des verwendeten Computers ausgibt. 
+	Der daraus hervorgehende Programmcode ist in \cref{FMProgrammcode} und \cref{PMProgrammcode} aufgeführt.
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/FMPM-Erzeugungd}
@@ -699,30 +697,35 @@ ngerman
 		\label{FMProgrammcode}
 	\end{figure}
 	
-	\noindent Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und teilweise außerhalb der While-Schleife. 
+	\noindent Bei der dazugehörigen Benutzeroberfläche, welche in \cref{FMAusgabekleinesk}, \cref{FMAusgabegrossesk} sowie \cref{PMAusgabe} dargestellt ist, befinden sich alle Bedien- bzw. Eingabeelemente auf der linken und alle Anzeige- bzw. Ausgabeelemente auf der rechten Seite.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/FM-FMPM-Erzeugungp}
+		\caption{Die Abbildung zeigt das Frontpanel bzw. die Benutzeroberfläche des LabVIEW-Programms zur Umsetzung der Frequenzmodulation. Der hierbei verwendete $k$-Wert ist sehr klein. Allgemein besteht mit dem entsprechenden, sich oben auf dem Frontpanel befindenden Bedienelement die Möglichkeit die Art der Modulation auszuwählen: Entweder Frequenzmodulation (Abkürzung: FM) oder Phasenmodulation (Abkürzung: PM).}
+		\label{FMAusgabekleinesk}
+	\end{figure}
+	
+	\noindent In diesem Fall handelt es sich bei den Anzeigeelementen um zwei Diagramme, die das phasen- oder frequenzmodulierte Signal, je nachdem welche Modulationsart ausgewählt ist, im Zeit- und Frequenzbild anzeigen. 
+	Die Blockdiagrammobjekte, welche die Ausgabe über die Computer-Soundkarte realisieren, liegen rechtsseitig im Programmcode und teilweise außerhalb der While-Schleife. 
 	Deren Anordnung und Funktionsweise ist die gleiche wie beim LabVIEW-Programm in \cref{AMSignalErzeugung}. 
 	Genauso wie in \cref{fig_tag3_am_soundkarte_block} aus \cref{AMSignalErzeugung} sieht man auf der linken Seite des Programmcodes zunächst die Erzeugung des Signals $s(t)$ gemäß \cref{Ursprungssignal} mit den Frequenzen $f_1$ und $f_2$. 
 	Weiterhin ist dabei die zusätzliche, aufgrund des in \cref{sinusfkt} aufgetretenen Programmierfehlers notwendige nachträgliche Multiplikation mit der Amplitude zu beachten. 
 	Außerdem soll $N = 44.100$ gelten. 
 	Da der Vorgang der $s(t)$-Konstruktion komplett identisch zu der in \cref{AMSignalErzeugung} bereits ausführlich beschriebenen Vorgehensweise ist, wird an dieser Stelle nicht weiter auf die Signalentstehung eingegangen. 
-	Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der Signalentstehung findet im Programmcode die Modulation des Signals statt. 
+	Die gesamte Berechnung (FM- und PM-Modulation sowie Signalerzeugung) und der Großteil der Signalausgabe finden in einer While-Schleife statt, was auch aus \cref{FMProgrammcode} hervorgeht.
+	Ebenso wie bei den zuvor behandelten Abschnitten ist der While-Schleife ein \glqq Stopp\grqq -Knopf beigefügt, um das Programm bei Bedarf anhalten zu können.
+	Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der Signalentstehung findet im Programmcode die Modulation des Signals statt.
 	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. %TODO Vermerk - Jannik: "Vermerk" für was?
 	Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. 
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/FM-FMPM-Erzeugungp}
-		\caption{Die Abbildung zeigt das Frontpanel bzw. die Benutzeroberfläche des LabVIEW-Programms zur Umsetzung der Frequenzmodulation. Der hierbei verwendete $k$-Wert ist sehr klein.
-		Allgemein besteht mit dem entsprechenden, sich oben auf dem Frontpanel befindenden Bedienelement die Möglichkeit die Art der Modulation auszuwählen: Entweder Frequenzmodulation (Abkürzung: FM) oder Phasenmodulation (Abkürzung: PM).}
-		\label{FMAusgabekleinesk}
-	\end{figure}
-	
-	\noindent Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen. %TODO natürlich sind sie zunächst frei. Wenn du normalen Code erklären würdest, wü+rdest du auch nicht sagen "Man drückt Enter. Die entstehende Zeile ist zunächst frei." - Jannik: Ich finde, dass es nötig ist einmal zu sagen, dass die anfangs frei sind, weil das weiß der Leser, dem das Programm ja unbekannt ist, nicht.
+	Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen. %TODO natürlich sind sie zunächst frei. Wenn du normalen Code erklären würdest, wü+rdest du auch nicht sagen "Man drückt Enter. Die entstehende Zeile ist zunächst frei." - Jannik: Ich finde, dass es nötig ist einmal zu sagen, dass die anfangs frei sind, weil das weiß der Leser, dem das Programm ja unbekannt ist, nicht.
 	Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichnetes Bedienelement auf der Benutzeroberfläche samt dazugehörigem Element (auch als \glqq Control\grqq bezeichnet) an der entsprechenden Stelle im Programmcode.
-	
-	Im Folgenden wird zwischen Frequenz- und Phasenmodulation (FM und PM) unterschieden. 
+		
+	%"Einleitende" Worte:
+	Im Folgenden wird zwischen Frequenz- und Phasenmodulation (\glqq FM\grqq\ und \glqq PM\grqq ) unterschieden.
 	Außerdem wird die Funktionsweise des LabVIEW-Programms näher erläutert.
 	
+	%FM-Absatz:
 	Die Frequenzmodulation des Signals $s(t)$ soll gemäß der Gleichung
 	
 	\begin{equation} \label{FMFormel}
@@ -731,6 +734,15 @@ ngerman
 	
 	\noindent geschehen, wobei $t$ die Zeit, $f_0$ die Trägerfrequenz und $k$ eine beliebige Konstante ist, welche die Stärke der Modulation bestimmt. 
 	Am Programmcode in \cref{FMProgrammcode} lässt sich die unter Verwendung der von LabVIEW zur Verfügung gestellten numerischen Operationen, Funktionen und Konstanten erfolgte Umsetzung dieser Formel betrachten. 
+	Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, am Ausgangsanschluss des aus \cref{sinusfkt} stammenden, Sinus-erstellenden Programms abgegriffen werden. 
+	Das dazugehörige Blockdiagrammobjekt befindet sich im linken Programmcode-Bereich, welcher der Signalerzeugung dient. 
+	Durch zusätzliche \glqq Controls\grqq\ und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. 
+	Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq ) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht. %TODO s.O. mit dem "frei, ausfüllbar" - Jannik: Ich hab's nur nochmal erwähnt, damit der Leser weiß, dass die oben angesprochenen Case-Felder gemeint sind.
+	Dabei wird auf die Simpsonregel (in \cref{FMProgrammcode} mit \glqq Simpson's Rule\grqq\ gekennzeichnet) als numerisches Integrationsverfahren zurückgegriffen.
+	%TODO Blödsinn, dass auf das offensichtliche Englische zu übersetzen. Du schreibst doch auch nicht Satz von Rolle (Rolle's theorem) - Jannik: Das war nicht das Ziel. Ich wollte auf die entsprechende Stelle im Programmcode hinweisen, hätte ich eindeutiger machen sollen, sry.
+	
+	%Absatz zu verschiedenen k bei FM
+	Vergleicht man die Diagramme des frequenzmodulierten Signals in \cref{FMAusgabekleinesk} mit denen aus \cref{FMAusgabegrossesk}, so lässt sich feststellen, dass im Zeitbild die tausendfach höhere Trägerfrequenz deutlich zum Tragen kommt, sodass zahlreiche Nulldurchgänge stattfinden. 
 	
 	\begin{figure}[H]
 		\centering
@@ -739,28 +751,11 @@ ngerman
 		\label{FMAusgabegrossesk}
 	\end{figure}
 	
-	\noindent Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, am Ausgangsanschluss des aus \cref{sinusfkt} stammenden, Sinus-erstellenden Programms abgegriffen werden. 
-	Das dazugehörige Blockdiagrammobjekt befindet sich im linken Programmcode-Bereich, welcher der Signalerzeugung dient. 
-	Durch zusätzliche \glqq Controls\grqq\ und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. 
-	Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq ) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht. %TODO s.O. mit dem "frei, ausfüllbar" - Jannik: Ich hab's nur nochmal erwähnt, damit der Leser weiß, dass die oben angesprochenen Case-Felder gemeint sind.
-	Dabei wird auf die Simpsonregel (in \cref{FMProgrammcode} mit \glqq Simpson's Rule\grqq\ gekennzeichnet) als numerisches Integrationsverfahren zurückgegriffen.
-	%TODO Blödsinn, dass auf das offensichtliche Englische zu übersetzen. Du schreibst doch auch nicht Satz von Rolle (Rolle's theorem) - Jannik: Das war nicht das Ziel. Ich wollte auf die entsprechende Stelle im Programmcode hinweisen, hätte ich eindeutiger machen sollen, sry.
-	
-	\begin{figure}[H] %TODO Das ist doch bs, das abzubilden.schreib halt in das andere, dass der bei PM nur das Signal durchleitet. - Jannik: Hab ich unten auch hingeschrieben. Hab das Bild extra klein gemacht, ich finde das stört im Text jetzt auch nicht so wahnsinnig und zur Vollständigkeit gehört das schon irgendwie darein.
-		\centering
-		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungd1}
-		\caption{Es ist der in \cref{FMProgrammcode} nicht sichtbare Teil des LabVIEW-Programmcodes dargestellt, der notwendig ist, um die Art der Modulation auf der Benutzeroberfläche des Programms auszuwählen zu können. Bei diesem hier abgebildeten Programmcodeteil handelt es sich um eine weitere Option in der Case-Konstruktion, welche darauf abzielt die Phasenmodulation zu ergänzen.}
-		\label{PMProgrammcode}
-	\end{figure}
-	
-	\noindent Die gesamte Berechnung (FM-/PM-Modulation sowie Signalerzeugung) und der Großteil der Signalausgabe finden in einer While-Schleife statt, was auch aus \cref{FMProgrammcode} hervorgeht.
-	Ebenso wie bei den zuvor behandelten Abschnitten ist der While-Schleife ein \glqq Stopp\grqq -Knopf beigefügt, um das Programm bei Bedarf anhalten zu können.
-
-	Vergleicht man die Diagramme des frequenzmodulierten Signals in \cref{FMAusgabekleinesk} mit denen aus \cref{FMAusgabegrossesk}, so lässt sich feststellen, dass im Zeitbild die tausendfach höhere Trägerfrequenz deutlich zum Tragen kommt, sodass zahlreiche Nulldurchgänge stattfinden. 
-	Der Graph erscheint daher wie ein \glqq weißer Block\grqq\ aus Linien. 
+	\noindent Der Graph erscheint daher wie ein \glqq weißer Block\grqq\ aus Linien. 
 	Der Vergleich der beiden Frequenzbilder zeigt, dass die Vergrößerung des $k$-Wertes zu schärfer definierten Peaks im Frequenzspektrum führt.
 	Dies geht auch aus \cref{FMFormel} hervor.
 	
+	%PM-Absatz:
 	Phasenmoduliert man das Signal $s(t)$, so nimmt das daraus entstehende PM-Signal $S_{PM}(t)$ die Form
 	
 	\begin{equation} \label{PMFormel}
@@ -771,6 +766,17 @@ ngerman
 	Dabei bildet $f_0$ die Trägerfrequenz und $t$ die Zeit. 
 	$k$ ist ein fester, aber beliebig wählbarer Faktor. 
 	Aufgrund der Ähnlichkeit von \cref{PMFormel} zu \cref{FMFormel}, verläuft auch die Realisierung der Phasenmodulation als LabVIEW-Programm ähnlich zur Programm-Umsetzung der Frequenzmodulation. 
+	Daher besteht lediglich die Notwendigkeit, das für die Phasenmodulation reservierte, freie, ausfüllbare Case-Feld passend zu besetzen. %TODO s.O. mit frei ausfüllbar - Jannik: Stehen lassen, pls.
+	
+	\begin{figure}[H] %TODO Das ist doch bs, das abzubilden.schreib halt in das andere, dass der bei PM nur das Signal durchleitet. - Jannik: Hab ich unten auch hingeschrieben. Hab das Bild extra klein gemacht, ich finde das stört im Text jetzt auch nicht so wahnsinnig und zur Vollständigkeit gehört das schon irgendwie darein.
+		\centering
+		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungd1}
+		\caption{Es ist der in \cref{FMProgrammcode} nicht sichtbare Teil des LabVIEW-Programmcodes dargestellt, der notwendig ist, um die Art der Modulation auf der Benutzeroberfläche des Programms auszuwählen zu können. Bei diesem hier abgebildeten Programmcodeteil handelt es sich um eine weitere Option in der Case-Konstruktion, welche darauf abzielt die Phasenmodulation zu ergänzen.}
+		\label{PMProgrammcode}
+	\end{figure}
+	
+	\noindent Wie im Programmcode in \cref{PMProgrammcode} zu erkennen, wird hierbei die Leitung direkt durch das Case-Feld gezogen, ohne das übertragene Signal zu bearbeiten oder zu verändern. 
+	In Kombination mit der bereits durch die Frequenzmodulation existierenden Programm-Struktur ist damit die Umsetzung der Phasenmodulation abgeschlossen. 
 	
 	\begin{figure}[H]
 		\centering
@@ -778,18 +784,17 @@ ngerman
 		\caption{Die Abbildung zeigt das Frontpanel bzw. die Benutzeroberfläche des LabVIEW-Programms zur Realisierung der Phasenmodulation.}
 		\label{PMAusgabe}
 	\end{figure}
-
-	\noindent Daher besteht lediglich die Notwendigkeit, das für die Phasenmodulation reservierte, freie, ausfüllbare Case-Feld passend zu besetzen. %TODO s.O. mit frei ausfüllbar - Jannik: Stehen lassen, pls.
-	Wie im Programmcode in \cref{PMProgrammcode} zu erkennen, wird hierbei die Leitung direkt durch das Case-Feld gezogen, ohne das übertragene Signal zu bearbeiten oder zu verändern. 
-	In Kombination mit der bereits durch die Frequenzmodulation existierenden Programm-Struktur ist damit die Umsetzung der Phasenmodulation abgeschlossen. 
-	Das sich ergebene phasenmodulierte Signal $S_{PM}(t)$ sowie dessen Fourier-Transformierte $\tilde{S}_{PM}(f)$ sind in den beiden Diagrammen auf der Benutzeroberfläche des Programms in \cref{PMAusgabe} dargestellt.
 	
+	\noindent Das sich ergebene phasenmodulierte Signal $S_{PM}(t)$ sowie dessen Fourier-Transformierte $\tilde{S}_{PM}(f)$ sind in den beiden Diagrammen auf der Benutzeroberfläche des Programms in \cref{PMAusgabe} dargestellt.
+	
+	%Hinweis:
 	\emph{Hinweis:} Bei diesem LabVIEW-Programm zur Erzeugung von phasen- und frequenzmodulierten Signalen ist zu beachten, dass zwischen den $k$-Werten der Frequenzmodulation und den $k$-Werten der Phasenmodulation stets eine Diskrepanz um einen Faktor der Größenordnung $10^4$ vorliegt.
 	Denn dadurch ergeben sich für beide Modulationsarten die verlässlichsten Ergebnisse.
+		
 	
 	
-	
-	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMDemodulation}
+		
+	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMDemodulation} %Bilderanordnung schön, bitte so lassen.
 	%TODO Leonut hier ansetzen
 	
 	%Allgemeiner Absatz:
@@ -863,64 +868,80 @@ ngerman
 	\noindent Da sich die beiden in diesem Frequenzspektrum deutlich sichtbaren Peaks bei $700\,$Hz und $1.000\,$Hz befinden und diese genau den Frequenzen $f_1$ und $f_2$ des Signals $s(t)$ entsprechen, kann man von einer erfolgreichen Demodulation des gemessenen, phasenmodulierten Signals sprechen.
 	
 	
-	%Fktion nur schön für bestimmten Bereich von k, weil , wenn zu hoch: zu viele Oberwellen, zu klein: demoduliertes Signal geht im Rauschen unter
-	\subsection{Erweiterte Demodulation mit Bandpass und zusätzlicher Integration des Signals}
-	
-	Das in \cref{FMPMDemodulation} entstandene Programm bildet die Basis für das folgende LabVIEW-Programm.
 	
 	
-	Der Tiefpass wird auf einen Bandpass erweitert, wobei die obere und untere Grenzfrequenz 
+	\subsection{Erweiterte Demodulation mit Bandpass und zusätzlicher Integration des Signals} %Bilderanordnung schön, bitte so lassen.
 	
+	%Allgemeiner Absatz:
+	Da es sich hierbei um eine Programm- und Demodulationserweiterung handelt, bildet der in \cref{FMPMDemodulation} entstandene Programmcode die Basis für das folgende LabVIEW-Programm.
+	Dessen Blockdiagramm ist in \cref{DemodIntBandProgrammcode1} und \cref{DemodIntBandProgrammcode2} dargestellt.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMp}
+		\caption{In dieser Abbildung ist die LabVIEW-Benutzeroberfläche bzw. das LabVIEW-Frontpanel des Programms zur erweiterten Demodulation eines von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen, phasenmodulierten Signals (\glqq PM\grqq ) dargestellt. Die AM-Demodulation findet hierbei mittels \glqq Quadrat\grqq -Methode statt.}
+		\label{DemodIntBandFrontpanel}
+	\end{figure}
 	
+	\noindent \cref{DemodIntBandFrontpanel} zeigt das dazugehörige Frontpanel.
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	%Absatz zum Bandpass:
+	Zunächst wird der der AM-Demodulation nachstehende Tiefpassfilter durch einen Bandpassfilter sechzehnter Ordnung ersetzt, was unter anderem im Programmcodeteil in \cref{DemodIntBandProgrammcode1} zu sehen ist.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMd}
-		\caption{.}
+		\caption{Die Abbildung veranschaulicht das LabVIEW-Blockdiagramm bzw. den Programmcode zur erweiterten Demodulation eines von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen, phasen- oder frequenzmodulierten Signals.}
+		\label{DemodIntBandProgrammcode1}
 	\end{figure}
+	
+	\noindent Die obere und untere Grenzfrequenz lässt sich dabei durch entsprechende auf dem Frontpanel hinzugefügte Bedienelemente einstellen.
+	Die untere Grenzfrequenz soll $400\,$Hz und die obere Grenzfrequenz $1.600\,$Hz betragen.
+	
+	%Absatz zur Integration:
+	Im Programmcode wird zwischen dem für die Demodulation von AM-Signalen zuständigen Programmbereich und dem Bandpassfilter eine Case-Konstruktion ergänzt, welche insgesamt zwei Case-Optionen umfasst.
+	Dadurch entstehen zwei zunächst freie, ausfüllbare Case-Felder, wobei das Erste für demodulierte FM-Signale und das Zweite für demodulierte PM-Signale vorgesehen ist.
+	Über eine Leitung mit NOT-Gate und in Verbindung mit dem bereits aus \cref{FMPMDemodulation} bekannten Kippschalter lässt sich die Case-Konstruktion ansteuern, sodass beim Weiterverfahren mit dem demodulierten Signal zwischen ursprünglich frequenzmodulierten Signalen und ursprünglich phasenmodulierten Signalen unterschieden werden kann.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMd6}
-		\caption{.}
+		\caption{In dieser Abbildung ist der in \cref{DemodIntBandProgrammcode1} nicht sichtbare Teil des LabVIEW-Programmcodes zu sehen. Dieser Programmcodeteil bildet die zweite Option in der Case-Konstruktion und sorgt dafür, dass das demodulierte FM-Signal vor der Bandpassfilterung nicht verändert wird.}
+		\label{DemodIntBandProgrammcode2}
 	\end{figure}
-		
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/mitBandpassUndIntegrationBilder/OsziPlusFMPMp}
-		\caption{.}
-	\end{figure}
+	
+	\noindent Wie im Programmcodeteil in \cref{DemodIntBandProgrammcode2} zu erkennen ist, wird die Leitung direkt durch das für demodulierte FM-Signale reservierte Case-Feld gezogen, sodass das übertragene Signal unverändert bleibt.
+	Innerhalb des für demodulierte PM-Signale reservierten Case-Feldes wird das Signal hingegen mit Hilfe der Simpsonregel numerisch integriert und anschließend an den Bandpassfilter weitergegeben.
+	Dies ist im Programmcode in \cref{DemodIntBandProgrammcode1} zu sehen.
+	Auf diese Weise verschwinden die Gleichanteile und die Frequenzabhängigkeit des demodulierten PM-Signals.
 	
 	\begin{figure}[H] %FM-Diagramm mit Bandpass
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/FMmitBandpassundInt/Frequenzbild_mit_Hanning_nach_BP_und_Demod}
-		\caption{.}
+		\caption{In dieser Abbildung ist das Ergebnis der Demodulation und Bandpassfilterung eines FM-Signals zu sehen. Dieses Frequenzbild mit Hanning-Fenster ist das Äquivalent zu dem aus \cref{DemodIntBandFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet. Die verwendete AM-Demodulation findet mittels \glqq Quadrat\grqq -Methode statt.}
+		\label{FMIntBandDiagramm}
 	\end{figure}
+	
+	\noindent Das Ergebnis der erweiterten Demodulation sowie Bandpassfilterung eines von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen FM- bzw. PM-Signals ist in \cref{FMIntBandDiagramm} bzw. \cref{FMIntBandDiagramm} als Diagramm dargestellt.
+	In diesen beiden Frequenzspektren lassen sich zwei deutliche Peaks bei $700\,$Hz und $1.000\,$Hz ausmachen.
 	
 	\begin{figure}[H] %PM-Diagramm mit Bandpass und Integration 
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/OsziFMPM-Demod/PMmitBandpassundInt/Frequenzbild_mit_Hanning_nach_BP,Int,Demod}
-		\caption{.}
+		\caption{Die Abbildung zeigt das Frequenzspektrum eines PM-Signals nach Abschluss der Demodulation, Integration und Bandpassfilterung. Bei diesem Frequenzbild mit Hanning-Fenster handelt es sich um das Äquivalent zu dem aus \cref{DemodIntBandFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm. Die Daten für das hier dargestellte Frequenzspektrum entspringen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen txt-Datei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet. Die verwendete AM-Demodulation findet mittels \glqq Quadrat\grqq -Methode statt.}
+		\label{PMIntBandDiagramm}
 	\end{figure}
 	
+	\noindent Diese entsprechen genau den Frequenzen $f_1$ und $f_2$ des zu modulierenden Signals $s(t)$, weshalb man von einer erfolgreich umgesetzten, erweiterten Demodulation und Bandpassfilterung des gemessenen, frequenzmodulierten bzw. phasenmodulierten Signals sprechen kann.
+		
+	%Hinweis:
+	\emph{Hinweis:} Sobald $k$ innerhalb eines bestimmten Wertebereichs liegt, werden die sich nach der erweiterten Demodulation und Bandpassfilterung eines FM- bzw. PM-Signals ergebenen Frequenzspektren anschaulicher und die Peaks sind deutlicher zu erkennen.
+	Ist der $k$-Wert jedoch zu hoch, kommen zu viele Oberwellen zustande.
+	Wenn der $k$-Wert wiederum zu klein gewählt wird, verschwindet das demodulierte Signal im Hintergrundrauschen.
 	
-	\printbibliography %ist bissl un
+	
+	
+	\printbibliography %TODO ist bissl un - Jannik: Meinst du vielleicht "unnötig"? Wenn ja, dann würde ich dir zustimmen.
 	
 	
 \end{document}

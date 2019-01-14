@@ -716,9 +716,9 @@ ngerman
 	Die gesamte Berechnung (FM- und PM-Modulation sowie Signalerzeugung) und der Großteil der Signalausgabe finden in einer While-Schleife statt, was auch aus \cref{FMProgrammcode} hervorgeht.
 	Ebenso wie bei den zuvor behandelten Abschnitten ist der While-Schleife ein \glqq Stopp\grqq -Knopf beigefügt, um das Programm bei Bedarf anhalten zu können.
 	Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der Signalentstehung findet im Programmcode die Modulation des Signals statt.
-	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. %TODO Vermerk - Jannik: "Vermerk" für was?
+	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. %TODO Vermerk - Jannik: "Vermerk" für was?  Leonut: kein Plan, ist 4 Monate her...
 	Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. 
-	Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen. %TODO natürlich sind sie zunächst frei. Wenn du normalen Code erklären würdest, wü+rdest du auch nicht sagen "Man drückt Enter. Die entstehende Zeile ist zunächst frei." - Jannik: Ich finde, dass es nötig ist einmal zu sagen, dass die anfangs frei sind, weil das weiß der Leser, dem das Programm ja unbekannt ist, nicht.
+	Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen. % natürlich sind sie zunächst frei. Wenn du normalen Code erklären würdest, wü+rdest du auch nicht sagen "Man drückt Enter. Die entstehende Zeile ist zunächst frei." - Jannik: Ich finde, dass es nötig ist einmal zu sagen, dass die anfangs frei sind, weil das weiß der Leser, dem das Programm ja unbekannt ist, nicht. Leonut: wie du meinst, ist nicht dramatisch
 	Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichnetes Bedienelement auf der Benutzeroberfläche samt dazugehörigem Element (auch als \glqq Control\grqq bezeichnet) an der entsprechenden Stelle im Programmcode.
 		
 	%"Einleitende" Worte:
@@ -737,9 +737,9 @@ ngerman
 	Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, am Ausgangsanschluss des aus \cref{sinusfkt} stammenden, Sinus-erstellenden Programms abgegriffen werden. 
 	Das dazugehörige Blockdiagrammobjekt befindet sich im linken Programmcode-Bereich, welcher der Signalerzeugung dient. 
 	Durch zusätzliche \glqq Controls\grqq\ und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. 
-	Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq ) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht. %TODO s.O. mit dem "frei, ausfüllbar" - Jannik: Ich hab's nur nochmal erwähnt, damit der Leser weiß, dass die oben angesprochenen Case-Felder gemeint sind.
+	Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq ) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht. % s.O. mit dem "frei, ausfüllbar" - Jannik: Ich hab's nur nochmal erwähnt, damit der Leser weiß, dass die oben angesprochenen Case-Felder gemeint sind. Leonut: finde ich komisch, aber w/e
 	Dabei wird auf die Simpsonregel (in \cref{FMProgrammcode} mit \glqq Simpson's Rule\grqq\ gekennzeichnet) als numerisches Integrationsverfahren zurückgegriffen.
-	%TODO Blödsinn, dass auf das offensichtliche Englische zu übersetzen. Du schreibst doch auch nicht Satz von Rolle (Rolle's theorem) - Jannik: Das war nicht das Ziel. Ich wollte auf die entsprechende Stelle im Programmcode hinweisen, hätte ich eindeutiger machen sollen, sry.
+	% Blödsinn, dass auf das offensichtliche Englische zu übersetzen. Du schreibst doch auch nicht Satz von Rolle (Rolle's theorem) - Jannik: Das war nicht das Ziel. Ich wollte auf die entsprechende Stelle im Programmcode hinweisen, hätte ich eindeutiger machen sollen, sry.
 	
 	%Absatz zu verschiedenen k bei FM
 	Vergleicht man die Diagramme des frequenzmodulierten Signals in \cref{FMAusgabekleinesk} mit denen aus \cref{FMAusgabegrossesk}, so lässt sich feststellen, dass im Zeitbild die tausendfach höhere Trägerfrequenz deutlich zum Tragen kommt, sodass zahlreiche Nulldurchgänge stattfinden. 
@@ -941,7 +941,7 @@ ngerman
 	
 	
 	
-	\printbibliography %TODO ist bissl un - Jannik: Meinst du vielleicht "unnötig"? Wenn ja, dann würde ich dir zustimmen.
+	\printbibliography
 	
 	
 \end{document}

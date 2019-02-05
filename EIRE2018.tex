@@ -630,7 +630,7 @@ ngerman
 	\end{figure}
 	
 	\noindent Das Ergebnis dieser Operation ist, wie zuvor im Theorie-Teil erwähnt, ein breites Frequenzspektrum mit zahlreichen Peaks an unterschiedlich hohen und niedrigen Frequenzwerten, was im rechten, mittleren Diagramm in \cref{MultiTraegerFrontpanel} erkennbar ist. 
-	Überdies sind in \cref{MultiTraegerFrontpanel} noch fünf weitere Anzeigeelemente in Diagramm-Form dargestellt: Die beiden Oberen zeigen das von der Computer-Soundkarte ausgegebene und anschließend über den Analog-Digital-Wandler gemessene, amplitudenmodulierte Signal ohne Demodulation, zum einen im Zeitbild und zum andern im Frequenzbild. %TODO musst du mMn nich nochmal erklären, wenn es in der Caption steht. - Jannik: Stimme ich teilweise zu, aber ich lass es jetzt einfach stehen.
+	Überdies sind in \cref{MultiTraegerFrontpanel} noch fünf weitere Anzeigeelemente in Diagramm-Form dargestellt: Die beiden Oberen zeigen das von der Computer-Soundkarte ausgegebene und anschließend über den Analog-Digital-Wandler gemessene, amplitudenmodulierte Signal ohne Demodulation, zum einen im Zeitbild und zum andern im Frequenzbild.
 	Im linken, mittleren Anzeigeelement ist ein Diagramm zu sehen, in dem der zeitliche Signalverlauf nach der Durchführung der Trägerfrequenzmultiplikation und somit auch nach der kompletten Demodulation veranschaulicht ist. 
 	Die beiden unteren Anzeigeelemente stellen, sowohl im Zeit- als auch im Frequenzbild, das demodulierte AM-Signal nach der bereits im Theorie-Teil angesprochenen Tiefpassfilterung dar. 
 	Genauso wie in \cref{DemodulationAM} findet die Tiefpassfilterung außerhalb der Demodulator-Case-Konstruktion statt. 
@@ -644,7 +644,7 @@ ngerman
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag4/traegerMultOszi/exaktTraegerRate10000m0,2}
-		\caption{In dieser Abbildung ist das Ergebnis einer erfolgreichen Demodulation des von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen AM-Signals zu sehen. Bei diesem Frequenzbild mit Hanning-Fenster handelt sich um das aus \cref{MultiTraegerFrontpanel} bekannte, rechts unten auffindbare Frontpanel-Diagramm. Der Trägerfrequenz-Wert von $10.000\,$Hz wurde exakt geraten. Der Modulationsgrad des AM-Signals beträgt $0,2$. Die Daten für das hier dargestellte Frequenzspektrum entstammen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen Textdatei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.} %TODO mMn ist das Programm irrelevant, vorallem weil ich es nicht erwähnt habe und wir damit inkonsistent sind. - Jannik: Dann erwähn' doch das Programm mit dem du gearbeitet hast einfach, dann sind wir auch wieder konsistent. Das Programm ist nicht irrelevant haben mir viele Praktikum-Dudes gesagt.
+		\caption{In dieser Abbildung ist das Ergebnis einer erfolgreichen Demodulation des von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen AM-Signals zu sehen. Bei diesem Frequenzbild mit Hanning-Fenster handelt sich um das aus \cref{MultiTraegerFrontpanel} bekannte, rechts unten auffindbare Frontpanel-Diagramm. Der Trägerfrequenz-Wert von $10.000\,$Hz wurde exakt geraten. Der Modulationsgrad des AM-Signals beträgt $0,2$. Die Daten für das hier dargestellte Frequenzspektrum entstammen der durch die Speicherfunktion des LabVIEW-Programms erhaltenen Textdatei und wurden mit dem Datenanalyse-Programm \glqq SciDAVis\grqq\ bearbeitet.}
 		\label{AMDemodsuccm02}
 	\end{figure}
 
@@ -716,9 +716,9 @@ ngerman
 	Die gesamte Berechnung (FM- und PM-Modulation sowie Signalerzeugung) und der Großteil der Signalausgabe finden in einer While-Schleife statt, was auch aus \cref{FMProgrammcode} hervorgeht.
 	Ebenso wie bei den zuvor behandelten Abschnitten ist der While-Schleife ein \glqq Stopp\grqq -Knopf beigefügt, um das Programm bei Bedarf anhalten zu können.
 	Zwischen den Blockdiagrammobjekten zur Benutzeroberflächenkonfiguration und der Signalentstehung findet im Programmcode die Modulation des Signals statt.
-	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande. %TODO Vermerk - Jannik: "Vermerk" für was?  Leonut: kein Plan, ist 4 Monate her...
+	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande.
 	Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. 
-	Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen. % natürlich sind sie zunächst frei. Wenn du normalen Code erklären würdest, wü+rdest du auch nicht sagen "Man drückt Enter. Die entstehende Zeile ist zunächst frei." - Jannik: Ich finde, dass es nötig ist einmal zu sagen, dass die anfangs frei sind, weil das weiß der Leser, dem das Programm ja unbekannt ist, nicht. Leonut: wie du meinst, ist nicht dramatisch
+	Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen.
 	Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichnetes Bedienelement auf der Benutzeroberfläche samt dazugehörigem Element (auch als \glqq Control\grqq bezeichnet) an der entsprechenden Stelle im Programmcode.
 		
 	%"Einleitende" Worte:
@@ -737,9 +737,8 @@ ngerman
 	Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, am Ausgangsanschluss des aus \cref{sinusfkt} stammenden, Sinus-erstellenden Programms abgegriffen werden. 
 	Das dazugehörige Blockdiagrammobjekt befindet sich im linken Programmcode-Bereich, welcher der Signalerzeugung dient. 
 	Durch zusätzliche \glqq Controls\grqq\ und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. 
-	Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq ) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht. % s.O. mit dem "frei, ausfüllbar" - Jannik: Ich hab's nur nochmal erwähnt, damit der Leser weiß, dass die oben angesprochenen Case-Felder gemeint sind. Leonut: finde ich komisch, aber w/e
+	Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq ) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht.
 	Dabei wird auf die Simpsonregel (in \cref{FMProgrammcode} mit \glqq Simpson's Rule\grqq\ gekennzeichnet) als numerisches Integrationsverfahren zurückgegriffen.
-	% Blödsinn, dass auf das offensichtliche Englische zu übersetzen. Du schreibst doch auch nicht Satz von Rolle (Rolle's theorem) - Jannik: Das war nicht das Ziel. Ich wollte auf die entsprechende Stelle im Programmcode hinweisen, hätte ich eindeutiger machen sollen, sry.
 	
 	%Absatz zu verschiedenen k bei FM
 	Vergleicht man die Diagramme des frequenzmodulierten Signals in \cref{FMAusgabekleinesk} mit denen aus \cref{FMAusgabegrossesk}, so lässt sich feststellen, dass im Zeitbild die tausendfach höhere Trägerfrequenz deutlich zum Tragen kommt, sodass zahlreiche Nulldurchgänge stattfinden. 
@@ -766,9 +765,9 @@ ngerman
 	Dabei bildet $f_0$ die Trägerfrequenz und $t$ die Zeit. 
 	$k$ ist ein fester, aber beliebig wählbarer Faktor. 
 	Aufgrund der Ähnlichkeit von \cref{PMFormel} zu \cref{FMFormel}, verläuft auch die Realisierung der Phasenmodulation als LabVIEW-Programm ähnlich zur Programm-Umsetzung der Frequenzmodulation. 
-	Daher besteht lediglich die Notwendigkeit, das für die Phasenmodulation reservierte, freie, ausfüllbare Case-Feld passend zu besetzen. %TODO s.O. mit frei ausfüllbar - Jannik: Stehen lassen, pls.
+	Daher besteht lediglich die Notwendigkeit, das für die Phasenmodulation reservierte, freie, ausfüllbare Case-Feld passend zu besetzen.
 	
-	\begin{figure}[H] %TODO Das ist doch bs, das abzubilden.schreib halt in das andere, dass der bei PM nur das Signal durchleitet. - Jannik: Hab ich unten auch hingeschrieben. Hab das Bild extra klein gemacht, ich finde das stört im Text jetzt auch nicht so wahnsinnig und zur Vollständigkeit gehört das schon irgendwie darein.
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.6\textwidth]{EIRE2018Dateien/Tag4/FMPM-Erzeugung/PM-FMPM-Erzeugungd1}
 		\caption{Es ist der in \cref{FMProgrammcode} nicht sichtbare Teil des LabVIEW-Programmcodes dargestellt, der notwendig ist, um die Art der Modulation auf der Benutzeroberfläche des Programms auszuwählen zu können. Bei diesem hier abgebildeten Programmcodeteil handelt es sich um eine weitere Option in der Case-Konstruktion, welche darauf abzielt die Phasenmodulation zu ergänzen.}
@@ -795,7 +794,7 @@ ngerman
 	
 		
 	\subsection{Demodulation eines phasen- bzw. frequenzmodulierten Signals} \label{FMPMDemodulation} %Bilderanordnung schön, bitte so lassen.
-	%TODO Leonut hier ansetzen
+	
 	
 	%Allgemeiner Absatz:
 	Im Folgenden soll ein von der Computer-Soundkarte ausgegebenes (im Hintergrund wird das in \cref{FMPMErzeugung} entstandene LabVIEW-Programm ausgeführt) und anschließend über den Analog-Digital-Wandler gemessenes Signal, welches entweder phasen- oder frequenzmoduliert wurde, demoduliert werden. 

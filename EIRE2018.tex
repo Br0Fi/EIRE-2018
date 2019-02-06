@@ -271,8 +271,8 @@ ngerman
 		\centering
 	\end{figure}
 
-	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden. %TODO mit denen das Signal mutlipliziert wird? Wäre das immer wahr? - Jannik: Nach Wiki wird immer mit Fensterfunktion multipliziert.
-	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos
+	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden. %TODO mit denen das Signal mutlipliziert wird? Wäre das immer wahr? - Jannik: Nach Wiki wird immer mit Fensterfunktion multipliziert: "Das Signal wird im Frequenzbereich mit diesem Spektrum der Fensterfunktion gefaltet(...)", https://de.m.wikipedia.org/wiki/Fensterfunktion#Beispiele_von_Fensterfunktionen
+	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %TODO mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos - Jannik: Wenn du oben sagst, dass man das Signal mit der Fensterfunktion multipliziert, kannst du hier ganz kurz sagen, dass die Fensterfunktion des Von-Hann-Fensters die Haversine-Funktion ist (https://de.m.wikipedia.org/wiki/Fensterfunktion#Von-Hann-Fenster). Damit sollte man so mehr oder weniger wissen was gemeint ist.
 	Der Unterschied zwischen Spektralanalyse mit und ohne Von-Hann-Fenster ist in \cref{fig_tag23_oszi_manuell_front} zu erkennen, da dort ohne Fenster-Funktion zusätzliche Frequenzen in der Nähe des Peaks auftreten.
 	
 
@@ -497,7 +497,7 @@ ngerman
 
 	In \crefrange{fig_tag3_am_demod_eingang}{fig_tag3_am_demod_quadrat_vollst} sind die Graphen, die sich aus der durch den \enquote{Speichern}-Knopf erstellten Textdatei ergeben, dargestellt.
 	All diesen ist gemein, dass neben den rechnerisch durch die Modulation entstehenden Frequenzen noch einige andere von signifikanter Stärke vorhanden sind.
-	Diese müssen auf Störeffekte durch Netzfrequenz, deren Oberfrequenzen und andere Effekte bei der Erzeugung durch die Soundkarte zurückgeführt werden. %hab ich das nicht schon irgendwo geschrieben?
+	Diese müssen auf Störeffekte durch Netzfrequenz, deren Oberfrequenzen und andere Effekte bei der Erzeugung durch die Soundkarte zurückgeführt werden.
 	Im Folgenden wird immer ein amplitudenmoduliertes Signal mit einer Trägerfrequenz von \SI{10000}{\hertz} verwendet.
 	Vor der Modulation beinhaltet das Signal die Frequenz \SI{700}{\hertz} mit einer relativen Amplitude von \num{1} und die Frequenz \SI{1000}{\hertz} mit einer relativen Amplitude von \num{3}. %TODO relative Amplitude approven
 	Als Modulationsgrad wird \num{0,2} gewählt.
@@ -538,7 +538,7 @@ ngerman
 		\caption{Ausgabe des Oszilloskopprogramms in der Frequenzdomäne nach vollständiger Demodulation durch Bilden des Betrags und Tiefpassfilterung des amplitudenmodulierten Signals.
 		Als Grenzfrequenz für den Tiefpass wurde \SI{1600}{\hertz} gewählt.
 		Hierfür muss man voraussetzen, dass bekannt ist, in welchem Frequenzbereich sich die Frequenzen im Signal befinden.
-		In der Darstellung des Frequenzbereichs von \SIrange{0}{2000}{\hertz} sind beide Signalfrequenzen sowie ein signifikanter Gleichanteil zu erkennen. %ja den könnte man mit Hochpass wegmachen, muss man das erwähnen? denke nicht
+		In der Darstellung des Frequenzbereichs von \SIrange{0}{2000}{\hertz} sind beide Signalfrequenzen sowie ein signifikanter Gleichanteil zu erkennen. %TODO ja den könnte man mit Hochpass wegmachen, muss man das erwähnen? denke nicht - Jannik: muss da nicht hin, ansonsten könnte man sich als Leser fragen, warum man den nicht schon benutzt hat.
 		}
 		\centering
 	\end{figure}

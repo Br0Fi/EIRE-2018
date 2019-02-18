@@ -271,8 +271,8 @@ ngerman
 		\centering
 	\end{figure}
 
-	Um diesen Effekt zu minimieren können Fensterfunktionen angewendet werden. %TODO mit denen das Signal mutlipliziert wird? Wäre das immer wahr? - Jannik: Nach Wiki wird immer mit Fensterfunktion multipliziert: "Das Signal wird im Frequenzbereich mit diesem Spektrum der Fensterfunktion gefaltet(...)", https://de.m.wikipedia.org/wiki/Fensterfunktion#Beispiele_von_Fensterfunktionen
-	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet. %TODO mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos - Jannik: Wenn du oben sagst, dass man das Signal mit der Fensterfunktion multipliziert, kannst du hier ganz kurz sagen, dass die Fensterfunktion des Von-Hann-Fensters die Haversine-Funktion ist (https://de.m.wikipedia.org/wiki/Fensterfunktion#Von-Hann-Fenster). Damit sollte man so mehr oder weniger wissen was gemeint ist.
+	Um diesen Effekt zu minimieren kann das Signal mit einer Fensterfunktion multipliziert werden. % mit denen das Signal mutlipliziert wird? Wäre das immer wahr? - Jannik: Nach Wiki wird immer mit Fensterfunktion multipliziert: "Das Signal wird im Frequenzbereich mit diesem Spektrum der Fensterfunktion gefaltet(...)", https://de.m.wikipedia.org/wiki/Fensterfunktion#Beispiele_von_Fensterfunktionen
+	Im Folgenden wird das \enquote{Von-Hann-Fenster} (auch \enquote{Hanning-Fenster}) verwendet, welches der Haversine-Funktion entspricht ($\frac{1-\cos \vartheta}{2} $). %mehr erklären? Hat er halt auch nicht so schöne gemacht, nur halt 1-cos - Jannik: Wenn du oben sagst, dass man das Signal mit der Fensterfunktion multipliziert, kannst du hier ganz kurz sagen, dass die Fensterfunktion des Von-Hann-Fensters die Haversine-Funktion ist (https://de.m.wikipedia.org/wiki/Fensterfunktion#Von-Hann-Fenster). Damit sollte man so mehr oder weniger wissen was gemeint ist. >> Würde ich nicht erwähnen, da es genauso klar wie nur von Hann ist und ich mir mit Wiki nicht sicher bin, ob Haversine nicht nur ein Spezialfall des von-Hann-Fensters ist.
 	Der Unterschied zwischen Spektralanalyse mit und ohne Von-Hann-Fenster ist in \cref{fig_tag23_oszi_manuell_front} zu erkennen, da dort ohne Fenster-Funktion zusätzliche Frequenzen in der Nähe des Peaks auftreten.
 	
 
@@ -499,7 +499,7 @@ ngerman
 	All diesen ist gemein, dass neben den rechnerisch durch die Modulation entstehenden Frequenzen noch einige andere von signifikanter Stärke vorhanden sind.
 	Diese müssen auf Störeffekte durch Netzfrequenz, deren Oberfrequenzen und andere Effekte bei der Erzeugung durch die Soundkarte zurückgeführt werden.
 	Im Folgenden wird immer ein amplitudenmoduliertes Signal mit einer Trägerfrequenz von \SI{10000}{\hertz} verwendet.
-	Vor der Modulation beinhaltet das Signal die Frequenz \SI{700}{\hertz} mit einer relativen Amplitude von \num{1} und die Frequenz \SI{1000}{\hertz} mit einer relativen Amplitude von \num{3}. %TODO relative Amplitude approven
+	Vor der Modulation beinhaltet das Signal die Frequenz \SI{700}{\hertz} mit einer relativen Amplitude von \num{1} und die Frequenz \SI{1000}{\hertz} mit einer relativen Amplitude von \num{3}. %relative Amplitude approven
 	Als Modulationsgrad wird \num{0,2} gewählt.
 
 	\begin{figure}[H]  
@@ -538,7 +538,7 @@ ngerman
 		\caption{Ausgabe des Oszilloskopprogramms in der Frequenzdomäne nach vollständiger Demodulation durch Bilden des Betrags und Tiefpassfilterung des amplitudenmodulierten Signals.
 		Als Grenzfrequenz für den Tiefpass wurde \SI{1600}{\hertz} gewählt.
 		Hierfür muss man voraussetzen, dass bekannt ist, in welchem Frequenzbereich sich die Frequenzen im Signal befinden.
-		In der Darstellung des Frequenzbereichs von \SIrange{0}{2000}{\hertz} sind beide Signalfrequenzen sowie ein signifikanter Gleichanteil zu erkennen. %TODO ja den könnte man mit Hochpass wegmachen, muss man das erwähnen? denke nicht - Jannik: muss da nicht hin, ansonsten könnte man sich als Leser fragen, warum man den nicht schon benutzt hat.
+		In der Darstellung des Frequenzbereichs von \SIrange{0}{2000}{\hertz} sind beide Signalfrequenzen sowie ein signifikanter Gleichanteil zu erkennen. % ja den könnte man mit Hochpass wegmachen, muss man das erwähnen? denke nicht - Jannik: muss da nicht hin, ansonsten könnte man sich als Leser fragen, warum man den nicht schon benutzt hat.
 		}
 		\centering
 	\end{figure}
@@ -594,9 +594,9 @@ ngerman
 	\subsection{Demodulation eines AM-Signals mittels Trägerfrequenzmultiplikation} \label{DemodTraeger}
 	
 	Das allgemeine Ziel dieses Abschnitts ist die Demodulation eines von der Computer-Soundkarte ausgegebenen und anschließend über den Analog-Digital-Wandler gemessenen, amplitudenmodulierten Signals unter Zuhilfenahme der Multiplikation mit der Trägerfrequenz.
-	In der mathematischen Theorie führt das Multiplizieren der amplitudenmodulierten Signal-Funktion mit der Trägerfunktion, welche lediglich der Trägerfrequenz des AM-Signals unterliegt, dazu, dass sich mit dem passenden Additionstheorem als Ergebnis eine Überlagerung bzw. additive Aneinanderreihung von Schwingungstermen unterschiedlichster Frequenzen bildet.
+	Mathematisch führt das Multiplizieren der amplitudenmodulierten Signal-Funktion mit der Trägerfunktion, welche lediglich der Trägerfrequenz des AM-Signals unterliegt, dazu, dass sich mit dem passenden Additionstheorem als Ergebnis eine Überlagerung bzw. additive Aneinanderreihung von Schwingungstermen unterschiedlichster Frequenzen bildet.
 	Letztere lassen sich unter Verwendung einer Fourier-Transformation im Frequenzspektrum dieser Überlagerung betrachten.
-	Neben den diversen Peaks an Stellen mit vergleichsweise hohen Frequenzen, befinden sich darin ebenfalls Peaks bei relativ niedrigen Frequenzwerten. %TODO Link auf Diagramm? - Jannik: Warum hier schon Bezug auf das Diagramm nehmen, wenn ich erst die Theorie dahinter erkläre?
+	Neben den diversen Peaks an Stellen mit vergleichsweise hohen Frequenzen, ergeben sich darin ebenfalls Peaks bei relativ niedrigen Frequenzwerten. %Link auf Diagramm? - Jannik: Warum hier schon Bezug auf das Diagramm nehmen, wenn ich erst die Theorie dahinter erkläre? >> Na weil du das Diagramm schon beschreibst. Da ist es als Leser schön, schon zu wissen, wovon du redest.
 	Demnach handelt es sich um ein breites Frequenzspektrum, in dem man die Frequenz(en) des modulierten, ursprünglichen Signals deutlich erkennen kann.
 	Von einem theoretischen Standpunkt aus ist die komplette Demodulation des AM-Signals damit abgeschlossen.
 	Zusätzlich lassen sich durch einen Tiefpass mit hinreichend großer Grenzfrequenz die hohen Frequenzanteile aus dem Spektrum herausfiltern, sodass letztendlich nur noch die besagten Frequenzen des Signals übrig bleiben, welches es zu ampliutudenmodulieren galt. 

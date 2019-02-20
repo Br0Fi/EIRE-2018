@@ -113,7 +113,7 @@ ngerman
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag1/sinusbessel-bilder/SinusBesseld}
-		\caption{Die Abbildung zeigt ein LabVIEW-Blockdiagramm, also den Aufbau des Programms, zur Umsetzung einer Sinus- und Bessel-Funktion. Die eigentliche Berechnung findet innerhalb der For-Schleife statt. Dazu werden feste, aber beliebige Fließkommazahlen für die Amplitude $A$, die Zahl der Punkte $N$, die Frequenz $f$, die Phase $\varphi$ und die Ordnung $\nu$ der Bessel-Funktion herangezogen, nachdem sie auf der Frontplatte eingestellt wurden. Die Ausgabe der Wertepaare erfolgt in Form zweier $X$-$Y$-Graphen sowie Arrays.}
+		\caption{Die Abbildung zeigt ein LabVIEW-Blockdiagramm, also den Aufbau des Programms, zur Umsetzung einer Sinus- und Bessel-Funktion. Die eigentliche Berechnung findet innerhalb der For-Schleife statt. Dazu werden feste, aber beliebige Fließkommazahlen für die Amplitude $A$, die Zahl der Punkte $N$, die Frequenz $f$, die Phase $\varphi$ und die Ordnung $\nu$ der Bessel-Funktion herangezogen, nachdem sie auf dem Frontpanel eingestellt wurden. Die Ausgabe der Wertepaare erfolgt in Form zweier $X$-$Y$-Graphen sowie Arrays.}
 		\label{sinusbesselprogrammcode}
 	\end{figure}
 
@@ -150,7 +150,7 @@ ngerman
 	
 	\noindent LabVIEW bietet die Möglichkeit ein bereits vorhandenes, selbst geschriebenes, funktionsfähiges Programm so zu bearbeiten, dass es für andere LabVIEW-Programme bzw. -Projekte als Blockdiagrammobjekt nutzbar wird. Dazu müssen zunächst die Anschlüsse sowohl die der Eingänge als auch die der  Ausgänge \enquote{verkabelt} werden. Allgemein kann es sich dabei um verschiedenste Arten von Ein-und Ausgangssignalen handeln. Bei der programmierten Sinus-Funktion verhält es sich demnach so, dass fünf Eingangs- und zwei Ausgangsanschlüsse generiert werden müssen, welche jeweils nur Gleitkommazahlen annehmen bzw. übergeben. Die Amplitude $A$, die Frequenz $f$, die Phasenverschiebung $\varphi$, die Anzahl der Punkte $N$ und die Ordnung $\nu$ der Bessel-Funktion bilden hierbei die Eingänge, die $t$-Werte sowie die $u$- bzw. $y$-Werte erscheinen über die beiden Ausgänge. Des Weiteren ist es in LabVIEW möglich das entsprechende Blockdiagrammobjekt-Icon des Programms zu gestalten. Das komplette Resultat ist in \cref{sinusbesselicon} dargestellt.
 	
-	\emph{Hinweis:} Aus der Betrachtung des Programmcodes in \cref{sinusbesselprogrammcode} geht hervor, dass das Blockdiagrammobjekt, welches das Array-Ausgabeelement des Frontpanels bildet und alle $u$-Werte abgreifen soll, inkorrekt eingefügt ist. Denn anstelle einer Implementierung nach der Multiplikation mit der Amplitude $A$, befindet sich das besagte Blockdiagrammobjekt davor. Sodass das Array lediglich die Werte des Ausdrucks
+	\emph{Hinweis:} Aus der Betrachtung des Programmcodes in \cref{sinusbesselprogrammcode} geht hervor, dass das Blockdiagrammobjekt, welches das Array-Ausgabeelement des Frontpanels bildet und alle $u$-Werte abgreifen soll, inkorrekt eingefügt ist. Denn anstelle einer Implementierung nach der Multiplikation mit der Amplitude $A$, befindet sich das besagte Blockdiagrammobjekt davor, sodass das Array lediglich die Werte des Ausdrucks
 	
 	\begin{equation}
 	\sin(2\pi f t + \varphi)
@@ -179,7 +179,7 @@ ngerman
 		\label{lissajousprogrammcode}
 	\end{figure}
 
-	\noindent Der dazugehörige Programmcode ist in \cref{lissajousprogrammcode} zu erkennen. Die in \cref{sinusfkt} erstellte Sinus-Funktion bildet die Grundlage, denn mit dieser lassen sich die beiden separaten Schwingungen $u_1$ und $u_2$ aus \cref{u1u2} realisieren. Dabei ist es möglich das Sinus-Programm als Blockdiagrammobjekt in den Programmcode einfügen, jeweils einmal für $u_1$ und $u_2$, was in \cref{lissajousprogrammcode} deutlich wird. An die offenen Eingangsanschlüsse müssen entsprechende, sogenannte \glqq Controls\grqq\ für die Frequenzen $f_1$ und $f_2$, für die Phasenverschiebungen $\varphi_1$ und $\varphi_2$ sowie für die Zahl der Stützstellen $N$ angeschlossen werden. Die dazugehörigen Bedien- bzw. Eingabeelemente befinden sich links auf dem Frontpanel des Programms, so wie es in \cref{lissajous} dargestellt ist. Für die Amplituden soll einfachheitshalber $A_1 = A_2 = 1$ gelten.
+	\noindent Der dazugehörige Programmcode ist in \cref{lissajousprogrammcode} zu erkennen. Die in \cref{sinusfkt} erstellte Sinus-Funktion bildet die Grundlage, denn mit dieser lassen sich die beiden separaten Schwingungen $u_1$ und $u_2$ aus \cref{u1u2} realisieren. Damit ist es möglich, das Sinus-Programm als Blockdiagrammobjekt in den Programmcode einzufügen: Jeweils einmal für $u_1$ und $u_2$, was in \cref{lissajousprogrammcode} deutlich wird. An die offenen Eingangsanschlüsse müssen entsprechende, sogenannte \enquote{Controls} für die Frequenzen $f_1$ und $f_2$, für die Phasenverschiebungen $\varphi_1$ und $\varphi_2$ sowie für die Zahl der Stützstellen $N$ angeschlossen werden. Die dazugehörigen Bedien- bzw. Eingabeelemente befinden sich links auf dem Frontpanel des Programms, so wie es in \cref{lissajous} dargestellt ist. Für die Amplituden soll einfachheitshalber $A_1 = A_2 = 1$ gelten.
 
 	\begin{figure}[H]
 		\centering
@@ -197,7 +197,7 @@ ngerman
 	Es wird ein Funktionsgenerator verwendet.
 	Dessen Signal wird über einen Analog-Digital-Wandler durch den Computer erfasst.
 	Zunächst wird das Signal in LabView mit dem entsprechenden ExpressVI verarbeitet, welches dem Nutzer große Teile des Konfigurationsvorgangs abnimmt.
-	Das zugehörige Programm ist in \cref{fig_tag2_oszi_express_block} und die Frontplatte in \cref{fig_tag2_oszi_express_front} dargestellt.
+	Das zugehörige Programm ist in \cref{fig_tag2_oszi_express_block} und das Frontpanel in \cref{fig_tag2_oszi_express_front} dargestellt.
 	
 	\begin{figure}[H]  
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag2/expressVI_1d}
@@ -212,7 +212,7 @@ ngerman
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag2/expressVI_1p}
 		\centering
 		\caption{
-			Frontplatte des einfachen Oszilloskop mithilfe des ExpressVIs zur Erfassung von Daten von Messgeräten. Dabei wurde durch den Funktionsgenerator ein sinusförmiges Signal ausgegeben.
+			Frontpanel des einfachen Oszilloskops mithilfe des ExpressVIs zur Erfassung von Daten von Messgeräten. Dabei wurde durch den Funktionsgenerator ein sinusförmiges Signal ausgegeben.
 		}
 		\label{fig_tag2_oszi_express_front}
 	\centering
@@ -231,7 +231,7 @@ ngerman
 	
 	\subsection{Abtasttheorem}
 	Um ein Signal abzutasten, werden im Analog-Digital-Wandler mithilfe einer Sample-and-Hold-Schaltung zeitlich diskrete Messungen durchgeführt.
-	Dies lässt sich als Multiplikation des Signals mit einem Delta-Kamm ausdrücken.
+	Dies lässt sich als Multiplikation des Signals mit einem Delta-Kamm (mit Abständen der Delta-Zacken gleich den Messabständen) ausdrücken.
 	Dabei treten Summen- und Differenzfrequenzen von Abtastfrequenz und deren Oberfrequenzen mit den Frequenzen im Signal auf.
 	Im Frequenzraum ergibt sich hierdurch eine periodische Fortsetzung des Spektrums des ursprünglichen Signals, wobei die Periode der Abtastfrequenz entspricht.
 	
@@ -250,7 +250,7 @@ ngerman
 	\noindent Dies ist in \cref{fig_Aliasing_veranschaulichung} veranschaulicht.
 	Wenn die Abtastfrequenz hinreichend groß ist, kann man nun mithilfe eines Tiefpasses das Signal herausfiltern.
 	Dazu muss sie allerdings größer als das Doppelte der höchsten im Signal auftretenden Frequenz sein, da sich ansonsten das Spektrum des Signals mit den Differenzfrequenzen der nächsten Periode überlagern.
-	Wenn dies geschieht, bezeichnet man es als Aliasing.
+	Wenn letzteres geschieht, bezeichnet man dies als Aliasing.
 		
 	
 	%eig. zunächst Fertigstellung von Tag2 Teil 1
@@ -278,7 +278,7 @@ ngerman
 
 	\subsection{Digitales Oszilloskop ohne ExpressVI} % hier ist halt die Tagreihenfolge bissl gebrochen. Ich glaube, wir haben das an Tag 2 angefangen und Tag 3 beendet
 	Das Oszilloskopprogramm von zuvor wird ersetzt durch eines, das anstelle des ExpressVIs Konfiguration, Messung und Cleanup getrennt enthält.
-	Dieses ist in \cref{fig_tag23_oszi_manuell_block} dargestellt, während in \cref{fig_tag23_oszi_manuell_front} die Frontplatte bei einem Eingangssignal von \SI{600}{\hertz} abgebildet ist.
+	Dieses ist in \cref{fig_tag23_oszi_manuell_block} dargestellt, während in \cref{fig_tag23_oszi_manuell_front} die Frontpanel bei einem Eingangssignal von \SI{600}{\hertz} abgebildet ist.
 	
 	\begin{figure}[H]
 		\centering
@@ -314,14 +314,14 @@ ngerman
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/ManuellVIp}
 		\centering
 		\caption{
-			Oszilloskopfrontplatte. Dargestellt wird das gemessene Signal im Zeitbild sowie im Frequenzbild mit und ohne Von-Hann-Fenster. Einstellbar ist die Abtastfrequenz, die Anzahl der Messpunkte, der Eingangskanal des Messgerätes und der maximale messbare Wert, wobei der minimale auf das Negative des maximalen gesetzt wird.
+			Oszilloskopfrontpanel. Dargestellt wird das gemessene Signal im Zeitbild sowie im Frequenzbild mit und ohne Von-Hann-Fenster. Einstellbar ist die Abtastfrequenz, die Anzahl der Messpunkte, der Eingangskanal des Messgerätes und der maximale messbare Wert, wobei der minimale auf das Negative des maximalen gesetzt wird.
 			Mithilfe des Stopp-Knopfes kann das Programm gestoppt werden und mit dem Speichern-Knopf werden die aktuellen Messwerte aus allen drei Diagrammen in eine Textdatei exportiert.
 		}
 		\label{fig_tag23_oszi_manuell_front}
 		\centering
 	\end{figure}
 
-	Hierbei wird ebenfalls die Möglichkeit die aktuellen Messwerte zu speichern eingeführt.
+	Hierbei wird ebenfalls die Möglichkeit, die aktuellen Messwerte zu speichern, eingeführt.
 	Dazu werden die Strukturen aus verschiedenen Datentypen, die in den Diagrammen dargestellt werden, in ihre Bestandteile zerlegt und die Arrays der Y-Werte mit zwei Arrays für fortlaufende Zeit- und Frequenzwerte kombiniert und der Speicherfunktion zugeführt.
 	Der Speichervorgang befindet sich innerhalb eines case-Konstrukts, das ignoriert wird, solange der Speichern-Knopf nicht gedrückt wurde.
 	Außerdem werden Fehlermeldungen einer Fehlerdialogfunktion zugeführt, die dem Nutzer erlaubt bei Fehlern wahlweise das Programm anzuhalten oder weiterlaufen zu lassen.
@@ -368,7 +368,7 @@ ngerman
 		\includegraphics[width=0.68\textwidth]{Origin-Files/unpassend_230nonhann}
 		\centering
 		\caption{
-			Spektrum eines Signals mit einer Frequenz von \SI{230}{\hertz}, was ein Vielfaches der Abtastrate ist, weshalb hier die Signalfrequenz scharf zu erkennen ist. Eine Fensterfunktion wurde hier nicht verwendet.
+			Spektrum eines Signals mit einer Frequenz von \SI{230}{\hertz}, welche ein Vielfaches der Abtastrate ist, weshalb hier die Signalfrequenz scharf zu erkennen ist. Eine Fensterfunktion wurde hier nicht verwendet.
 		}
 		\label{fig_tag3_unpassend_230hz}
 		\centering
@@ -378,7 +378,7 @@ ngerman
 		\includegraphics[width=0.68\textwidth]{Origin-Files/unpassend_233nonhann}
 		\centering
 		\caption{
-			Spektrum eines Signals mit einer Frequenz von \SI{233}{\hertz}, was kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird. Eine Fensterfunktion wurde hier nicht verwendet.
+			Spektrum eines Signals mit einer Frequenz von \SI{233}{\hertz}, welche kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird. Eine Fensterfunktion wurde hier nicht verwendet.
 		}
 		\label{fig_tag3_unpassend_233hz}
 		\centering
@@ -388,7 +388,7 @@ ngerman
 		\includegraphics[width=0.68\textwidth]{Origin-Files/unpassend_235nonhann}
 		\centering
 		\caption{
-			Spektrum eines Signals mit einer Frequenz von \SI{235}{\hertz}, was kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird. Eine Fensterfunktion wurde hier nicht verwendet.
+			Spektrum eines Signals mit einer Frequenz von \SI{235}{\hertz}, welche kein Vielfaches der Abtastrate ist, weshalb hier zu erkennen ist, dass die Signalfrequenz unscharf wird. Eine Fensterfunktion wurde hier nicht verwendet.
 		}
 		\label{fig_tag3_unpassend_235hz}
 		\centering
@@ -406,7 +406,7 @@ ngerman
 	In \cref{fig_tag3_am_soundkarte_block} ist das dazu verwendete LabView-Programm dargestellt.
 	Moduliert werden soll die Überlagerung zweier Signale mit einstellbarer Frequenz und Amplitude.
 	Auch Trägerfrequenz und Modulationsgrad soll einstellbar sein.
-	Die Amplitudenmodulation lässt sich durch die Gleichung
+	Die Amplitudenmodulation eines Signals $s(t)$ lässt sich durch die Gleichung
 	
 	\begin{equation} \label{AMFormel}
 		S_{AM}(t)=S_T (1+m \cdot s(t)) \cdot \cos(2\pi f_T t)
@@ -414,7 +414,7 @@ ngerman
 	
 	\noindent beschreiben.
 	Dabei ist $m$ der Modulationsgrad, $f_T$ die Trägerfrequenz und $S_T$ die Amplitude.
-	Da die Überlagerung von zwei sinusförmigen Signalen beliebiger aber fester Frequenz moduliert werden soll gilt:
+	Da die Überlagerung von zwei sinusförmigen Signalen beliebiger aber fester Frequenz moduliert werden soll, gilt:
 	
 	\begin{equation} \label{Ursprungssignal}
 		s(t) = A_1 \cos (2\pi f_1 t) + A_2 \cos (2\pi f_2 t) \ . 
@@ -466,7 +466,7 @@ ngerman
 		\includegraphics[width=1\textwidth]{EIRE2018Dateien/Tag3/Soundkarteoutoszi/AMp}
 		\centering
 		\caption{
-			Frontplatte des Programms zur Erzeugung eines amplitudenmodulierten Signals und Ausgabe dessen über die Soundkarte.
+			Frontpanel des Programms zur Erzeugung eines amplitudenmodulierten Signals und Ausgabe dessen über die Soundkarte.
 		}
 		\label{fig_tag3_am_soundkarte_front}
 		\centering
@@ -504,9 +504,9 @@ ngerman
 	Um nun das amplitudenmodulierte Signal im Oszilloskopprogramm wieder demodulieren zu können, wird ein Case-Konstrukt eingeführt, welches nach Auswahl des Benutzers entweder das Signal nicht demoduliert, mit sich selbst multipliziert oder den Betrag des Signals bildet, da in den letzten beiden Fällen unter anderem wieder die Ursprungsfrequenzen vorliegen.
 	Nach diesem Schritt wird das Signal im Zeit- und Frequenzbild dargestellt und danach zusätzlich durch einen Tiefpass geführt, der auftretende höhere Frequenzen herausfiltert, und dann erneut im Zeit- und Frequenzbild dargestellt.
 	Außerdem wird die Speicherung von zuvor erweitert, sodass das Signal vor der Demodulation, vor dem Tiefpass und nach diesem gespeichert werden kann.
-	Das fertige Programm ist in \cref{fig_tag3_am_demod_block} und die zugehörige Frontplatte in \cref{fig_tag3_am_demod_front} dargestellt.
-	Dass man in der Zeitdomäne letzterer wenig erkennen kann, liegt an der Vielzahl und der Größe der auftretenden Frequenzen.
-	Diese Tatsache gilt für alle der kommenden Untersuchungen, weshalb im Folgenden nur noch die Frequenzdomäne dargestellt wird.
+	Das fertige Programm ist in \cref{fig_tag3_am_demod_block} und das zugehörige Frontpanel in \cref{fig_tag3_am_demod_front} dargestellt.
+	Dass man in der Zeitdomäne auf letzterem wenig erkennen kann, liegt an der Vielzahl und der Größe der auftretenden Frequenzen.
+	Diese Tatsache gilt für alle kommenden Untersuchungen, weshalb im Folgenden nur noch die Frequenzdomäne dargestellt wird.
 	
 	\begin{figure}[H]
 		\centering
@@ -540,7 +540,7 @@ ngerman
 		\includegraphics[width=1.0\textwidth]{EIRE2018Dateien/Tag3/modifizierterOszi/Oszilloskop__modifiziertp}
 		\centering
 		\caption{
-			Frontplatte des Programms zur Demodulation und Darstellung eines amplitudenmodulierten Signals.
+			Frontpanel des Programms zur Demodulation und Darstellung eines amplitudenmodulierten Signals.
 			Einstellbar ist die Art der Demodulation (keine, Quadrieren, Betragsbildung), die Grenzfrequenz des Tiefpasses nach der Demodulation, maximal messbarer Wert, Messfrequenz, Anzahl der Messpunkte pro Messdurchgang und Eingangskanal, an dem der Analog-Digital-Wandler angeschlossen ist.
 			Die Grafiken zeigen jeweils im Zeit- und Frequenzbild (mit Hanning-Fensterfunktion) das Signal vor, nach und während der Demodulation.
 			Die aktuellen Punkte in allen sechs Grafiken können in einer Textdatei gespeichert werden.
@@ -631,7 +631,6 @@ ngerman
 			\centering
 			\includegraphics[width=1\textwidth]{Origin-Files/AM-Demod-Quadrat-demod-Bereich}
 			\caption{Geringer Frequenzbereich}
-			\label{fig_tag3_am_demod_quadrat_vollst}
 		\end{subfigure}
 	
 		\caption{Ausgabe des Oszilloskopprogramms in der Frequenzdomäne nach vollständiger Demodulation durch Quadrieren und Tiefpassfilterung des amplitudenmodulierten Signals.
@@ -641,6 +640,7 @@ ngerman
 		Hier treten allerdings noch einige zusätzliche Frequenzen auf, weshalb die Bildung des Betrages gegenüber dem Quadrieren zu bevorzugen ist.
 		}
 		\centering
+		\label{fig_tag3_am_demod_quadrat_vollst}
 	\end{figure}
 
 
@@ -652,7 +652,7 @@ ngerman
 	Letztere lassen sich unter Verwendung einer Fourier-Transformation im Frequenzspektrum dieser Überlagerung betrachten.
 	Neben den diversen Peaks an Stellen mit vergleichsweise hohen Frequenzen, ergeben sich darin ebenfalls Peaks bei relativ niedrigen Frequenzwerten.
 	Demnach handelt es sich um ein breites Frequenzspektrum, in dem man die Frequenz(en) des modulierten, ursprünglichen Signals deutlich erkennen kann.
-	Von einem theoretischen Standpunkt aus ist die komplette Demodulation des AM-Signals damit abgeschlossen.
+	Damit ist die theoretische Betrachtung der kompletten Demodulation des AM-Signals abgeschlossen.
 	Zusätzlich lassen sich durch einen Tiefpass mit hinreichend großer Grenzfrequenz die hohen Frequenzanteile aus dem Spektrum herausfiltern, sodass letztendlich nur noch die besagten Frequenzen des Signals übrig bleiben, welches es zu ampliutudenmodulieren galt. 
 		
 %	\begin{figure}[H]
@@ -736,7 +736,7 @@ ngerman
 	Hierbei liegt eine Versechsfachung des Modulationsgrads $m$ vor.
 	
 	Anhand der \cref{AMDemodfailm02} lässt sich erkennen, welche Folgen sich beim Versuch der Demodulation ergeben, sobald man die (geratene) Trägerfrequenz zu weit außerhalb des $\pm 20\,$Hz-Bereichs wählt.
-	Hierbei wurde der Trägerfrequenz-Wert nämlich auf $10.050\,$Hz geraten, gleichwohl die tatsächliche Trägerfrequenz des AM-Signals bei $10.000\,$Hz liegt.
+	Hierbei wurde der Trägerfrequenz-Wert nämlich auf $10.050\,$Hz geraten, obwohl die tatsächliche Trägerfrequenz des AM-Signals bei $10.000\,$Hz liegt.
 	Bei dem in \cref{AMDemodfailm02} gezeigten Frequenzbild mit Hanning-Fenster, welches äquivalent zum aus \cref{MultiTraegerFrontpanel} bekannten, sich rechts unten befindenden Frontpanel-Diagramm ist, kann man daher nicht die beiden vom ursprünglichen Signal stammenden Frequenzen $f_1 = 700\,$Hz und $f_2 = 1.000\,$Hz ablesen.
 	Denn bei diesen Frequenz-Werten sind keine Peaks zu sehen.
 	Stattdessen lassen sich in dem Teil des Frequenzspektrums, der nach der Tiefpassfilterung übrig geblieben ist, einige verstreute Peaks unterschiedlicher Höhe und Breite an verschiedenen Frequenz-Werten lokalisieren.
@@ -806,7 +806,7 @@ ngerman
 	Durch das Hinzufügen einer Case-Konstruktion kommt die Auswahlmöglichkeit zwischen Frequenz- und Phasenmodulation zustande.
 	Dazu werden zwei Case-Optionen mit den jeweiligen Markierungen \glqq FM\grqq\ und \glqq PM\grqq\ erstellt. 
 	Die zwei dadurch erscheinenden, zunächst freien sowie ausfüllbaren Case-Felder sollen somit jeweils der Frequenzmodulation und der Phasenmodulation zur Verfügung stehen.
-	Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichnetes Bedienelement auf der Benutzeroberfläche samt dazugehörigem Element (auch als \glqq Control\grqq bezeichnet) an der entsprechenden Stelle im Programmcode.
+	Der Wechsel zwischen diesen beiden erfolgt durch ein mit dem Namen \glqq Modulationsart\grqq\ gekennzeichnetes Bedienelement auf der Benutzeroberfläche samt dazugehörigem Element (auch als \enquote{Control} bezeichnet) an der entsprechenden Stelle im Programmcode.
 		
 	%"Einleitende" Worte:
 	Im Folgenden wird zwischen Frequenz- und Phasenmodulation (\glqq FM\grqq\ und \glqq PM\grqq ) unterschieden.
@@ -823,7 +823,7 @@ ngerman
 	Am Programmcode in \cref{FMProgrammcode} lässt sich die unter Verwendung der von LabVIEW zur Verfügung gestellten numerischen Operationen, Funktionen und Konstanten erfolgte Umsetzung dieser Formel betrachten. 
 	Unter anderem können die dafür benötigten $t$-Werte, welche nach \cref{t} für alle $i = 0,1,2,...,44.100$ gegeben sind, am Ausgangsanschluss des aus \cref{sinusfkt} stammenden, Sinus-erstellenden Programms abgegriffen werden. 
 	Das dazugehörige Blockdiagrammobjekt befindet sich im linken Programmcode-Bereich, welcher der Signalerzeugung dient. 
-	Durch zusätzliche \glqq Controls\grqq\ und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. 
+	Durch zusätzliche \enquote{Controls} und entsprechende Bedienelemente auf dem Frontpanel wird die Eingabe der Gleitkommazahlenwerte für $f_0$ und $k$ realisierbar. 
 	Innerhalb des für die Frequenzmodulation reservierten, freien, ausfüllbaren Case-Feldes (\glqq FM\grqq ) wird die in \cref{FMFormel} auftretende Integration von $s(t)$ ermöglicht.
 	Dabei wird auf die Simpsonregel (in \cref{FMProgrammcode} mit \glqq Simpson's Rule\grqq\ gekennzeichnet) als numerisches Integrationsverfahren zurückgegriffen.
 	
